@@ -1,0 +1,1252 @@
+// TimeLineDlg.cpp : 實作檔
+//
+
+#include "stdafx.h"
+#include "MediaServer.h"
+#include "TimeLineDlg.h"
+#include "afxdialogex.h"
+
+#include "TrackContentManager.h"
+#include "Iphlpapi.h"
+#include "ServerListDlg.h"
+
+#include "../../../Include/StrConv.h"
+
+#define _PAGE_UP_KEY_ID 102 
+#define _PAGE_DOWN_KEY_ID 103 
+
+#define IDC_PREVIEW_CTRL  1004
+/*
+#define IDC_PREVIEW_CTRL2  1005
+#define IDC_PREVIEW_CTRL3  1006
+#define IDC_PREVIEW_CTRL4  1007
+#define IDC_PREVIEW_CTRL5  1008
+#define IDC_PREVIEW_CTRL6  1009
+#define IDC_PREVIEW_CTRL7  1010
+#define IDC_PREVIEW_CTRL8  1011
+#define IDC_PREVIEW_CTRL9  1012
+#define IDC_PREVIEW_CTRL10  1013
+*/
+
+#pragma comment(lib, "gdiplus.lib")
+#pragma comment(lib, "IPHLPAPI.lib")
+
+extern CWaitingDlg g_WaitingDlg;
+
+// CTimeLineDlg 對話方塊
+
+BEGIN_MESSAGE_MAP(MyStatic, CStatic)
+	ON_WM_DRAWITEM()
+	ON_WM_PAINT()
+END_MESSAGE_MAP()
+
+//m_hBrush = CreateSolidBrush(RGB(250, 193, 18));
+
+MyStatic::MyStatic()
+{
+	m_hBlackBrush = CreateSolidBrush(RGB(250, 193, 18));
+}
+
+MyStatic::~MyStatic()
+{
+	if (m_hBlackBrush)
+	{
+		DeleteObject(m_hBlackBrush);
+		m_hBlackBrush = 0;
+	}
+}
+
+void MyStatic::SetBKColor(unsigned char r, unsigned char g, unsigned char b)
+{
+	if (m_hBlackBrush)
+	{
+		DeleteObject(m_hBlackBrush);
+		m_hBlackBrush = 0;
+	}
+
+	m_hBlackBrush = CreateSolidBrush(RGB(r, g, b));
+}
+
+void MyStatic::OnPaint()
+{
+	CPaintDC dc(this);
+	RECT rect;
+	::GetClientRect(GetSafeHwnd(), &rect);
+	FillRect(dc.GetSafeHdc(),&rect, m_hBlackBrush);
+}
+
+IMPLEMENT_DYNAMIC(CTimeLineDlg, CDialog)
+
+CTimeLineDlg::CTimeLineDlg(CWnd* pParent /*=NULL*/)
+	: CDialog(IDD_TEMP_DLG, pParent)
+{
+	m_FramePic = NULL;
+	m_bTimerEnable = FALSE;
+
+	m_pFrameSplit = 0;
+	m_hBrush = NULL;
+
+	m_pHotKeyQueue = 0;
+	m_iTimerCount = 0;
+
+	m_pUTipDll = 0;
+	m_dwLastHotkeyRunTime = 0;
+	m_iLastHotkey = 0;
+
+#ifdef _ENABLE_TC_NET
+	m_pStartBtn = NULL;
+	m_pStopBtn = NULL;
+	m_pSearchBtn = NULL;
+
+	m_bUpdateUIState = false;
+	m_iUpdateUIStateCount = 0;
+#endif
+}
+
+CTimeLineDlg::~CTimeLineDlg()
+{
+}
+
+void CTimeLineDlg::DoDataExchange(CDataExchange* pDX)
+{
+	CDialog::DoDataExchange(pDX);
+}
+
+
+BEGIN_MESSAGE_MAP(CTimeLineDlg, CDialog)
+	ON_WM_TIMER()
+	ON_WM_DESTROY()
+	ON_WM_PAINT()
+	ON_WM_HOTKEY()
+	ON_MESSAGE(WM_UPDATE_NETWORK_SETTING, OnUpdateNetworkSetting)
+	ON_MESSAGE(WM_DEVICENOTRESET,OnDeviceNotReset)
+#ifdef _ENABLE_TC_NET
+	ON_WM_LBUTTONDOWN()
+	ON_WM_LBUTTONUP()
+	ON_WM_MOUSEMOVE()
+	ON_MESSAGE(WM_BUTTON_CLICK, OnButtonClick)
+	ON_MESSAGE(WM_UPDATE_UI_STATE,OnUpdateUIState)
+#endif
+	ON_MESSAGE(WM_SET_NETWORK_INFO,OnSetNetwork)
+END_MESSAGE_MAP()
+
+
+// CTimeLineDlg 訊息處理常式
+
+
+void CTimeLineDlg::OnCancel()
+{
+	// TODO: 在此加入特定的程式碼和 (或) 呼叫基底類別	
+	GetParent()->SendMessage(MSG_MAINUI);
+	ShowWindow(SW_HIDE);
+	return;
+
+	CDialog::OnCancel();
+}
+
+
+void CTimeLineDlg::OnTimer(UINT_PTR nIDEvent)
+{
+	// TODO: 在此加入您的訊息處理常式程式碼和 (或) 呼叫預設值
+
+	if (m_bDoAutoConnect)
+	{
+		m_bDoAutoConnect = false;
+		m_ConnectHelper.Run();
+	}
+
+	if (nIDEvent == 0)
+	{
+		if (g_MixCtrlAry.size() > 0)
+		{
+			INT32 iIndex = INT(GetTickCount() / 10) % 100;
+			g_PannelSetting.iImageEffect[0] = 18;
+			g_EffectParam.iLevel = iIndex;
+			g_EffectParam.iParm1 = 50;
+			g_EffectParam.iParm2 = 50;
+			g_EffectParam.iParm3 = 50;
+			g_EffectParam.iParm4 = 50;
+			g_EffectParam.iParm5 = 50;
+		}
+	}
+	else if (nIDEvent == 1)
+	{
+		if (g_MediaSeekingAry.size() > 0)
+		{
+			HRESULT hr;
+			LONGLONG lCurPos, lLength;
+			IMediaSeeking *pSeek = g_MediaSeekingAry.at(0);
+			V(pSeek->GetCurrentPosition(&lCurPos));
+			V(pSeek->GetStopPosition(&lLength));
+
+			if (abs(lLength - lCurPos) < 10000)
+			{
+				lCurPos = 0;
+				V(g_MediaSeekingAry.at(0)->SetPositions(&lCurPos, AM_SEEKING_AbsolutePositioning, NULL, 0));
+			} 
+		}
+	}
+	
+#ifdef _ENABLE_TC_NET
+	if (m_bUpdateTxtButtonCtrl)
+	{
+		if (m_iUpdateTxtButtonCtrlCount > 0)
+			m_iUpdateTxtButtonCtrlCount--;
+
+		if(m_iUpdateTxtButtonCtrlCount == 0)
+			m_bUpdateTxtButtonCtrl = false;
+		m_pStartBtn->Draw();
+		m_pStopBtn->Draw();
+		m_pSearchBtn->Draw();
+	}
+
+	if (m_bUpdateUIState)
+	{
+		if (m_iUpdateUIStateCount > 0)
+			m_iUpdateUIStateCount--;
+		if (m_iUpdateUIStateCount == 0)
+		{
+			m_bUpdateUIState = false;
+		}
+
+		PostMessage(WM_UPDATE_UI_STATE, 0, 0);
+	}
+#endif
+
+	if (nIDEvent == 1)
+	{
+		if (m_iTimerCount % 2 == 0)
+		{
+			DWORD dwCurTime = timeGetTime();
+
+			if (m_pHotKeyQueue->GetTotal() > 0)
+			{
+				auto tl_manager = m_timelineService.GetTimelineManager();
+				CWnd* pEditViewWnd = tl_manager->GetEditViewWnd();
+
+				if (m_pHotKeyQueue->GetTotal() > 1)
+					tl_manager->FreezeShape(true);
+				else
+					tl_manager->FreezeShape(false);
+
+				if (dwCurTime - m_dwLastHotkeyRunTime >= 50)
+				{
+
+					for (int x = 0; x < g_PannelAry.GetCount(); x++)
+					{
+						g_PannelAry[x]->CheckEventStatus();
+					}
+
+					int* pCurItem = (int*)m_pHotKeyQueue->Get(0);
+
+					if (pCurItem)
+					{
+						switch (*pCurItem)
+						{
+						case _PAGE_UP_KEY_ID:
+							::SendMessage(pEditViewWnd->GetSafeHwnd(), WM_TM_BACK_TL_TIEM, 0, 0);
+							break;
+						case _PAGE_DOWN_KEY_ID:
+							::SendMessage(pEditViewWnd->GetSafeHwnd(), WM_TM_NEXT_TL_TIEM, 0, 0);
+							break;
+						}
+						m_iLastHotkey = *pCurItem;
+					}
+
+					m_pHotKeyQueue->Delete(0);
+					m_dwLastHotkeyRunTime = dwCurTime;
+				}
+			}
+		}
+
+		m_iTimerCount++;
+	}
+	
+	CDialog::OnTimer(nIDEvent);
+}
+
+
+BOOL CTimeLineDlg::OnInitDialog()
+{
+	CDialog::OnInitDialog();
+
+	// TODO:  在此加入額外的初始化
+
+	m_bDoRunNetwork = true;
+	m_bDoAutoConnect = false;
+	GdiplusStartup(&m_gdiplusToken, &m_gdiplusStartupInput, NULL);
+
+	ServiceProvider::Instance()->SetOutputService(&m_outputService);
+	ServiceProvider::Instance()->SetTimelineService(&m_timelineService);
+
+	m_pHotKeyQueue = new SQList;
+
+	m_pUTipDll = new UTipDll;
+	m_pUTipDll->LoadLib();
+	m_pUTipDll->_UT_Init(m_pUTipDll->GetUTObj());
+
+	m_timelineService.GetTimelineManager()->SetMediaServerDlgWnd(this->GetParent());
+	m_timelineService.GetTimelineManager()->SetLogFileDll(m_pLogFileDll);
+
+	m_pMidiCtrlReciever = new MidiCtrlReciever;
+	m_pMidiCtrlReciever->Init();
+
+	m_FramePic = new CMenu_Class(this, m_hWnd, 1, theApp.m_strCurPath + "\\UI Folder\\TimeLine\\TL_BG.bmp");
+	/*
+	CItem_Class* pItem;
+	pItem = new CItem_Class(this, m_hWnd, TIMER_ITEM, theApp.m_strCurPath + "\\UI Folder\\Main UI\\\\B04_r.bmp", true, true, true);
+	pItem->OffsetObject(CPoint(1124, 194));
+	m_FramePic->AddItem(pItem);
+	*/
+
+	m_FramePic->Initialize();
+
+	CRect rectTemp;
+	rectTemp = g_DispArys.GetAt(0);
+	INT32 iWidth = rectTemp.Width();
+	INT32 iHeight = rectTemp.Height();
+
+	if (iWidth != 1920 || iHeight != 1080)
+		m_FramePic->OnZoom(0, 0, float(iWidth) / 1920, float(iHeight) / 1080);
+
+	CRgn NullRgn;
+	NullRgn.CreateRectRgn(0, 0, 0, 0);
+	m_FramePic->SetWindowRgn(NullRgn, true);
+
+	float fHScale = float(iWidth) / 1920;
+	float fVScale = float(iHeight) / 1080;
+
+	SetTimer(1, 50, NULL);
+
+	RECT rect;
+	rect.left = 0;
+	rect.top = 0;
+	rect.right = iWidth;
+	rect.bottom = iHeight - 200;
+
+	CString sClass = AfxRegisterWndClass(CS_VREDRAW | CS_HREDRAW, LoadCursor(NULL, IDC_ARROW), (HBRUSH)(GetStockObject(WHITE_BRUSH)), LoadIcon(NULL, IDI_APPLICATION));
+
+	m_pFrameSplit = new CFrameWnd;
+
+	this->MoveWindow(0,0, iWidth, iHeight);
+
+	m_pFrameSplit->Create(sClass, _T(""), WS_CHILD, CRect(0, 0, 400, 400), this);  //WS_CHILD , WS_OVERLAPPEDWINDOW | FWS_ADDTOTITLE
+	m_pFrameSplit->MoveWindow(&rect);
+
+	m_wndSplitter.CreateStatic(m_pFrameSplit, 1, 2);
+
+	m_pFrameSplit->ShowWindow(SW_SHOW);
+
+#if 1
+	m_wndSplitter.CreateView(0, 0, RUNTIME_CLASS(CTimelineItemView), CSize(310, 400), NULL);
+	m_wndSplitter.CreateView(0, 1, RUNTIME_CLASS(CTimelineEditView), CSize(310, 400), NULL);
+#else
+	m_wndSplitter.CreateView(0, 0, RUNTIME_CLASS(CView1), CSize(300, 400), NULL);
+	m_wndSplitter.CreateView(0, 1, RUNTIME_CLASS(CView1), CSize(300, 400), NULL);
+#endif
+
+	//m_hBrush = CreateSolidBrush(RGB(250, 193, 18));
+	m_hBrush = CreateSolidBrush(RGB(101, 101, 101));
+	SetClassLongPtr(m_wndSplitter.GetSafeHwnd(), GCL_HBRBACKGROUND, (long)m_hBrush);
+
+	m_wndSplitter.SetActivePane(0, 0);
+	m_wndSplitter.SetWindowPos(NULL, 0, 0, rect.right, rect.bottom, SWP_SHOWWINDOW);
+
+	m_pFrameSplit->ShowWindow(SW_SHOW);
+
+#ifdef	MULTI_STREAM
+	int iOffset = 10;
+	int iLeft = 0;
+
+#ifdef _ENABLE_DISPLAY_MANAGER
+	m_pPreviewWins[0] = new MyStatic;
+	BOOL bRet = m_pPreviewWins[0]->Create(_T(""), WS_CHILD | WS_VISIBLE | SS_CENTER, CRect(10 * fHScale, 885 * fVScale, 1860 * fHScale, 1023 * fVScale), this, IDC_PREVIEW_CTRL);//| SS_OWNERDRAW
+	m_pPreviewWins[0]->SetBKColor(100, 100, 100);
+	m_pPreviewWins[0]->ShowWindow(SW_SHOW);
+
+	m_pD3DRender = new D3DRender;
+	int iScreenWidth = GetSystemMetrics(SM_CXSCREEN);
+	int iScreenHeight = GetSystemMetrics(SM_CYSCREEN);
+
+	m_pD3DRender->Init(m_pPreviewWins[0]->GetSafeHwnd(), VPF_RGB32, iScreenWidth, iScreenHeight);
+//	m_pD3DRender->Init(m_pPreviewWins[0]->GetSafeHwnd(), VPF_RGB32, 1920, 1080);
+	m_pD3DRender->Clear();
+	m_pD3DRender->Flip();
+
+	DisplayManager* pDisplayManager = m_timelineService.GetTimelineManager()->GetDisplayManager();
+
+	pDisplayManager->Init(m_pPreviewWins[0]->GetSafeHwnd(),m_pD3DRender->GetD3DDevice(), m_pD3DRender->IsD3D9Ex());
+	pDisplayManager->SetD3dPresentParamters(m_pD3DRender->GetD3DPresentParameters());
+	pDisplayManager->SetTimeLineHwnd(this->GetSafeHwnd());
+
+	RECT PreviewRect;
+
+	for (int i = 0; i < _MAX_PREVIEW_WIN; i++)
+	{
+		iLeft = iOffset + 1;
+		m_pTLPreviews[i] = new TLPreview(m_pPreviewWins[0]->GetSafeHwnd());
+		m_pTLPreviews[i]->SetDisplayManager(pDisplayManager);
+		m_pTLPreviews[i]->Init(m_pPreviewWins[0]->GetSafeHwnd(),i);
+
+		m_timelineService.GetTimelineManager()->SetOutDevice(ST_STREAM0 + i, m_pTLPreviews[i]);
+
+		PreviewRect.left = iLeft;
+		PreviewRect.top = 0;
+		PreviewRect.right = PreviewRect.left + 184 * fHScale;
+		PreviewRect.bottom = iScreenHeight;// 1080;
+
+		pDisplayManager->SetRect(i, PreviewRect);
+
+		iOffset = iLeft + 184 * fHScale;
+	}
+
+	pDisplayManager->Start();
+
+#else
+
+
+	for (int i = 0; i < _MAX_PREVIEW_WIN; i++)
+	{
+		iLeft = iOffset + 1;
+		m_pPreviewWins[i] = new MyStatic;
+		BOOL bRet = m_pPreviewWins[i]->Create(_T(""), WS_CHILD | WS_VISIBLE | SS_CENTER, CRect(iLeft, 885, iLeft + 184, 1023), this, IDC_PREVIEW_CTRL + i);//| SS_OWNERDRAW
+		m_pPreviewWins[i]->SetBKColor(100, 100, 100);
+		m_pPreviewWins[i]->ShowWindow(SW_SHOW);
+
+		//m_timelineService.GetTimelineManager()->SetPreviewWnd(m_pPreviewWin->GetSafeHwnd());
+
+		m_pTLPreviews[i] = new TLPreview(m_pPreviewWins[i]->GetSafeHwnd());
+//		m_pTLPreviews[i]->SetDisplayManager(DisplayManager* pObj);
+		m_pTLPreviews[i]->Init(m_pPreviewWins[i]->GetSafeHwnd());
+
+		m_timelineService.GetTimelineManager()->SetOutDevice(ST_STREAM0 + i, m_pTLPreviews[i]);
+
+		iOffset = iLeft + 184;
+	}
+
+#endif
+
+
+#else
+	//m_pPreviewWin = new CStatic;
+	m_pPreviewWin = new MyStatic;
+	BOOL bRet = m_pPreviewWin->Create(_T(""), WS_CHILD | WS_VISIBLE | SS_CENTER , CRect(10, 885, 260, 1075), this, IDC_PREVIEW_CTRL);//| SS_OWNERDRAW
+	m_pPreviewWin->SetBKColor(100, 100, 100);
+	m_pPreviewWin->ShowWindow(SW_SHOW);
+
+	//m_timelineService.GetTimelineManager()->SetPreviewWnd(m_pPreviewWin->GetSafeHwnd());
+
+	m_pTLPreview = new TLPreview(m_pPreviewWin->GetSafeHwnd());
+	m_pTLPreview->Init(m_pPreviewWin->GetSafeHwnd());
+
+	m_timelineService.GetTimelineManager()->SetOutDevice(ST_LAYER1, m_pTLPreview);
+#endif
+
+	m_NetType.Create("Master",10 * fHScale, 1023 * fVScale,100 * fHScale,20 * fVScale,this, IDC_MASTER);
+	m_IPText.Create("IP:",120 * fHScale,1023 * fVScale, 40 * fHScale, 20 * fVScale, this,0);
+	m_CIPCtrl.Create(170 * fHScale, 1023 * fVScale, 150 * fHScale, 20 * fVScale, this, IDC_IP_ADDRESS);
+	m_PortText.Create("Port:",340 * fHScale, 1023 * fVScale, 40 * fHScale, 20 * fVScale, this,0);
+	m_CEditCtrl.Create(390 * fHScale, 1023 * fVScale, 50 * fHScale, 20 * fVScale, this, IDC_PORT);
+
+	m_CEditCtrl.SetWindowText("2017");
+
+#ifdef _ENABLE_TC_NET
+	m_pStartBtn = new TxtButtonCtrl;
+	m_pStartBtn->Create("Start",600 * fHScale,1023 * fVScale,80 * fHScale,20 * fVScale,this->GetSafeHwnd(), IDC_START);
+
+	m_pStopBtn = new TxtButtonCtrl;
+	m_pStopBtn->Create("Stop", 700 * fHScale, 1023 * fVScale, 80 * fHScale, 20 * fVScale, this->GetSafeHwnd(), IDC_STOP);
+
+	m_pSearchBtn = new TxtButtonCtrl;
+	m_pSearchBtn->Create("Search", 500 * fHScale, 1023 * fVScale, 80 * fHScale, 20 * fVScale, this->GetSafeHwnd(), IDC_SEARCH);
+
+	SetTip();
+
+	RegisterHotKey(this->GetSafeHwnd(), _PAGE_UP_KEY_ID, MOD_CONTROL, VK_PRIOR);
+	RegisterHotKey(this->GetSafeHwnd(), _PAGE_DOWN_KEY_ID, MOD_CONTROL, VK_NEXT);
+	/*
+	bool bEnableTimelinePf = GetPrivateProfileInt("Timeline_Setting", "EnablePreloadProjectFile", 0, theApp.m_strCurPath + "Setting.ini");
+	if (bEnableTimelinePf)
+	{
+		char szProjectFileName[512];
+		GetPrivateProfileString("Mapping_Setting", "ProjectFile", "", szProjectFileName, 1024, theApp.m_strCurPath + "Setting.ini");
+
+		if (PathFileExistsA(szProjectFileName))
+			m_timelineService.GetTimelineManager()->LoadProject(szProjectFileName);
+	}
+	*/
+//	m_WaitingDlg.Create(IDD_WAITING_DLG,this);
+#endif
+
+	auto time_line_manager = m_timelineService.GetTimelineManager();
+	m_ConnectHelper.SetTimelineDlgWnd(this->GetSafeHwnd());
+	m_ConnectHelper.SetTimelineManager(time_line_manager);
+
+	m_AutoPBHelper.SetTimelineManager(time_line_manager);
+
+	return TRUE;  // return TRUE unless you set the focus to a control
+				  // EXCEPTION: OCX 屬性頁應傳回 FALSE
+}
+
+void CTimeLineDlg::SetIOSourceCtrlDll(IOSourceCtrlDll* pObj)
+{
+	auto track_content_manager = m_timelineService.GetTimelineManager()->GetTrackContentManager();
+	track_content_manager->SetIOSourceCtrlDll(pObj);
+}
+
+void CTimeLineDlg::ReDraw()
+{
+	auto time_line_manager = m_timelineService.GetTimelineManager();
+
+	CWnd* pWnd = time_line_manager->GetEditViewWnd();
+
+	bool bEnableTimelinePf = GetPrivateProfileInt("Timeline_Setting", "EnablePreloadProjectFile", 0, theApp.m_strCurPath + "Setting.ini");
+	if (bEnableTimelinePf)
+	{
+		char szProjectFileName[512];
+		GetPrivateProfileString("Timeline_Setting", "ProjectFile", "", szProjectFileName, 1024, theApp.m_strCurPath + "Setting.ini");
+
+		if (PathFileExistsA(szProjectFileName) && time_line_manager->GetTotalOfItems() == 0)
+		{
+			time_line_manager->LoadProject(szProjectFileName);
+		}
+	}
+
+	pWnd->PostMessage(WM_TM_REDRAW, 0, 0);
+
+#ifdef _ENABLE_TC_NET
+	m_bUpdateTxtButtonCtrl = true;
+	m_iUpdateTxtButtonCtrlCount = 10;
+#endif
+}
+
+BOOL CTimeLineDlg::OnWndMsg(UINT message, WPARAM wParam, LPARAM lParam, LRESULT* pResult)
+{
+	// TODO: 在此加入特定的程式碼和 (或) 呼叫基底類別
+	switch (message)
+	{
+		case WM_CLOSE:
+			{
+				auto service = ServiceProvider::Instance()->GetTimelineService();
+				if (service != nullptr)
+				{
+					auto engine = service->GetTimeCodeEngine();
+					engine->PauseTimeCodeUpdate();
+				}
+
+				for (int i = 0; i < _MAX_PREVIEW_WIN; i++)
+				{
+					if (m_pTLPreviews[i])
+					{
+						m_pTLPreviews[i]->Stop();
+						m_pTLPreviews[i]->Close();
+					}
+				}
+#ifdef _ENABLE_DISPLAY_MANAGER
+				DisplayManager* pDisplayManager = m_timelineService.GetTimelineManager()->GetDisplayManager();
+				pDisplayManager->Stop();
+#endif
+			}
+			break;
+		case TIMER_ITEM:
+			if (m_bTimerEnable)
+			{
+				g_PannelSetting.iImageEffect[0] = 0;
+				KillTimer(0);
+			}
+			else
+			{
+				SetTimer(0, 30, NULL);
+			}
+			m_bTimerEnable = !m_bTimerEnable;
+			break;
+		case WM_SYSCOMMAND:
+			{
+				if (SC_CLOSE == wParam)
+					return true;
+				else if (SC_KEYMENU == wParam)
+					return true;
+			}
+			break;
+		default:
+			break;
+	}
+
+	return CDialog::OnWndMsg(message, wParam, lParam, pResult);
+}
+
+void CTimeLineDlg::OnHotKey(UINT nHotKeyId, UINT nKey1, UINT nKey2)
+{
+	// TODO: Add your message handler code here and/or call default
+	auto tl_manager = m_timelineService.GetTimelineManager();
+	CWnd* pEditViewWnd = tl_manager->GetEditViewWnd();
+	switch (nHotKeyId)
+	{
+		case _PAGE_UP_KEY_ID:
+			{
+//				::PostMessage(pEditViewWnd->GetSafeHwnd(), WM_TM_BACK_TL_TIEM, 0, 0);	
+
+				if (m_pHotKeyQueue->GetTotal() < 10)
+				{
+					int* pNewItem = new int;
+					*pNewItem = _PAGE_UP_KEY_ID;
+					m_pHotKeyQueue->Add(pNewItem);
+				}
+			}
+			break;
+		case _PAGE_DOWN_KEY_ID:
+			{
+//				::PostMessage(pEditViewWnd->GetSafeHwnd(), WM_TM_NEXT_TL_TIEM, 0, 0);
+				if (m_pHotKeyQueue->GetTotal() < 10)
+				{
+					int* pNewItem = new int;
+					*pNewItem = _PAGE_DOWN_KEY_ID;
+					m_pHotKeyQueue->Add(pNewItem);
+				}
+			}
+			break;
+	}
+
+	CDialog::OnHotKey(nHotKeyId, nKey1, nKey2);
+}
+
+void CTimeLineDlg::OnDestroy()
+{
+	CDialog::OnDestroy();
+
+	// TODO: 在此加入您的訊息處理常式程式碼
+	auto service = ServiceProvider::Instance()->GetTimelineService();
+	if (service != nullptr)
+	{
+		auto engine = service->GetTimeCodeEngine();
+		engine->PauseTimeCodeUpdate();
+	}
+
+	m_timelineService.GetTimelineManager()->FreeObj();
+
+	for (int i = 0; i < _MAX_PREVIEW_WIN; i++)
+	{
+		if (m_pTLPreviews[i])
+		{
+			m_pTLPreviews[i]->Stop();
+			m_pTLPreviews[i]->Close();
+		}
+	}
+
+	if (m_FramePic)
+		delete m_FramePic;
+
+	if 	(m_bTimerEnable)
+		KillTimer(0);
+
+	KillTimer(1);
+
+	if (m_pFrameSplit)
+		delete m_pFrameSplit;
+
+	if(m_hBrush)
+		DeleteObject(m_hBrush);
+
+#ifdef _ENABLE_TC_NET
+	if(m_pStartBtn)
+		delete m_pStartBtn;
+
+	if(m_pStopBtn)
+		delete m_pStopBtn;
+
+	if (m_pSearchBtn)
+		delete m_pSearchBtn;
+#endif
+
+//	if (m_hBlackBrush)
+	//	DeleteObject(m_hBlackBrush);
+
+#ifdef MULTI_STREAM
+
+
+#ifdef _ENABLE_DISPLAY_MANAGER
+
+	DisplayManager* pDisplayManager = m_timelineService.GetTimelineManager()->GetDisplayManager();
+	pDisplayManager->Stop();
+
+	if (m_pD3DRender)
+		delete m_pD3DRender;
+
+	if (m_pPreviewWins[0])
+		delete m_pPreviewWins[0];
+
+	for (int i = 0; i < _MAX_PREVIEW_WIN; i++)
+	{
+		if (m_pTLPreviews[i])
+			delete m_pTLPreviews[i];
+	}
+
+#else
+	for (int i = 0; i < _MAX_PREVIEW_WIN; i++)
+	{
+		if (m_pPreviewWins[i])
+			delete m_pPreviewWins[i];
+		if (m_pTLPreviews[i])
+			delete m_pTLPreviews[i];
+	}
+#endif
+
+
+#else
+	if (m_pPreviewWin)
+	{
+		delete m_pPreviewWin;
+	}
+#endif
+
+	UnregisterHotKey(this->GetSafeHwnd(), _PAGE_UP_KEY_ID);
+	UnregisterHotKey(this->GetSafeHwnd(), _PAGE_DOWN_KEY_ID);
+
+	if (m_pHotKeyQueue)
+		delete m_pHotKeyQueue;
+
+	if (m_pMidiCtrlReciever)
+		delete m_pMidiCtrlReciever;
+
+	if (m_pUTipDll)
+		delete m_pUTipDll;
+}
+
+LRESULT CTimeLineDlg::OnUpdateNetworkSetting(WPARAM wParam, LPARAM lParam)
+{
+	int iIP[4];
+	int iPort = 0;
+	char szPortStr[16];
+	bool bCheck = m_NetType.GetCheck();
+
+	if (bCheck)
+	{
+		IP_ADAPTER_INFO AdapterInfo[16];
+		DWORD dwBufLen = sizeof(AdapterInfo);
+		DWORD dwStatus = GetAdaptersInfo(AdapterInfo, &dwBufLen);
+
+		if (dwStatus == ERROR_SUCCESS)
+			;
+		else
+		{
+			switch (dwStatus)
+			{
+				case ERROR_NO_DATA:
+					break;
+				case ERROR_INVALID_DATA:
+					break;
+			}
+		}
+
+		if (dwStatus == ERROR_SUCCESS)
+		{
+			PIP_ADAPTER_INFO pAdapterInfo = AdapterInfo;
+			while (pAdapterInfo)
+			{
+				if (atoi(pAdapterInfo->IpAddressList.IpAddress.String) != 0)
+				{
+					m_CIPCtrl.SetIP(pAdapterInfo->IpAddressList.IpAddress.String);
+					break;
+				}
+				else
+					pAdapterInfo = pAdapterInfo->Next;
+			}
+		}
+
+		m_CIPCtrl.Enable(false);
+	}
+	else
+		m_CIPCtrl.Enable(true);
+
+#ifdef _ENABLE_TC_NET
+	auto time_line_manager = m_timelineService.GetTimelineManager();
+	auto tc_adapter = time_line_manager->GetTCAdapter();
+	if (bCheck)
+	{
+		tc_adapter->SetMode(TCM_SERVER);
+
+		if (m_pSearchBtn)
+		{
+			m_pSearchBtn->Enable(false);
+			m_pSearchBtn->Draw();
+		}
+	}
+	else
+	{
+		tc_adapter->SetMode(TCM_CLIENT);
+
+		if (m_pSearchBtn)
+		{
+			m_pSearchBtn->Enable(true);
+			m_pSearchBtn->Draw();
+		}
+	}
+#endif
+
+	int iRet = m_CEditCtrl.GetWindowText(szPortStr,16);
+	iPort = atoi(szPortStr);
+
+	char* szIP = m_CIPCtrl.GetIP();
+
+	auto service = ServiceProvider::Instance()->GetTimelineService();
+	if (service != nullptr)
+	{
+		auto engine = service->GetTimeCodeEngine();
+		engine->SetMaster(bCheck);
+		engine->SetIPAdress(szIP);
+		engine->SetPort(iPort);
+
+#ifdef _ENABLE_TC_NET
+		tc_adapter->SetServerIP(szIP);
+		tc_adapter->SetPort(iPort);
+#endif
+
+	}
+
+	return true;
+}
+
+void CTimeLineDlg::OnPaint()
+{
+	//if (IsIconic())
+	//{
+	//	CPaintDC dc(this); // 繪製的裝置內容
+	//}
+
+#ifdef _ENABLE_TC_NET
+	if (m_pStartBtn)
+		m_pStartBtn->Draw();
+
+	if (m_pStopBtn)
+		m_pStopBtn->Draw();
+
+	if (m_pSearchBtn)
+		m_pSearchBtn->Draw();
+#endif
+
+	CDialog::OnPaint();
+}
+
+void CTimeLineDlg::SetLogFileDll(LogFileDll* pObj)
+{
+	m_pLogFileDll = pObj;
+}
+
+void CTimeLineDlg::OnOK()
+{
+	// TODO: 在此加入特定的程式碼和 (或) 呼叫基底類別
+	ShowWindow(SW_SHOW);
+//	CDialog::OnOK();
+}
+
+LRESULT CTimeLineDlg::OnDeviceNotReset(WPARAM wParam, LPARAM lParam)
+{
+	int iPanelIndex = (int)wParam;
+
+	if (iPanelIndex == -1)
+	{
+		m_pD3DRender->Reset();
+
+		DoPause();
+
+		DisplayManager* pDisplayManager = m_timelineService.GetTimelineManager()->GetDisplayManager();
+		pDisplayManager->ResetD3DDevice(m_pD3DRender->GetD3DDevice());
+
+		for (int i = 0; i < _MAX_PREVIEW_WIN; i++)
+		{
+			m_pTLPreviews[i]->ResetMixerEffectD3DDevice();
+		}
+	}
+
+	return true;
+}
+
+void CTimeLineDlg::DoPause()
+{	
+	CWnd* pEditViewWnd = m_timelineService.GetTimelineManager()->GetEditViewWnd();
+	::SendMessage(pEditViewWnd->GetSafeHwnd(), WM_TM_PAUSE, 0, 0);
+}
+
+void CTimeLineDlg::AddTip(wchar_t* wszTipID,int left,int top,int right,int bottom)
+{
+	wchar_t wszID[512];
+	wchar_t wszData[512];
+	wchar_t wszAppName[128];
+	wchar_t wszKeyName[128];
+	char szIniFile[512];
+	wchar_t wszIniFile[512];
+	sprintf(szIniFile, "%s\\Language\\timeline_%s.ini", theApp.m_strCurPath, theApp.m_strLanguage);
+
+	wcscpy(wszIniFile, ANSIToUnicode(szIniFile));
+
+	int iTotal = GetPrivateProfileInt("Base", "Total", 0, szIniFile);
+	for (int i = 0; i < iTotal; i++)
+	{
+		swprintf(wszAppName,L"Item%d",i);
+		GetPrivateProfileStringW(wszAppName, L"ID", L"", wszID,512, wszIniFile);
+
+		if (wcscmp(wszID, wszTipID) == 0)
+		{
+			GetPrivateProfileStringW(wszAppName, L"Str", L"", wszData, 512, wszIniFile);
+
+			TipInfoW tip_info;
+			tip_info.hWnd = this->GetSafeHwnd();
+			wcscpy(tip_info.wszMsg, wszData);
+			tip_info.rect.left = left;
+			tip_info.rect.top = top;
+			tip_info.rect.right = right;
+			tip_info.rect.bottom = bottom;
+
+			m_pUTipDll->_UT_Add(m_pUTipDll->GetUTObj(), tip_info.hWnd, tip_info.rect, tip_info.wszMsg, tip_info.ulTipID);
+
+			break;
+		}
+	}
+}
+
+void CTimeLineDlg::SetTip()
+{
+	CRect rectTemp;
+	rectTemp = g_DispArys.GetAt(0);
+	INT32 iWidth = rectTemp.Width();
+	INT32 iHeight = rectTemp.Height();
+	float fHScale = float(iWidth) / 1920;
+	float fVScale = float(iHeight) / 1080;
+
+	m_pUTipDll->_UT_Reset(m_pUTipDll->GetUTObj());
+
+	AddTip(L"Start", 600 * fHScale, 1023 * fVScale, 80 * fHScale, 20 * fVScale);
+	AddTip(L"Stop", 700 * fHScale, 1023 * fVScale, 80 * fHScale, 20 * fVScale);
+	AddTip(L"Search", 500 * fHScale, 1023 * fVScale, 80 * fHScale, 20 * fVScale);
+
+	CTimelineEditView* dlgEdit = (CTimelineEditView*)m_wndSplitter.GetPane(0, 1);
+	dlgEdit->SetTip();
+	CTimelineItemView *dlgItem = (CTimelineItemView *)m_wndSplitter.GetPane(0, 0);
+	dlgItem->SetTip();
+}
+
+void CTimeLineDlg::DoPlay()
+{
+	bool bRunNetwork = GetPrivateProfileInt("Network_Setting", "Run", 0, theApp.m_strCurPath + "Setting.ini");
+	if (bRunNetwork)
+	{
+		bool bMaster = GetPrivateProfileInt("Network_Setting", "Master", 0, theApp.m_strCurPath + "Setting.ini");
+		if (bMaster)
+		{
+			m_AutoPBHelper.Run();
+		}
+		else
+		{
+		}
+	}
+	else
+	{
+		CWnd* pEditViewWnd = m_timelineService.GetTimelineManager()->GetEditViewWnd();
+		::SendMessage(pEditViewWnd->GetSafeHwnd(), WM_TM_PLAY2, 0, 0);
+	}
+}
+
+void CTimeLineDlg::RunNetwork()
+{
+	if (!m_bDoRunNetwork)
+		return ;
+
+	if (m_bDoRunNetwork)
+		m_bDoRunNetwork = false;
+
+	bool bRunNetwork = GetPrivateProfileInt("Network_Setting", "Run", 0, theApp.m_strCurPath + "Setting.ini");
+	if (bRunNetwork)
+	{
+		int iIP[4];
+		int iPort = 0;
+		char szPortStr[16];
+		auto time_line_manager = m_timelineService.GetTimelineManager();
+		auto tc_adapter = time_line_manager->GetTCAdapter();
+
+		bool bMaster = GetPrivateProfileInt("Network_Setting", "Master", 0, theApp.m_strCurPath + "Setting.ini");
+		if (bMaster)
+		{
+			IP_ADAPTER_INFO AdapterInfo[16];
+			DWORD dwBufLen = sizeof(AdapterInfo);
+			DWORD dwStatus = GetAdaptersInfo(AdapterInfo, &dwBufLen);
+
+			if (dwStatus == ERROR_SUCCESS)
+				;
+			else
+			{
+				switch (dwStatus)
+				{
+				case ERROR_NO_DATA:
+					break;
+				case ERROR_INVALID_DATA:
+					break;
+				}
+			}
+
+			if (dwStatus == ERROR_SUCCESS)
+			{
+				PIP_ADAPTER_INFO pAdapterInfo = AdapterInfo;
+				while (pAdapterInfo)
+				{
+					if (atoi(pAdapterInfo->IpAddressList.IpAddress.String) != 0)
+					{
+						m_CIPCtrl.SetIP(pAdapterInfo->IpAddressList.IpAddress.String);
+						break;
+					}
+					else
+						pAdapterInfo = pAdapterInfo->Next;
+				}
+			}
+
+			m_CIPCtrl.Enable(false);
+
+			m_NetType.SetCheck(true);
+		}
+		else
+		{
+			tc_adapter->SetMode(TCM_CLIENT);
+			//m_ConnectHelper.Run();
+			m_bDoAutoConnect = true;
+		}
+
+		if (bMaster)
+		{
+			tc_adapter->SetMode(TCM_SERVER);
+
+			if (m_pSearchBtn)
+			{
+				m_pSearchBtn->Enable(false);
+				m_pSearchBtn->Draw();
+			}
+
+			int iRet = m_CEditCtrl.GetWindowText(szPortStr, 16);
+			iPort = atoi(szPortStr);
+
+			char* szIP = m_CIPCtrl.GetIP();
+
+			auto service = ServiceProvider::Instance()->GetTimelineService();
+			if (service != nullptr)
+			{
+				auto engine = service->GetTimeCodeEngine();
+				engine->SetMaster(bMaster);
+				engine->SetIPAdress(szIP);
+				engine->SetPort(iPort);
+
+#ifdef _ENABLE_TC_NET
+				tc_adapter->SetServerIP(szIP);
+				tc_adapter->SetPort(iPort);
+#endif
+			}
+
+			//if (bMaster)
+				tc_adapter->Start();
+
+			if (tc_adapter->IsWorking())
+				m_NetType.Enable(false);
+			else
+				m_NetType.Enable(true);
+
+		}
+		else
+		{
+			/*
+			tc_adapter->SetMode(TCM_CLIENT);
+
+			if (m_pSearchBtn)
+			{
+				m_pSearchBtn->Enable(true);
+				m_pSearchBtn->Draw();
+			}
+			*/
+		}
+
+	}
+}
+
+LRESULT CTimeLineDlg::OnSetNetwork(WPARAM wParam, LPARAM lParam)
+{
+//	if (tc_adapter->GetMode() == TCM_CLIENT)
+		
+	if (wParam == 0)
+	{
+		char szPortStr[100];
+		auto time_line_manager = m_timelineService.GetTimelineManager();
+		auto tc_adapter = time_line_manager->GetTCAdapter();
+
+		sprintf(szPortStr, "%d", tc_adapter->GetPort());
+
+		m_CIPCtrl.SetIP(tc_adapter->GetServerIP());
+		m_CEditCtrl.SetWindowText(szPortStr);
+	}
+	else if (wParam == 1)
+	{
+		if (m_pSearchBtn)
+		{
+			m_pSearchBtn->Enable(false);
+			m_pSearchBtn->Draw();	
+		}
+
+		if (m_pStartBtn)
+		{
+			m_pStartBtn->Enable(true);
+			m_pStartBtn->SetDown();
+			m_pStartBtn->Draw();
+		}
+
+		if (m_pStartBtn)
+		{
+			m_pStartBtn->Enable(false);
+			m_pSearchBtn->Draw();
+		}
+
+		m_CIPCtrl.Enable(false);
+		m_CEditCtrl.EnableWindow(false);
+	}
+
+	return true;
+}
+
+#ifdef _ENABLE_TC_NET
+void CTimeLineDlg::OnMouseMove(UINT nFlags, CPoint point)
+{
+	// TODO: Add your message handler code here and/or call default
+	if (m_pStartBtn)
+		m_pStartBtn->MouseMove(point.x, point.y);
+
+	if (m_pStopBtn)
+		m_pStopBtn->MouseMove(point.x, point.y);
+
+	if (m_pSearchBtn)
+		m_pSearchBtn->MouseMove(point.x, point.y);
+
+	m_pUTipDll->_UT_ShowTip(m_pUTipDll->GetUTObj(), this->GetSafeHwnd(), point.x, point.y);
+
+	CDialog::OnMouseMove(nFlags, point);
+}
+
+void CTimeLineDlg::OnLButtonDown(UINT nFlags, CPoint point)
+{
+	// TODO: Add your message handler code here and/or call default
+
+	if (m_pStartBtn)
+		m_pStartBtn->LButtonDown(point.x, point.y);
+
+	if (m_pStopBtn)
+		m_pStopBtn->LButtonDown(point.x, point.y);
+
+	if (m_pSearchBtn)
+		m_pSearchBtn->LButtonDown(point.x, point.y);
+
+	CDialog::OnLButtonDown(nFlags, point);
+}
+
+
+void CTimeLineDlg::OnLButtonUp(UINT nFlags, CPoint point)
+{
+	// TODO: Add your message handler code here and/or call default
+
+	if (m_pStartBtn)
+		m_pStartBtn->LButtonUp(point.x, point.y);
+
+	if (m_pStopBtn)
+		m_pStopBtn->LButtonUp(point.x, point.y);
+
+	if (m_pSearchBtn)
+		m_pSearchBtn->LButtonUp(point.x, point.y);
+
+	CDialog::OnLButtonUp(nFlags, point);
+}
+
+LRESULT CTimeLineDlg::OnButtonClick(WPARAM wParam, LPARAM lParam)
+{
+	char szMsg[512];
+	auto time_line_manager = m_timelineService.GetTimelineManager();
+	auto tc_adapter = time_line_manager->GetTCAdapter();
+
+	switch (wParam)
+	{
+		case IDC_START:
+			tc_adapter->Start();
+
+			if(tc_adapter->GetMode() == TCM_CLIENT)
+				EnableSyncButtons(false);
+			break;
+		case IDC_STOP:
+			sprintf(szMsg, "CTimeLineDlg::OnButtonClick - IDC_STOP 0\n");
+			OutputDebugStringA(szMsg);
+
+			tc_adapter->Stop();
+
+			if (tc_adapter->GetMode() == TCM_CLIENT)
+				EnableSyncButtons(true);
+
+			sprintf(szMsg, "CTimeLineDlg::OnButtonClick - IDC_STOP 1\n");
+			OutputDebugStringA(szMsg);
+			break;
+		case IDC_SEARCH:
+			{
+				g_WaitingDlg.ShowWindow(SW_SHOW);
+				//m_WaitingDlg.MoveWindow();
+				this->EnableWindow(false);
+
+				tc_adapter->SearchServer();
+				auto pServerList = tc_adapter->GetServerList();
+
+				CServerListDlg dlg;
+				dlg.SetServerList(pServerList);
+				if (dlg.DoModal() == IDOK)
+				{
+					char szPortStr[64];
+					char* szIP = dlg.GetIP();
+					int iPort = dlg.GetPort();
+
+					sprintf(szPortStr,"%d", iPort);
+
+					m_CIPCtrl.SetIP(szIP);
+					m_CEditCtrl.SetWindowText(szPortStr);
+				}
+				g_WaitingDlg.ShowWindow(SW_HIDE);
+				this->EnableWindow(true);
+			}
+			break;
+	}
+
+//	PostMessage(WM_UPDATE_UI_STATE, 0, 0);
+
+	m_bUpdateUIState = true;
+	m_iUpdateUIStateCount = 10;
+
+	return true;
+}
+
+LRESULT CTimeLineDlg::OnUpdateUIState(WPARAM wParam, LPARAM lParam)
+{
+	auto time_line_manager = m_timelineService.GetTimelineManager();
+	auto tc_adapter = time_line_manager->GetTCAdapter();
+
+	if (tc_adapter->IsWorking())
+		m_NetType.Enable(false);
+	else
+		m_NetType.Enable(true);
+
+	return true;
+}
+
+void CTimeLineDlg::EnableSyncButtons(bool bEnable)
+{
+	if (m_pSearchBtn)
+	{
+		m_pSearchBtn->Enable(bEnable);
+		m_pSearchBtn->Draw();
+	}
+
+	if (m_pStartBtn)
+	{
+		m_pStartBtn->Enable(bEnable);
+		m_pSearchBtn->Draw();
+	}
+
+	m_CIPCtrl.Enable(bEnable);
+}
+
+#endif

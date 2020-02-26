@@ -1,0 +1,34 @@
+<TimelineProject Version="1.0">
+    <Item Name="Item1" Id="1" TotalTime="0:27:53">
+    	<Track Name="Command" Type="6" Id="1" Level="2">
+    	</Track>
+		<Track Name="Mixer" Type="0" Id="2" Level="2">
+		
+			<Track Name="Media" Type="0" Id="2" Level="3">
+				<Track Name="Source1" Type="5" Id="33" Level="4" />
+				<Track Name="Effect1" Type="8" Id="34" Level="4" />
+				<Track Name="Source2" Type="5" Id="35" Level="4" />
+				<Track Name="Effect2" Type="8" Id="36" Level="4" />
+				<Track Name="Source3" Type="5" Id="37" Level="4" />
+				<Track Name="Effect3" Type="8" Id="38" Level="4" />
+				<Track Name="Source4" Type="5" Id="39" Level="4" />
+				<Track Name="Effect4" Type="8" Id="40" Level="4" />
+				<Track Name="Source5" Type="5" Id="41" Level="4" />
+				<Track Name="Effect5" Type="8" Id="42" Level="4" />
+				<Track Name="Source6" Type="5" Id="43" Level="4" />
+				<Track Name="Effect6" Type="8" Id="44" Level="4" />
+				<Track Name="Source7" Type="5" Id="45" Level="4" />
+				<Track Name="Effect7" Type="8" Id="46" Level="4" />
+				<Track Name="Source8" Type="5" Id="47" Level="4" />
+				<Track Name="Effect8" Type="8" Id="48" Level="4" />
+				<Track Name="Source9" Type="5" Id="49" Level="4" />
+				<Track Name="Effect9" Type="8" Id="50" Level="4" />
+				<Track Name="Source10" Type="5" Id="51" Level="4" />
+				<Track Name="Effect10" Type="8" Id="52" Level="4" />
+			</Track>
+			
+			<Track Name="AudioConfig" Type="9" Id="53" Level="3" />
+		</Track>	
+    </Item>
+    
+</TimelineProject>

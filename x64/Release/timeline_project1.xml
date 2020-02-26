@@ -1,0 +1,21 @@
+<TimelineProject Version="1.0">
+    <Item Name="Item1" Id="1" TotalTime="0:27:53">
+    	<Track Name="Command" Type="6" Id="1" Level="2">
+    	</Track>
+		<Track Name="Mixer" Type="0" Id="2" Level="2">
+		
+			<Track Name="Media" Type="0" Id="2" Level="3">
+				<Track Name="Source1" Type="5" Id="33" Level="4" />
+				<Track Name="Source2" Type="5" Id="34" Level="4" />
+				<Track Name="Source3" Type="5" Id="35" Level="4" />
+				<Track Name="Source4" Type="5" Id="36" Level="4" />
+				<Track Name="Source5" Type="5" Id="37" Level="4" />
+				<Track Name="Source6" Type="5" Id="38" Level="4" />
+				<Track Name="Effect1" Type="8" Id="43" Level="4" />
+			</Track>
+			
+			<Track Name="AudioConfig" Type="9" Id="53" Level="3" />
+		</Track>	
+    </Item>
+    
+</TimelineProject>

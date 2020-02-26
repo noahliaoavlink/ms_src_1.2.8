@@ -1,0 +1,903 @@
+#include "stdafx.h"
+#include "AVFilePlayer.h"
+#include "../../../Include/SCreateWin.h"
+#include "../../../Include/RenderCommon.h"
+#include "Mmsystem.h"
+
+#pragma comment(lib, "winmm.lib")
+
+#define _DISABLE_LOG 1
+
+#define _AUDIO_BUFFER_SIZE 102400
+/*
+extern void gUpdatePosInfo(char* szCurPos,char* szTotalLen);
+extern void gSetSliderCtrlRange(int iPos);
+extern void gSetSliderCtrlPos(int iPos);
+*/
+
+LRESULT WINAPI _DisplayWinProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam );
+DWORD WINAPI VideoThreadLoop(LPVOID lpParam);
+
+AVFilePlayer::AVFilePlayer()
+{
+	m_hDisplayWnd = 0;
+	m_iCodecID = 0;
+	//m_pFFAVCodecDLL = new FFAVCodecDLL;
+	m_pFFMediaFileDll = new FFMediaFileDll;
+	m_pOutAudioDll = new OutAudioDll;
+	m_pOutVideoDll = new OutVideoDll;
+	m_pFFVideoFilterDll = new FFVideoFilterDll;
+
+	m_bIsOpened = false;
+	framebuf.pBuffer = 0;
+
+//	m_pAudioDeBuffer = 0; 
+	m_pAudioDeBuffer2 = 0;
+
+	m_bEnableUpdatePos = true;
+	m_bUpdatePos = true;
+	m_iVolume = 40;
+	m_pVolumeCtrl = new VolumeCtrl;
+
+	m_pVideoFrameBuffer = new FrameBufferManager;
+	m_pAudioFrameBuffer = new FrameBufferManager;
+	m_pRawVideoFrame = new StreamFrame;
+	m_pRawVideoFrame->pBuffer = 0;
+	m_pRawAudioFrame = new StreamFrame;
+	m_pRawAudioFrame->pBuffer = 0;
+	m_bIsSuspend = false;
+	m_bIsRepeated = false;
+	m_bEnableFadeIn = false;
+	m_bEnableFadeOut = false;
+	m_pCurVideoCodecContext = 0;
+
+	m_iOutputVideoFormat = VPF_I420;
+	m_pConvVideoBuf = 0;
+	m_bEnableAudio = true;
+
+	Reset();
+
+	InitializeCriticalSection(&m_VideoCriticalSection);
+}
+
+AVFilePlayer::~AVFilePlayer()
+{
+	char szMsg[512];
+	sprintf(szMsg,"AVFilePlayer::~AVFilePlayer() 0\n");
+	OutputDebugStringA(szMsg);
+
+//	Stop();
+
+	sprintf(szMsg,"AVFilePlayer::~AVFilePlayer() 1\n");
+	OutputDebugStringA(szMsg);
+
+	//if(m_pFFAVCodecDLL)
+		//delete m_pFFAVCodecDLL;
+
+	if (m_pFFMediaFileDll)
+		delete m_pFFMediaFileDll;
+
+	sprintf(szMsg,"AVFilePlayer::~AVFilePlayer() 2\n");
+	OutputDebugStringA(szMsg);
+
+	if(m_pOutAudioDll)
+	{
+		//if(m_pOutAudioDll->IsReady())
+		//{
+			//m_pOutAudioDll->Stop();
+			m_pOutAudioDll->Close();
+		//}
+
+		delete m_pOutAudioDll;
+	}
+
+	sprintf(szMsg,"AVFilePlayer::~AVFilePlayer() 3\n");
+	OutputDebugStringA(szMsg);
+
+	if(m_pOutVideoDll)
+		delete m_pOutVideoDll;
+
+	if(m_pFFVideoFilterDll)
+		delete m_pFFVideoFilterDll;
+
+	sprintf(szMsg,"AVFilePlayer::~AVFilePlayer() 4\n");
+	OutputDebugStringA(szMsg);
+
+	ReleaseBuffers();
+
+	sprintf(szMsg,"AVFilePlayer::~AVFilePlayer() 5\n");
+	OutputDebugStringA(szMsg);
+
+	if(m_hDisplayWnd)
+	{
+		::SetParent(m_hDisplayWnd,NULL);
+		PostMessage(m_hDisplayWnd,WM_CLOSE,0,0);
+	}
+
+	sprintf(szMsg,"AVFilePlayer::~AVFilePlayer() 6\n");
+	OutputDebugStringA(szMsg);
+
+	m_hDisplayWnd = 0;
+	delete m_pVolumeCtrl;
+
+	if (m_pConvVideoBuf)
+		delete m_pConvVideoBuf;
+
+	sprintf(szMsg,"AVFilePlayer::~AVFilePlayer() 7\n");
+	OutputDebugStringA(szMsg);
+
+	DeleteCriticalSection(&m_VideoCriticalSection);
+}
+
+void AVFilePlayer::Init(HWND hWnd,FilePlayerCallback* pFilePlayerCallback)
+{
+	RECT rect;
+	char szWinName[256];
+
+	m_pFilePlayerCallback = pFilePlayerCallback;
+
+	if(!m_pFilePlayerCallback)
+	{
+		sprintf(szWinName,"MFPlayerWnd-%d",GetTickCount());
+		m_hDisplayWnd = CreateWin(_DisplayWinProc,szWinName);
+
+		SetParent(m_hDisplayWnd,hWnd);
+		GetClientRect(hWnd,&rect);
+
+		SetWinBKColor(m_hDisplayWnd,RGB(0,0,0));
+		SetWinSize(m_hDisplayWnd,rect.right,rect.bottom,false);
+		SetWinPos(m_hDisplayWnd,0,0,true);
+
+		//out video
+		bool bLoadOutVideoRet = m_pOutVideoDll->LoadLib();
+		if(bLoadOutVideoRet)
+			m_pOutVideoDll->Init(m_hDisplayWnd);
+		else
+			MessageBoxA(NULL,"Load OutVideo.dll failed!!","Error",MB_OK);
+	}
+
+	//out audio
+	bool bLoadOutAudioRet = m_pOutAudioDll->LoadLib();
+	if(bLoadOutAudioRet)
+	{
+		m_pOutAudioDll->Init(hWnd); //m_hDisplayWnd
+		m_pOutAudioDll->SetBufferInfo(1280,50);
+	}
+	else
+		MessageBoxA(NULL,"Load OutAudio.dll failed!!","Error",MB_OK);
+
+	//decoder
+	/*
+	bool bInitDecoderRet = m_pFFAVCodecDLL->Init();
+	if(bInitDecoderRet)
+		m_iCodecID = m_pFFAVCodecDLL->CreateCodec();
+	else
+		MessageBoxA(NULL,"Init FFAVCodec.DLL failed!!","Error",MB_OK);
+		*/
+
+	bool bInitDecoderRet = m_pFFMediaFileDll->LoadLib();
+
+	//filter
+	m_pFFVideoFilterDll->LoadLib();
+
+	m_pVolumeCtrl->Init();
+}
+
+int AVFilePlayer::Open(char* szFileName)
+{
+	SaveLog(L"Open 0");
+
+	Stop();
+
+	//int iFileRet = m_pFFAVCodecDLL->MFR_Open(szFileName);
+	int iFileRet = m_pFFMediaFileDll->Open(szFileName);
+	if(iFileRet == 1)
+	{
+		Reset();
+		//m_pFFAVCodecDLL->MFR_GetVideoFrameSize(&m_iVideoFrameW,&m_iVideoFrameH);
+		//AVCodecContext* pVideoCodecContext = m_pFFAVCodecDLL->MFR_GetAVCodecContext(MFT_VIDEO);
+		m_pFFMediaFileDll->GetVideoFrameSize(&m_iVideoFrameW, &m_iVideoFrameH);
+		AVCodecContext* pVideoCodecContext = m_pFFMediaFileDll->GetAVCodecContext(MFT_VIDEO);
+		if(pVideoCodecContext)
+		{
+			m_pCurVideoCodecContext = pVideoCodecContext;
+			//m_fVideoFPS = m_pFFAVCodecDLL->MFR_GetVideoFPS();
+			m_fVideoFPS = m_pFFMediaFileDll->GetVideoFPS();
+			m_fVideoInterval = 1000.0 / m_fVideoFPS;
+
+			m_FrameRateCtrl.SetInterval(m_fVideoInterval);
+		}
+
+		//AVCodecContext* pAudioCodecContext = m_pFFAVCodecDLL->MFR_GetAVCodecContext(MFT_AUDIO);
+		AVCodecContext* pAudioCodecContext = m_pFFMediaFileDll->GetAVCodecContext(MFT_AUDIO);
+		if(pAudioCodecContext)
+		{
+			m_iChannels = pAudioCodecContext->channels;
+			m_iSampleRate = pAudioCodecContext->sample_rate;
+
+			if(pAudioCodecContext->sample_fmt == AV_SAMPLE_FMT_FLTP)
+				m_iBits = 16;
+			else
+			{
+				switch(pAudioCodecContext->sample_fmt)
+				{
+					case AV_SAMPLE_FMT_U8:
+					case AV_SAMPLE_FMT_U8P:
+						m_iBits = 8;
+						break;
+					case AV_SAMPLE_FMT_S16:
+					case AV_SAMPLE_FMT_S16P:
+						m_iBits = 16;
+						break;
+			//		case SAMPLE_FMT_S24:
+			//			*iBits = 24;
+			//			break;
+					case AV_SAMPLE_FMT_S32:
+					case AV_SAMPLE_FMT_S32P:
+						m_iBits = 32;
+						break;
+					default:
+					{
+						m_iBits = pAudioCodecContext->bit_rate / 1000;
+					}
+				}
+			}
+		}
+
+		//m_pFFAVCodecDLL->SetDePixelFormat(m_iCodecID,AV_PIX_FMT_YUV420P);
+
+		int iBufferLen = 0;
+		if(m_iVideoFrameW != -1 && m_iVideoFrameH != -1)
+			iBufferLen = m_iVideoFrameW * m_iVideoFrameH * 3 / 2;
+		else
+			iBufferLen = _AUDIO_BUFFER_SIZE;
+		framebuf.pBuffer = new unsigned char[iBufferLen];
+		
+//		m_pAudioDeBuffer = new unsigned char[_AUDIO_BUFFER_SIZE];
+		m_pAudioDeBuffer2 = new unsigned char[_AUDIO_BUFFER_SIZE * 2];
+
+		m_pVideoFrameBuffer = new FrameBufferManager;
+		m_pAudioFrameBuffer = new FrameBufferManager;
+		m_pRawVideoFrame = new StreamFrame;
+		m_pRawAudioFrame = new StreamFrame;
+
+		m_pRawAudioFrame->pBuffer = new char[_AUDIO_BUFFER_SIZE];
+		m_pRawVideoFrame->pBuffer = new char[iBufferLen];
+
+		if(!m_pVideoFrameBuffer->IsReady())
+			m_pVideoFrameBuffer->Alloc(iBufferLen + 1000,32);
+
+		if(!m_pAudioFrameBuffer->IsReady())
+			m_pAudioFrameBuffer->Alloc(_AUDIO_BUFFER_SIZE,32); 
+
+		if (m_pConvVideoBuf)
+		{
+			delete m_pConvVideoBuf;
+			m_pConvVideoBuf = 0;
+		}
+
+		switch (m_iOutputVideoFormat)
+		{
+			case VPF_I420:
+				break;
+			case VPF_YUY2:
+				m_pConvVideoBuf = new unsigned char[m_iVideoFrameW * m_iVideoFrameH * 2];
+				break;
+			case VPF_RGB32:
+				m_pConvVideoBuf = new unsigned char[m_iVideoFrameW * m_iVideoFrameH * 4];
+				break;
+			case VPF_RGB24:
+				m_pConvVideoBuf = new unsigned char[m_iVideoFrameW * m_iVideoFrameH * 3];
+				break;
+		}
+
+		m_ulStartTimestamp = timeGetTime();
+
+		if(m_pFFMediaFileDll->GetAudioLength() > 0)
+			m_bDoAVSyn = true;
+		else
+			m_bDoAVSyn = false;
+
+		UpdatePosInfo();
+
+		if(m_pFilePlayerCallback)
+			m_pFilePlayerCallback->SetSliderCtrlRange(m_lTotalLen);
+		//gSetSliderCtrlRange(m_lTotalLen);
+
+		m_bIsSuspend = false;
+
+		m_bIsOpened = true;
+		return iFileRet;
+	}
+	m_bIsOpened = false;
+
+	SaveLog(L"Open 1");
+	return 0;
+}
+
+void AVFilePlayer::Close()
+{
+	SaveLog(L"Close");
+
+	char szMsg[512];
+	sprintf(szMsg,"AVFilePlayer::Close() 0\n");
+	OutputDebugStringA(szMsg);
+
+	//m_pFFAVCodecDLL->MFR_Close();
+	m_pFFMediaFileDll->Close();
+
+	sprintf(szMsg,"AVFilePlayer::Close() 1\n");
+	OutputDebugStringA(szMsg);
+
+	if(m_pOutAudioDll)
+		m_pOutAudioDll->Close();	
+	sprintf(szMsg,"AVFilePlayer::Close() 2\n");
+	OutputDebugStringA(szMsg);
+}
+
+void AVFilePlayer::Play()
+{
+	SaveLog(L"Play");
+	ThreadBase::Start();
+
+	DWORD nThreadID;
+	m_hVideoThread = CreateThread(0, 0, VideoThreadLoop, (void *)this, 0, &nThreadID);
+}
+
+void AVFilePlayer::Stop()
+{
+	SaveLog(L"Stop");
+
+	char szMsg[512];
+	sprintf(szMsg,"AVFilePlayer::Stop() 0\n");
+	OutputDebugStringA(szMsg);
+
+	ThreadBase::Stop();
+
+	if (m_hVideoThread)
+		::WaitForSingleObject(m_hVideoThread, 30000);
+
+	sprintf(szMsg,"AVFilePlayer::Stop() 1\n");
+	OutputDebugStringA(szMsg);
+
+	Close();
+
+	sprintf(szMsg,"AVFilePlayer::Stop() 2\n");
+	OutputDebugStringA(szMsg);
+
+	ReleaseBuffers();
+
+	sprintf(szMsg,"AVFilePlayer::Stop() 3\n");
+	OutputDebugStringA(szMsg);
+}
+
+void AVFilePlayer::Reset()
+{
+	m_fVideoInterval = 0.0;
+	m_iAudioInterval = 0;
+	m_ulVideoFrameCount = 0;
+	m_ulAudioFrameCount = 0;
+	m_ulLastVideoFrameTime = 0;
+	m_ulLastAudioFrameTime = 0;
+//	m_ulLastTimestamp = 0;
+	m_bDoGetNext = true;
+
+	m_bUpdatePos = true;
+
+	if (m_pFFMediaFileDll->GetAudioLength() > 0)
+		m_bDoAVSyn = true;
+	else
+		m_bDoAVSyn = false;
+
+	if(m_pAudioFrameBuffer)
+		m_pAudioFrameBuffer->Reset();
+	if(m_pVideoFrameBuffer)
+		m_pVideoFrameBuffer->Reset();
+
+	m_pOutAudioDll->Close();
+}
+
+void AVFilePlayer::ReleaseBuffers()
+{
+	if(framebuf.pBuffer)
+	{
+		delete framebuf.pBuffer;
+		framebuf.pBuffer = 0;
+	}
+	
+	if(m_pAudioDeBuffer2)
+	{
+		delete m_pAudioDeBuffer2;
+		m_pAudioDeBuffer2 = 0;
+	}
+
+	if(m_pVideoFrameBuffer)
+	{
+		delete m_pVideoFrameBuffer;
+		m_pVideoFrameBuffer = 0;
+	}
+	if(m_pAudioFrameBuffer)
+	{
+		delete m_pAudioFrameBuffer;
+		m_pAudioFrameBuffer = 0;
+	}
+
+	if(m_pRawVideoFrame)
+	{
+		if(m_pRawVideoFrame->pBuffer)
+		{
+			delete m_pRawVideoFrame->pBuffer;
+			m_pRawVideoFrame->pBuffer = 0;
+		}
+
+		delete m_pRawVideoFrame;
+		m_pRawVideoFrame = 0;
+	}
+
+	if(m_pRawAudioFrame)
+	{
+		if(m_pRawAudioFrame->pBuffer)
+		{
+			delete m_pRawAudioFrame->pBuffer;
+			m_pRawAudioFrame->pBuffer = 0;
+		}
+
+		delete m_pRawAudioFrame;
+		m_pRawAudioFrame = 0;
+	}
+}
+
+void AVFilePlayer::ThreadEvent()
+{
+	char szMsg[512];
+	ThreadBase::Lock();
+	if(m_bIsOpened)
+	{
+		if(!m_bIsSuspend)
+		{
+			SaveLog(L"GetNextFrame");
+			//int iRet = m_pFFAVCodecDLL->MFR_GetNextFrameBuffer(&framebuf);
+			int iRet = m_pFFMediaFileDll->GetNextFrameBuffer(&framebuf);
+			
+			if(iRet > 0)
+			{
+				if(framebuf.iType == MFT_VIDEO)
+				{
+					int iVideoFrameSize = m_iVideoFrameW * m_iVideoFrameH * 3 / 2;
+					m_pRawVideoFrame->ulTimestampSec = framebuf.lTimestamp;
+					m_pRawVideoFrame->iLen = iVideoFrameSize;
+
+					if(m_bEnableFadeIn || m_bEnableFadeOut)
+					{
+						//AVFrame* pAVFrame = m_pFFAVCodecDLL->MFR_GetAVFrame();
+						AVFrame* pAVFrame = m_pFFMediaFileDll->GetAVFrame();
+						int frame_w,frame_h;
+						m_pFFVideoFilterDll->InputFrame(pAVFrame);
+						int iRet = m_pFFVideoFilterDll->OutputFrameBuffer((unsigned char*)m_pRawVideoFrame->pBuffer,&frame_w,&frame_h);
+					}
+					else
+						memcpy(m_pRawVideoFrame->pBuffer,framebuf.pBuffer,iVideoFrameSize);
+					m_pVideoFrameBuffer->AddToQueueBuffer(m_pRawVideoFrame);
+
+					if(m_pVideoFrameBuffer->GetTotal() >= m_pVideoFrameBuffer->GetMax() - 2)
+						m_bIsSuspend = true;
+				}
+				else if(framebuf.iType == MFT_AUDIO)
+				{
+					m_pRawAudioFrame->ulTimestampSec = framebuf.lTimestamp;
+					m_pRawAudioFrame->iLen = framebuf.iLen;
+					memcpy(m_pRawAudioFrame->pBuffer,framebuf.pBuffer,framebuf.iLen);
+					m_pAudioFrameBuffer->AddToQueueBuffer(m_pRawAudioFrame);
+				}
+			}
+			else
+			{
+				if(iRet == -5)  // end of off.
+				{
+					//do repeat
+					if(m_bIsRepeated)
+					{
+						char szMsg[512];
+						sprintf(szMsg,"Do repeat - Seek(0) !!\n");
+						OutputDebugStringA(szMsg);
+
+						Seek(0);
+					}
+				}
+			}
+		}
+
+		//DisplayVideoFrame();
+		PlayAudioFrame();
+	}
+	Sleep(1);
+	ThreadBase::Unlock();
+}
+
+void AVFilePlayer::VideoThreadEvent()
+{
+	EnterCriticalSection(&m_VideoCriticalSection);
+	DisplayVideoFrame();
+	Sleep(1);
+	LeaveCriticalSection(&m_VideoCriticalSection);
+}
+
+void AVFilePlayer::DisplayVideoFrame()
+{
+	DWORD dwCutTime = timeGetTime();
+
+	int iCurInterval = m_FrameRateCtrl.GetInterval(m_ulVideoFrameCount);
+
+	if (dwCutTime >= m_ulLastVideoFrameTime + iCurInterval)
+	{
+		m_ulLastVideoFrameTime = dwCutTime;
+		/*
+		if (m_bDoAVSyn && m_bEnableAudio)
+		{
+			//wait audio data
+			if (m_ulAudioFrameCount < m_iAudioFrameFactor)
+			{
+				m_pCurVideoFrame = m_pVideoFrameBuffer->GetNext();
+
+				if (m_bIsSuspend && (m_pVideoFrameBuffer->GetTotal() < m_pVideoFrameBuffer->GetMax() - 3))
+					m_bIsSuspend = false;
+				return;
+			}
+			m_bDoAVSyn = false;
+		}
+		*/
+
+		m_pCurVideoFrame = m_pVideoFrameBuffer->GetNext();
+		if (!m_pCurVideoFrame)
+			return;
+
+		if (m_pFilePlayerCallback)
+		{
+			if (m_iOutputVideoFormat != VPF_I420)
+			{
+				switch (m_iOutputVideoFormat)
+				{
+					case VPF_YUY2:
+						break;
+					case VPF_RGB32:
+						m_YUVConverter.I420ToARGB((unsigned char*)m_pCurVideoFrame->pBuffer, m_pConvVideoBuf, m_iVideoFrameW, m_iVideoFrameH);
+						//m_YUVConverter.Flip(m_pConvVideoBuf, m_iVideoFrameW, m_iVideoFrameH,32);
+						m_pFilePlayerCallback->DisplayVideo((unsigned char*)m_pConvVideoBuf, m_iVideoFrameW, m_iVideoFrameH);
+						break;
+					case VPF_RGB24:
+						m_YUVConverter.I420ToRGB24((unsigned char*)m_pCurVideoFrame->pBuffer, m_pConvVideoBuf, m_iVideoFrameW, m_iVideoFrameH);
+						//m_YUVConverter.Flip(m_pConvVideoBuf, m_iVideoFrameW, m_iVideoFrameH, 24);
+						m_pFilePlayerCallback->DisplayVideo((unsigned char*)m_pConvVideoBuf, m_iVideoFrameW, m_iVideoFrameH);
+						break;
+				}
+
+			}
+			else
+			{
+				SaveLog(L"DisplayVideo 0");
+				m_pFilePlayerCallback->DisplayVideo((unsigned char*)m_pCurVideoFrame->pBuffer, m_iVideoFrameW, m_iVideoFrameH);
+				SaveLog(L"DisplayVideo 1");
+			}
+		}
+		else
+			m_pOutVideoDll->Display((unsigned char*)m_pCurVideoFrame->pBuffer,m_iVideoFrameW,m_iVideoFrameH);
+		
+		UpdatePosInfo();
+
+		if(m_bIsSuspend && (m_pVideoFrameBuffer->GetTotal() < m_pVideoFrameBuffer->GetMax() - 3))
+			m_bIsSuspend = false;
+
+		m_ulVideoFrameCount++;
+	}
+}
+
+void AVFilePlayer::PlayAudioFrame()
+{
+	if (!m_bEnableAudio)
+		return;
+
+	if(m_pOutAudioDll)
+	{
+		bool bDoPlay = false;
+		
+		char szMsg[512];
+
+		char szCurAudioPos[40];
+		double dCurAudioPos = m_pFFMediaFileDll->GetCurAudioFramePos();
+		strcpy(szCurAudioPos, PosToTimeInfo(dCurAudioPos));
+
+		if (m_dCurAudioPos != dCurAudioPos)
+		{
+			m_dCurAudioPos = dCurAudioPos;
+
+			if (m_dCurAudioPos > m_dCurVideoPos)
+				return;
+		}
+
+		if (m_pCurAudioFrame)
+		{
+			sprintf(szMsg, "Audio Frame [%d , %d] %s\n", m_pCurAudioFrame->iLen, m_pCurAudioFrame->ulTimestampSec, szCurAudioPos);
+			OutputDebugStringA(szMsg);
+		}
+
+		m_pCurAudioFrame = m_pAudioFrameBuffer->GetNext();
+		if(!m_pCurAudioFrame)
+			return ;
+
+		if(m_pCurAudioFrame->iLen < m_iSampleRate)
+			m_iAudioFrameFactor = (float)(m_iSampleRate) / (float)m_pCurAudioFrame->iLen + 0.1;
+		else
+			m_iAudioFrameFactor = 1;
+
+		int iIndex = m_ulAudioFrameCount % m_iAudioFrameFactor;
+
+		memcpy(m_pAudioDeBuffer2 + (iIndex * m_pCurAudioFrame->iLen),m_pCurAudioFrame->pBuffer,m_pCurAudioFrame->iLen);
+
+		if(m_ulAudioFrameCount % m_iAudioFrameFactor == (m_iAudioFrameFactor - 1))
+		{
+			m_WaveFrame.iBits = m_iBits;
+			m_WaveFrame.iChannels = m_iChannels;
+			m_WaveFrame.iSampleRate = m_iSampleRate;
+			m_WaveFrame.pBuffer = (char*)m_pAudioDeBuffer2;
+			m_WaveFrame.iLen = m_pCurAudioFrame->iLen * m_iAudioFrameFactor;
+			m_WaveFrame.ulTimestampSec = 0;
+			m_WaveFrame.ulTimestampMSec = 0;
+			m_WaveFrame.iTotalOfWOBuffers = 200;
+
+//			if(m_pOwner)			
+	//			m_pOwner->Event(SE_PLAY_AUDIO_FRAME,0,0);
+
+			bDoPlay = true;
+		}
+
+		if(bDoPlay)
+		{
+			if(!m_pOutAudioDll->IsOpened())
+				m_pOutAudioDll->OpenDevice(m_iChannels,m_iSampleRate,m_iBits,m_WaveFrame.iLen,m_WaveFrame.iTotalOfWOBuffers);
+
+			SaveLog(L"OutputAudio 0");
+			m_pOutAudioDll->Output(m_WaveFrame.pBuffer,m_WaveFrame.iLen);
+			SaveLog(L"OutputAudio 1");
+			
+			if(m_iVideoFrameW == -1 || m_iVideoFrameH == -1)
+				UpdatePosInfo();
+		}
+
+		m_ulAudioFrameCount++;
+	}
+}
+
+void AVFilePlayer::UpdatePosInfo()
+{
+	char szCurPos[40];
+	char szTotalLen[40];
+
+	//double dLength = m_pFFAVCodecDLL->MFR_GetLength();
+	double dLength = m_pFFMediaFileDll->GetLength();
+
+	double dCurPos = 0.0;
+	if(m_iVideoFrameW == -1 || m_iVideoFrameH == -1)
+		//dCurPos = m_pFFAVCodecDLL->MFR_GetCurAudioFramePos();
+		dCurPos = m_pFFMediaFileDll->GetCurAudioFramePos();
+	else
+		//dCurPos = m_pFFAVCodecDLL->MFR_GetCurVideoFramePos();
+		dCurPos = m_pFFMediaFileDll->GetCurVideoFramePos();
+
+	int iNewPos = dCurPos;
+	
+	strcpy(szTotalLen,PosToTimeInfo(dLength));
+	strcpy(szCurPos,PosToTimeInfo(dCurPos));
+
+	if(iNewPos != m_lCurVideoPos)
+	{
+		if(iNewPos > m_lCurVideoPos || m_bUpdatePos)
+		{
+			char szMsg[512];
+			sprintf(szMsg,"%s\n",szCurPos);
+			OutputDebugStringA(szMsg);
+
+			m_bUpdatePos = false;
+
+			if(m_pFilePlayerCallback)
+				m_pFilePlayerCallback->UpdatePosInfo(szCurPos,szTotalLen);
+			//gUpdatePosInfo(szCurPos,szTotalLen);
+
+			if(m_bEnableUpdatePos)
+			{
+				if(m_pFilePlayerCallback)
+					m_pFilePlayerCallback->SetSliderCtrlPos(dCurPos);
+				//gSetSliderCtrlPos(dCurPos);
+			}
+			m_lCurVideoPos = dCurPos;
+		}
+	}
+	m_lTotalLen = dLength;
+}
+
+char* AVFilePlayer::PosToTimeInfo(double dPos)
+{
+	int iHour = dPos / (60 * 60);
+
+	double dNum = dPos - 3600 * iHour;
+	int iMinute = dNum / 60;
+
+	double dNum1 = dNum - 60 * iMinute;
+	int iSecond = dNum1;
+
+	if(iHour > 0)
+		sprintf(m_szTime,"%02d:%02d:%02d",iHour,iMinute,iSecond);
+	else
+		sprintf(m_szTime,"%02d:%02d",iMinute,iSecond);
+	return m_szTime;
+}
+
+void AVFilePlayer::SetVolume(int iValue)
+{
+	m_iVolume = iValue;
+	m_pVolumeCtrl->SetVolume(iValue);
+}
+
+void AVFilePlayer::Seek(double dPos)
+{
+	//m_pFFAVCodecDLL->MFR_SeekTo(dPos);
+	m_pFFMediaFileDll->SeekTo(dPos);
+
+	if(m_pAudioFrameBuffer)
+		m_pAudioFrameBuffer->Reset();
+	if(m_pVideoFrameBuffer)
+		m_pVideoFrameBuffer->Reset();
+	m_bUpdatePos = true;
+	m_bDoAVSyn = true;
+	m_ulAudioFrameCount = 0;
+
+	m_pOutAudioDll->Close();
+}
+
+void AVFilePlayer::EnableUpdatePos(bool bEnable)
+{
+	m_bEnableUpdatePos = bEnable;
+}
+
+int AVFilePlayer::GetVolume()
+{
+	return m_pVolumeCtrl->GetVolume();
+}
+
+void AVFilePlayer::SetRepeat(bool bEnable)
+{
+	m_bIsRepeated = bEnable;
+}
+
+//fade in
+void AVFilePlayer::EnableFadeIn(bool bEnable)
+{
+	m_bEnableFadeIn = bEnable;
+
+	m_pFFVideoFilterDll->CreateFadeInFilter(m_pCurVideoCodecContext);
+
+	if(m_bEnableFadeIn)
+		m_bEnableFadeOut = false;
+}
+
+//fade out
+void AVFilePlayer::EnableFadeOut(bool bEnable)
+{
+	m_bEnableFadeOut = bEnable;
+
+	m_pFFVideoFilterDll->CreateFadeOutFilter(m_pCurVideoCodecContext);
+
+	if(m_bEnableFadeOut)
+		m_bEnableFadeIn = false;
+}
+
+void AVFilePlayer::SetOutputVideoFormat(int iFormat)
+{
+	m_iOutputVideoFormat = iFormat;
+}
+
+void AVFilePlayer::EnableAudio(bool bEnable)
+{
+	m_bEnableAudio = bEnable;
+}
+
+DWORD WINAPI VideoThreadLoop(LPVOID lpParam)
+{
+	AVFilePlayer* pObj = (AVFilePlayer*)lpParam;
+
+	while (pObj->IsAlive())
+	{
+		pObj->VideoThreadEvent();
+	}
+	return 0;
+}
+
+LRESULT WINAPI _DisplayWinProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam )
+{
+	LRESULT result = 0;
+	switch (msg) 
+	{
+		case WM_CLOSE:
+			{
+			   DestroyWindow(hwnd);
+			}
+		  	break;
+		case WM_PAINT:
+			{
+				PAINTSTRUCT	ps;
+	            HDC hdc = BeginPaint(hwnd, &ps);
+		        EndPaint(hwnd, &ps);
+			}
+			break;
+		case WM_CREATE:
+			DragAcceptFiles(hwnd,TRUE);
+			break;
+		case WM_WINDOWPOSCHANGING:
+			break;
+		case WM_LBUTTONDOWN:
+		   break;
+	    case WM_LBUTTONUP:
+		   break;
+	    case WM_MOUSEMOVE:
+		   break;
+		case WM_RBUTTONDOWN:
+			break;
+		case WM_RBUTTONUP:
+			break;
+		case WM_KEYDOWN:
+			{
+			}
+			break;
+		case WM_COPYDATA:
+			{
+			}
+			break;
+		case WM_DROPFILES:
+			{
+				/*
+				char szFile[MAX_PATH];
+				TCHAR lpszFile[MAX_PATH] = {0};
+				UINT uFile = 0;
+				HDROP hDrop = (HDROP)wParam;
+
+				uFile = DragQueryFile(hDrop, 0xFFFFFFFF, NULL, NULL);
+
+				lpszFile[0] = '\0';
+				if (DragQueryFile(hDrop, 0, lpszFile, MAX_PATH))
+					;
+				DragFinish(hDrop);
+
+				if(g_pUIController)
+					g_pUIController->OpenFileW(lpszFile);
+					*/
+			}
+			break;
+        default:
+			{
+			    result = DefWindowProc( hwnd, msg, wParam, lParam );
+			    break;
+			}
+	}
+
+	return result;
+}
+
+void AVFilePlayer::SaveLog(CString strLog)
+{
+#ifdef _DISABLE_LOG
+#else
+	CStdioFile sfLog;
+	CFileFind fFind;
+	CString strLogPath = L"C:\\ProgramData\\Log.csv";
+	//CString strLogPath = L"C:\\ProgramData\\Log.txt";
+
+	if (!fFind.FindFile(strLogPath))
+		sfLog.Open(strLogPath, CFile::modeCreate | CFile::modeReadWrite);
+	else
+	{
+		sfLog.Open(strLogPath, CFile::modeReadWrite);
+		sfLog.SeekToEnd();
+	}
+	sfLog.WriteString(strLog + L"\n");
+	sfLog.Close();
+#endif
+}

@@ -1,0 +1,888 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="原始程式檔">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="標頭檔">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="資源檔">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="原始程式檔\Shape">
+      <UniqueIdentifier>{b88af003-cc46-4789-98d4-1fce4c662509}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="標頭檔\Shape">
+      <UniqueIdentifier>{5fec15ce-6852-43e1-af2a-98758000cc3f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="原始程式檔\VideoEffect">
+      <UniqueIdentifier>{d665cdfe-82e9-4bed-894c-8ab31d2effc5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="標頭檔\VideoEffect">
+      <UniqueIdentifier>{5a769fe9-23a1-4ec6-bdae-f865807e3edb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="原始程式檔\TimeLine">
+      <UniqueIdentifier>{ddd3831d-ef57-4d31-8384-bd6c3bb53cec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="標頭檔\TimeLine">
+      <UniqueIdentifier>{4216507d-8912-43ce-9e6a-296c95a6d436}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="原始程式檔\UI">
+      <UniqueIdentifier>{e07ac106-bd83-4c9b-81bf-786dad8efef7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="標頭檔\UI">
+      <UniqueIdentifier>{e6853c2b-e104-4bcb-b5cd-d5051c3fded1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="原始程式檔\MixerCtrl">
+      <UniqueIdentifier>{9c720685-1a06-44eb-ad53-a85f27cfa432}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="標頭檔\MixerCtrl">
+      <UniqueIdentifier>{a2e778e4-2e9b-4c95-ae36-4790fb89674a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="原始程式檔\MediaCtrl">
+      <UniqueIdentifier>{2c23701e-5451-43a4-9c43-d9de5d6146f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="標頭檔\MediaCtrl">
+      <UniqueIdentifier>{5b93d213-8a10-457a-96b4-cb374d20b83b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="原始程式檔\Display">
+      <UniqueIdentifier>{c42c96a2-9e5c-4437-ade9-b4fe54d65241}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="原始程式檔\System">
+      <UniqueIdentifier>{01a860ba-fab7-4f39-b3eb-d0dfe5de0eb7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="標頭檔\Display">
+      <UniqueIdentifier>{9ac56284-ed0c-43ac-9b08-e6c041124e68}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="標頭檔\System">
+      <UniqueIdentifier>{3fb01fd2-991d-436e-99a7-04a15b786d45}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="原始程式檔\AVStream">
+      <UniqueIdentifier>{62fa89e0-c624-41fb-8b42-41e19ac2925d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="標頭檔\AVStream">
+      <UniqueIdentifier>{561e8c00-35cb-4e54-94f0-43657cf0e03a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="MediaServer.cpp">
+      <Filter>原始程式檔</Filter>
+    </ClCompile>
+    <ClCompile Include="MediaServerDlg.cpp">
+      <Filter>原始程式檔</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>原始程式檔</Filter>
+    </ClCompile>
+    <ClCompile Include="ImageProc.cpp">
+      <Filter>原始程式檔\VideoEffect</Filter>
+    </ClCompile>
+    <ClCompile Include="ModifyUI.cpp">
+      <Filter>原始程式檔\VideoEffect</Filter>
+    </ClCompile>
+    <ClCompile Include="MyEffect.cpp">
+      <Filter>原始程式檔\VideoEffect</Filter>
+    </ClCompile>
+    <ClCompile Include="MyEffect3D.cpp">
+      <Filter>原始程式檔\VideoEffect</Filter>
+    </ClCompile>
+    <ClCompile Include="PlaneScene2D.cpp">
+      <Filter>原始程式檔\Shape</Filter>
+    </ClCompile>
+    <ClCompile Include="Menu_Class.cpp">
+      <Filter>原始程式檔\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Item_Class.cpp">
+      <Filter>原始程式檔\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="UI_Class.cpp">
+      <Filter>原始程式檔\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Allocator.cpp">
+      <Filter>原始程式檔\Shape</Filter>
+    </ClCompile>
+    <ClCompile Include="MixerCtrlDlg.cpp">
+      <Filter>原始程式檔\MixerCtrl</Filter>
+    </ClCompile>
+    <ClCompile Include="TimeLineDlg.cpp">
+      <Filter>原始程式檔\TimeLine</Filter>
+    </ClCompile>
+    <ClCompile Include="Panel.cpp">
+      <Filter>原始程式檔\Display</Filter>
+    </ClCompile>
+    <ClCompile Include="ShapeUIDlg.cpp">
+      <Filter>原始程式檔\Shape</Filter>
+    </ClCompile>
+    <ClCompile Include="LoadObjVdo.cpp">
+      <Filter>原始程式檔\Shape</Filter>
+    </ClCompile>
+    <ClCompile Include="Moveable_Item.cpp">
+      <Filter>原始程式檔\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="MediaStream.cpp">
+      <Filter>原始程式檔\AVStream</Filter>
+    </ClCompile>
+    <ClCompile Include="D3DRender.cpp">
+      <Filter>原始程式檔\AVStream</Filter>
+    </ClCompile>
+    <ClCompile Include="MFilePlayerDll.cpp">
+      <Filter>原始程式檔\AVStream</Filter>
+    </ClCompile>
+    <ClCompile Include="MediaCtrlDlg.cpp">
+      <Filter>原始程式檔\MediaCtrl</Filter>
+    </ClCompile>
+    <ClCompile Include="IOSourceCtrlDll.cpp">
+      <Filter>原始程式檔\MediaCtrl</Filter>
+    </ClCompile>
+    <ClCompile Include="TreeCtrlUI.cpp">
+      <Filter>原始程式檔\MediaCtrl</Filter>
+    </ClCompile>
+    <ClCompile Include="VividTree.cpp">
+      <Filter>原始程式檔\MediaCtrl</Filter>
+    </ClCompile>
+    <ClCompile Include="NWin.cpp">
+      <Filter>原始程式檔\MediaCtrl</Filter>
+    </ClCompile>
+    <ClCompile Include="DibDraw.cpp">
+      <Filter>原始程式檔\MediaCtrl</Filter>
+    </ClCompile>
+    <ClCompile Include="FileInfoCtrl.cpp">
+      <Filter>原始程式檔\MediaCtrl</Filter>
+    </ClCompile>
+    <ClCompile Include="FileListCtrl.cpp">
+      <Filter>原始程式檔\MediaCtrl</Filter>
+    </ClCompile>
+    <ClCompile Include="SFileW.cpp">
+      <Filter>原始程式檔\MediaCtrl</Filter>
+    </ClCompile>
+    <ClCompile Include="SIniFileW.cpp">
+      <Filter>原始程式檔\MediaCtrl</Filter>
+    </ClCompile>
+    <ClCompile Include="SList.cpp">
+      <Filter>原始程式檔\MediaCtrl</Filter>
+    </ClCompile>
+    <ClCompile Include="SQList.cpp">
+      <Filter>原始程式檔\MediaCtrl</Filter>
+    </ClCompile>
+    <ClCompile Include="YUVConverter.cpp">
+      <Filter>原始程式檔\MediaCtrl</Filter>
+    </ClCompile>
+    <ClCompile Include="AddFolderDlg.cpp">
+      <Filter>原始程式檔\MediaCtrl</Filter>
+    </ClCompile>
+    <ClCompile Include="EditTagDlg.cpp">
+      <Filter>原始程式檔\MediaCtrl</Filter>
+    </ClCompile>
+    <ClCompile Include="SearchTagDlg.cpp">
+      <Filter>原始程式檔\MediaCtrl</Filter>
+    </ClCompile>
+    <ClCompile Include="CSVReader.cpp">
+      <Filter>原始程式檔\MediaCtrl</Filter>
+    </ClCompile>
+    <ClCompile Include="SFile.cpp">
+      <Filter>原始程式檔\MediaCtrl</Filter>
+    </ClCompile>
+    <ClCompile Include="ImageFile.cpp">
+      <Filter>原始程式檔\MediaCtrl</Filter>
+    </ClCompile>
+    <ClCompile Include="SimpleMediaCtrl.cpp">
+      <Filter>原始程式檔\MediaCtrl</Filter>
+    </ClCompile>
+    <ClCompile Include="RadioMenuDlg.cpp">
+      <Filter>原始程式檔</Filter>
+    </ClCompile>
+    <ClCompile Include="LogoDlg.cpp">
+      <Filter>原始程式檔\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="View1.cpp">
+      <Filter>原始程式檔</Filter>
+    </ClCompile>
+    <ClCompile Include="DoubleBuffer.cpp">
+      <Filter>原始程式檔\TimeLine</Filter>
+    </ClCompile>
+    <ClCompile Include="OutputService.cpp">
+      <Filter>原始程式檔\TimeLine</Filter>
+    </ClCompile>
+    <ClCompile Include="ServiceProvider.cpp">
+      <Filter>原始程式檔\TimeLine</Filter>
+    </ClCompile>
+    <ClCompile Include="TimeCode.cpp">
+      <Filter>原始程式檔\TimeLine</Filter>
+    </ClCompile>
+    <ClCompile Include="TimeCodeBar.cpp">
+      <Filter>原始程式檔\TimeLine</Filter>
+    </ClCompile>
+    <ClCompile Include="TimeCodeEngine.cpp">
+      <Filter>原始程式檔\TimeLine</Filter>
+    </ClCompile>
+    <ClCompile Include="TimelineEditFacade.cpp">
+      <Filter>原始程式檔\TimeLine</Filter>
+    </ClCompile>
+    <ClCompile Include="TimelineEditView.cpp">
+      <Filter>原始程式檔\TimeLine</Filter>
+    </ClCompile>
+    <ClCompile Include="TimelineEditViewButtonPanel.cpp">
+      <Filter>原始程式檔\TimeLine</Filter>
+    </ClCompile>
+    <ClCompile Include="TimelineItemFacade.cpp">
+      <Filter>原始程式檔\TimeLine</Filter>
+    </ClCompile>
+    <ClCompile Include="TimelineItemView.cpp">
+      <Filter>原始程式檔\TimeLine</Filter>
+    </ClCompile>
+    <ClCompile Include="TimelineItemViewButtonPanel.cpp">
+      <Filter>原始程式檔\TimeLine</Filter>
+    </ClCompile>
+    <ClCompile Include="TimelineManager.cpp">
+      <Filter>原始程式檔\TimeLine</Filter>
+    </ClCompile>
+    <ClCompile Include="TimelineService.cpp">
+      <Filter>原始程式檔\TimeLine</Filter>
+    </ClCompile>
+    <ClCompile Include="tinyxml2.cpp">
+      <Filter>原始程式檔\TimeLine</Filter>
+    </ClCompile>
+    <ClCompile Include="TLBaseType.cpp">
+      <Filter>原始程式檔\TimeLine</Filter>
+    </ClCompile>
+    <ClCompile Include="TLButtonBase.cpp">
+      <Filter>原始程式檔\TimeLine</Filter>
+    </ClCompile>
+    <ClCompile Include="TLCommands.cpp">
+      <Filter>原始程式檔\TimeLine</Filter>
+    </ClCompile>
+    <ClCompile Include="TLConstant.cpp">
+      <Filter>原始程式檔\TimeLine</Filter>
+    </ClCompile>
+    <ClCompile Include="TLItems.cpp">
+      <Filter>原始程式檔\TimeLine</Filter>
+    </ClCompile>
+    <ClCompile Include="TLItemsVis.cpp">
+      <Filter>原始程式檔\TimeLine</Filter>
+    </ClCompile>
+    <ClCompile Include="TLShape.cpp">
+      <Filter>原始程式檔\TimeLine</Filter>
+    </ClCompile>
+    <ClCompile Include="TLTracks.cpp">
+      <Filter>原始程式檔\TimeLine</Filter>
+    </ClCompile>
+    <ClCompile Include="TLTracksVis.cpp">
+      <Filter>原始程式檔\TimeLine</Filter>
+    </ClCompile>
+    <ClCompile Include="TLUtility.cpp">
+      <Filter>原始程式檔\TimeLine</Filter>
+    </ClCompile>
+    <ClCompile Include="TimeLineSettingsDlg.cpp">
+      <Filter>原始程式檔</Filter>
+    </ClCompile>
+    <ClCompile Include="xSplitterWnd.cpp">
+      <Filter>原始程式檔</Filter>
+    </ClCompile>
+    <ClCompile Include="TrackContent.cpp">
+      <Filter>原始程式檔</Filter>
+    </ClCompile>
+    <ClCompile Include="TrackContentItem.cpp">
+      <Filter>原始程式檔</Filter>
+    </ClCompile>
+    <ClCompile Include="TrackContentManager.cpp">
+      <Filter>原始程式檔</Filter>
+    </ClCompile>
+    <ClCompile Include="MixerEffect.cpp">
+      <Filter>原始程式檔\MixerCtrl</Filter>
+    </ClCompile>
+    <ClCompile Include="ContentProcessor.cpp">
+      <Filter>原始程式檔</Filter>
+    </ClCompile>
+    <ClCompile Include="EditCommandDlg.cpp">
+      <Filter>原始程式檔</Filter>
+    </ClCompile>
+    <ClCompile Include="EditEffectIndexDlg.cpp">
+      <Filter>原始程式檔</Filter>
+    </ClCompile>
+    <ClCompile Include="MediaStreamEx.cpp">
+      <Filter>原始程式檔</Filter>
+    </ClCompile>
+    <ClCompile Include="TLPreview.cpp">
+      <Filter>原始程式檔</Filter>
+    </ClCompile>
+    <ClCompile Include="TL_Out_Device.cpp">
+      <Filter>原始程式檔</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\QBufferManagerEx.cpp">
+      <Filter>原始程式檔</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\SQQueue.cpp">
+      <Filter>原始程式檔</Filter>
+    </ClCompile>
+    <ClCompile Include="DisplayManager.cpp">
+      <Filter>原始程式檔</Filter>
+    </ClCompile>
+    <ClCompile Include="ThreadBase.cpp">
+      <Filter>原始程式檔</Filter>
+    </ClCompile>
+    <ClCompile Include="ShapeDispManager.cpp">
+      <Filter>原始程式檔</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\MathCommon.cpp">
+      <Filter>原始程式檔</Filter>
+    </ClCompile>
+    <ClCompile Include="CEditCtrl.cpp">
+      <Filter>原始程式檔</Filter>
+    </ClCompile>
+    <ClCompile Include="CheckBoxCtrl.cpp">
+      <Filter>原始程式檔</Filter>
+    </ClCompile>
+    <ClCompile Include="CIPCtrl.cpp">
+      <Filter>原始程式檔</Filter>
+    </ClCompile>
+    <ClCompile Include="CStaticCtrl.cpp">
+      <Filter>原始程式檔</Filter>
+    </ClCompile>
+    <ClCompile Include="LogFileDll.cpp">
+      <Filter>原始程式檔</Filter>
+    </ClCompile>
+    <ClCompile Include="MFRecorderDll.cpp">
+      <Filter>原始程式檔</Filter>
+    </ClCompile>
+    <ClCompile Include="RTSPPlayerDll.cpp">
+      <Filter>原始程式檔</Filter>
+    </ClCompile>
+    <ClCompile Include="ServerListDlg.cpp">
+      <Filter>原始程式檔</Filter>
+    </ClCompile>
+    <ClCompile Include="SetGridDlg.cpp">
+      <Filter>原始程式檔</Filter>
+    </ClCompile>
+    <ClCompile Include="TCAdapter.cpp">
+      <Filter>原始程式檔</Filter>
+    </ClCompile>
+    <ClCompile Include="TCClientDll.cpp">
+      <Filter>原始程式檔</Filter>
+    </ClCompile>
+    <ClCompile Include="TCServerDll.cpp">
+      <Filter>原始程式檔</Filter>
+    </ClCompile>
+    <ClCompile Include="TxtButtonCtrl.cpp">
+      <Filter>原始程式檔</Filter>
+    </ClCompile>
+    <ClCompile Include="WaitingDlg.cpp">
+      <Filter>原始程式檔</Filter>
+    </ClCompile>
+    <ClCompile Include="AddRTSPUrlDlg.cpp">
+      <Filter>原始程式檔</Filter>
+    </ClCompile>
+    <ClCompile Include="AreaOptionDlg.cpp">
+      <Filter>原始程式檔\Shape</Filter>
+    </ClCompile>
+    <ClCompile Include="BitSlider.cpp">
+      <Filter>原始程式檔\MixerCtrl</Filter>
+    </ClCompile>
+    <ClCompile Include="BitWnd.cpp">
+      <Filter>原始程式檔\MixerCtrl</Filter>
+    </ClCompile>
+    <ClCompile Include="Mixer2Dlg.cpp">
+      <Filter>原始程式檔\MixerCtrl</Filter>
+    </ClCompile>
+    <ClCompile Include="IconListCtrl.cpp">
+      <Filter>原始程式檔\MixerCtrl</Filter>
+    </ClCompile>
+    <ClCompile Include="RoundSliderCtrl.cpp">
+      <Filter>原始程式檔\MixerCtrl</Filter>
+    </ClCompile>
+    <ClCompile Include="MixerPreview.cpp">
+      <Filter>原始程式檔\MixerCtrl</Filter>
+    </ClCompile>
+    <ClCompile Include="MidiCtrlReciever.cpp">
+      <Filter>原始程式檔</Filter>
+    </ClCompile>
+    <ClCompile Include="MoveToDlg.cpp">
+      <Filter>原始程式檔</Filter>
+    </ClCompile>
+    <ClCompile Include="UIController.cpp">
+      <Filter>原始程式檔</Filter>
+    </ClCompile>
+    <ClCompile Include="SimpleMixerWin.cpp">
+      <Filter>原始程式檔</Filter>
+    </ClCompile>
+    <ClCompile Include="FilePlayerObj.cpp">
+      <Filter>原始程式檔</Filter>
+    </ClCompile>
+    <ClCompile Include="EffectSelectorWin.cpp">
+      <Filter>原始程式檔</Filter>
+    </ClCompile>
+    <ClCompile Include="AudioConfigDlg.cpp">
+      <Filter>原始程式檔</Filter>
+    </ClCompile>
+    <ClCompile Include="ExceptionReport.cpp">
+      <Filter>原始程式檔</Filter>
+    </ClCompile>
+    <ClCompile Include="StackWalker.cpp">
+      <Filter>原始程式檔</Filter>
+    </ClCompile>
+    <ClCompile Include="SettingsDlg.cpp">
+      <Filter>原始程式檔</Filter>
+    </ClCompile>
+    <ClCompile Include="AudioConfigWin.cpp">
+      <Filter>原始程式檔</Filter>
+    </ClCompile>
+    <ClCompile Include="EdgeBlendDlg.cpp">
+      <Filter>原始程式檔</Filter>
+    </ClCompile>
+    <ClCompile Include="PanelBlendDlg.cpp">
+      <Filter>原始程式檔</Filter>
+    </ClCompile>
+    <ClCompile Include="SynCtrl.cpp">
+      <Filter>原始程式檔</Filter>
+    </ClCompile>
+    <ClCompile Include="UTipDll.cpp">
+      <Filter>原始程式檔</Filter>
+    </ClCompile>
+    <ClCompile Include="ZLibDllObj.cpp">
+      <Filter>原始程式檔</Filter>
+    </ClCompile>
+    <ClCompile Include="ProcessorHD.cpp">
+      <Filter>原始程式檔</Filter>
+    </ClCompile>
+    <ClCompile Include="dxvahd_utils.cpp">
+      <Filter>原始程式檔</Filter>
+    </ClCompile>
+    <ClCompile Include="D3DSprite.cpp">
+      <Filter>原始程式檔</Filter>
+    </ClCompile>
+    <ClCompile Include="SyncPBCtrl.cpp">
+      <Filter>原始程式檔</Filter>
+    </ClCompile>
+    <ClCompile Include="KPCheckerCtrl.cpp">
+      <Filter>原始程式檔</Filter>
+    </ClCompile>
+    <ClCompile Include="ProbationChecker.cpp">
+      <Filter>原始程式檔</Filter>
+    </ClCompile>
+    <ClCompile Include="ConnectHelper.cpp">
+      <Filter>原始程式檔</Filter>
+    </ClCompile>
+    <ClCompile Include="AutoPBHelper.cpp">
+      <Filter>原始程式檔</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="MediaServer.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="MediaServerDlg.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="ModifyUI.h">
+      <Filter>標頭檔\VideoEffect</Filter>
+    </ClInclude>
+    <ClInclude Include="myeffect.h">
+      <Filter>標頭檔\VideoEffect</Filter>
+    </ClInclude>
+    <ClInclude Include="MyEffect3D.h">
+      <Filter>標頭檔\VideoEffect</Filter>
+    </ClInclude>
+    <ClInclude Include="PlaneScene2D.h">
+      <Filter>標頭檔\Shape</Filter>
+    </ClInclude>
+    <ClInclude Include="UI_Class.h">
+      <Filter>標頭檔\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Item_Class.h">
+      <Filter>標頭檔\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Menu_Class.h">
+      <Filter>標頭檔\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Allocator.h">
+      <Filter>標頭檔\Shape</Filter>
+    </ClInclude>
+    <ClInclude Include="MixerCtrlDlg.h">
+      <Filter>標頭檔\MixerCtrl</Filter>
+    </ClInclude>
+    <ClInclude Include="TimeLineDlg.h">
+      <Filter>標頭檔\TimeLine</Filter>
+    </ClInclude>
+    <ClInclude Include="Panel.h">
+      <Filter>標頭檔\Display</Filter>
+    </ClInclude>
+    <ClInclude Include="ShapeUIDlg.h">
+      <Filter>標頭檔\Shape</Filter>
+    </ClInclude>
+    <ClInclude Include="LoadObjVdo.h">
+      <Filter>標頭檔\Shape</Filter>
+    </ClInclude>
+    <ClInclude Include="Moveable_Item.h">
+      <Filter>標頭檔\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="MediaStream.h">
+      <Filter>標頭檔\AVStream</Filter>
+    </ClInclude>
+    <ClInclude Include="D3DRender.h">
+      <Filter>標頭檔\AVStream</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderCommon.h">
+      <Filter>標頭檔\AVStream</Filter>
+    </ClInclude>
+    <ClInclude Include="MFilePlayerDll.h">
+      <Filter>標頭檔\AVStream</Filter>
+    </ClInclude>
+    <ClInclude Include="PlaneScene3D.h">
+      <Filter>標頭檔\Shape</Filter>
+    </ClInclude>
+    <ClInclude Include="MediaCtrlDlg.h">
+      <Filter>標頭檔\MediaCtrl</Filter>
+    </ClInclude>
+    <ClInclude Include="IOSourceCtrlDll.h">
+      <Filter>標頭檔\MediaCtrl</Filter>
+    </ClInclude>
+    <ClInclude Include="TreeCtrlUI.h">
+      <Filter>標頭檔\MediaCtrl</Filter>
+    </ClInclude>
+    <ClInclude Include="VividTree.h">
+      <Filter>標頭檔\MediaCtrl</Filter>
+    </ClInclude>
+    <ClInclude Include="DiBDraw.h">
+      <Filter>標頭檔\MediaCtrl</Filter>
+    </ClInclude>
+    <ClInclude Include="FileInfoCtrl.h">
+      <Filter>標頭檔\MediaCtrl</Filter>
+    </ClInclude>
+    <ClInclude Include="FileListCtrl.h">
+      <Filter>標頭檔\MediaCtrl</Filter>
+    </ClInclude>
+    <ClInclude Include="NWin.h">
+      <Filter>標頭檔\MediaCtrl</Filter>
+    </ClInclude>
+    <ClInclude Include="SFileW.h">
+      <Filter>標頭檔\MediaCtrl</Filter>
+    </ClInclude>
+    <ClInclude Include="SList.h">
+      <Filter>標頭檔\MediaCtrl</Filter>
+    </ClInclude>
+    <ClInclude Include="SQList.h">
+      <Filter>標頭檔\MediaCtrl</Filter>
+    </ClInclude>
+    <ClInclude Include="AddFolderDlg.h">
+      <Filter>標頭檔\MediaCtrl</Filter>
+    </ClInclude>
+    <ClInclude Include="EditTagDlg.h">
+      <Filter>標頭檔\MediaCtrl</Filter>
+    </ClInclude>
+    <ClInclude Include="SearchTagDlg.h">
+      <Filter>標頭檔\MediaCtrl</Filter>
+    </ClInclude>
+    <ClInclude Include="CSVReader.h">
+      <Filter>標頭檔\MediaCtrl</Filter>
+    </ClInclude>
+    <ClInclude Include="SFile.h">
+      <Filter>標頭檔\MediaCtrl</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageFile.h">
+      <Filter>標頭檔\MediaCtrl</Filter>
+    </ClInclude>
+    <ClInclude Include="SimpleMediaCtrl.h">
+      <Filter>標頭檔\MediaCtrl</Filter>
+    </ClInclude>
+    <ClInclude Include="RadioMenuDlg.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="LogoDlg.h">
+      <Filter>標頭檔\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="DoubleBuffer.h">
+      <Filter>標頭檔\TimeLine</Filter>
+    </ClInclude>
+    <ClInclude Include="OutputService.h">
+      <Filter>標頭檔\TimeLine</Filter>
+    </ClInclude>
+    <ClInclude Include="ServiceProvider.h">
+      <Filter>標頭檔\TimeLine</Filter>
+    </ClInclude>
+    <ClInclude Include="TimeCode.h">
+      <Filter>標頭檔\TimeLine</Filter>
+    </ClInclude>
+    <ClInclude Include="TimeCodeBar.h">
+      <Filter>標頭檔\TimeLine</Filter>
+    </ClInclude>
+    <ClInclude Include="TimeCodeEngine.h">
+      <Filter>標頭檔\TimeLine</Filter>
+    </ClInclude>
+    <ClInclude Include="TimelineEditFacade.h">
+      <Filter>標頭檔\TimeLine</Filter>
+    </ClInclude>
+    <ClInclude Include="TimelineEditView.h">
+      <Filter>標頭檔\TimeLine</Filter>
+    </ClInclude>
+    <ClInclude Include="TimelineEditViewButtonPanel.h">
+      <Filter>標頭檔\TimeLine</Filter>
+    </ClInclude>
+    <ClInclude Include="TimelineItemFacade.h">
+      <Filter>標頭檔\TimeLine</Filter>
+    </ClInclude>
+    <ClInclude Include="TimelineItemView.h">
+      <Filter>標頭檔\TimeLine</Filter>
+    </ClInclude>
+    <ClInclude Include="TimelineItemViewButtonPanel.h">
+      <Filter>標頭檔\TimeLine</Filter>
+    </ClInclude>
+    <ClInclude Include="TimelineManager.h">
+      <Filter>標頭檔\TimeLine</Filter>
+    </ClInclude>
+    <ClInclude Include="TimelineService.h">
+      <Filter>標頭檔\TimeLine</Filter>
+    </ClInclude>
+    <ClInclude Include="tinyxml2.h">
+      <Filter>標頭檔\TimeLine</Filter>
+    </ClInclude>
+    <ClInclude Include="TLBaseType.h">
+      <Filter>標頭檔\TimeLine</Filter>
+    </ClInclude>
+    <ClInclude Include="TLButtonBase.h">
+      <Filter>標頭檔\TimeLine</Filter>
+    </ClInclude>
+    <ClInclude Include="TLCommands.h">
+      <Filter>標頭檔\TimeLine</Filter>
+    </ClInclude>
+    <ClInclude Include="TLConstant.h">
+      <Filter>標頭檔\TimeLine</Filter>
+    </ClInclude>
+    <ClInclude Include="TLDllExport.h">
+      <Filter>標頭檔\TimeLine</Filter>
+    </ClInclude>
+    <ClInclude Include="TLItems.h">
+      <Filter>標頭檔\TimeLine</Filter>
+    </ClInclude>
+    <ClInclude Include="TLItemsVis.h">
+      <Filter>標頭檔\TimeLine</Filter>
+    </ClInclude>
+    <ClInclude Include="TLShape.h">
+      <Filter>標頭檔\TimeLine</Filter>
+    </ClInclude>
+    <ClInclude Include="TLTracks.h">
+      <Filter>標頭檔\TimeLine</Filter>
+    </ClInclude>
+    <ClInclude Include="TLTracksVis.h">
+      <Filter>標頭檔\TimeLine</Filter>
+    </ClInclude>
+    <ClInclude Include="TLUtility.h">
+      <Filter>標頭檔\TimeLine</Filter>
+    </ClInclude>
+    <ClInclude Include="TimeLineSettingsDlg.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="xSplitterWnd.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="TrackContent.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="TrackContentItem.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="TrackContentManager.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="MixerEffect.h">
+      <Filter>標頭檔\MixerCtrl</Filter>
+    </ClInclude>
+    <ClInclude Include="ContentProcessor.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="EditCommandDlg.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="EditEffectIndexDlg.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="MediaStreamEx.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="TLPreview.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="TL_Out_Device.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="DisplayManager.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="ThreadBase.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="ShapeDispManager.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="AddRTSPUrlDlg.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="CEditCtrl.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="CheckBoxCtrl.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="CIPCtrl.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="CStaticCtrl.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="LogFileDll.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="MFRecorderDll.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="RTSPPlayerDll.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="ServerListDlg.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="SetGridDlg.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="TCAdapter.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="TCClientDll.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="TCServerDll.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="TxtButtonCtrl.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="WaitingDlg.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="SetGridDlg.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="AreaOptionDlg.h">
+      <Filter>標頭檔\Shape</Filter>
+    </ClInclude>
+    <ClInclude Include="IconListCtrl.h">
+      <Filter>標頭檔\MixerCtrl</Filter>
+    </ClInclude>
+    <ClInclude Include="Mixer2Dlg.h">
+      <Filter>標頭檔\MixerCtrl</Filter>
+    </ClInclude>
+    <ClInclude Include="BitSlider.h">
+      <Filter>標頭檔\MixerCtrl</Filter>
+    </ClInclude>
+    <ClInclude Include="BitWnd.h">
+      <Filter>標頭檔\MixerCtrl</Filter>
+    </ClInclude>
+    <ClInclude Include="RoundSliderCtrl.h">
+      <Filter>標頭檔\MixerCtrl</Filter>
+    </ClInclude>
+    <ClInclude Include="MixerPreview.h">
+      <Filter>標頭檔\MixerCtrl</Filter>
+    </ClInclude>
+    <ClInclude Include="MidiCtrlReciever.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="MoveToDlg.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="UIController.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="SimpleMixerWin.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="FilePlayerObj.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="EffectSelectorWin.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="AudioConfigDlg.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="ExceptionReport.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="StackWalker.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="SettingsDlg.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="AudioConfigWin.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="EdgeBlendDlg.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="PanelBlendDlg.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="SynCtrl.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="UTipDll.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="ZLibDllObj.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="ProcessorHD.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="D3DSprite.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="SyncPBCtrl.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="KPCheckerCtrl.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="ProbationChecker.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="ConnectHelper.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="AutoPBHelper.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\MediaServer.ico">
+      <Filter>資源檔</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="MediaServer.rc">
+      <Filter>資源檔</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\MediaServer.rc2">
+      <Filter>資源檔</Filter>
+    </None>
+    <None Include="res\cursor1.cur">
+      <Filter>資源檔</Filter>
+    </None>
+    <None Include="res\cursor2.cur">
+      <Filter>資源檔</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,222 @@
+#include "stdafx.h"
+#include "IPDetector.h"
+
+#define BROADCAST_PORT 1013
+#define BROADCAST_MSG "BRUVIS_UDP_MSG_V1"
+#define DURATION 10 * 100  //1 Sec //30 Sec
+
+unsigned int __stdcall IPDetectorThreadProc(void* lpvThreadParm);
+
+IPDetector::IPDetector()
+{
+	Initialize();
+
+	m_bIsConnected = false;
+	strcpy(m_szTargetIP,"127.0.0.1");
+	InitializeCriticalSection(&m_CriticalSection);
+}
+
+IPDetector::~IPDetector()
+{
+	UnInitialize();
+	DeleteCriticalSection(&m_CriticalSection);
+}
+
+bool IPDetector::Initialize()
+{
+	//Initialize WinSock
+	WSADATA wsaData;
+
+	if (WSAStartup(MAKEWORD(2, 2), &wsaData) == SOCKET_ERROR)
+		return false;
+
+	SYSTEMTIME time;
+	::GetSystemTime(&time);
+
+	//Seed the random number generator with current millisecond value
+	srand(time.wMilliseconds);
+
+	return true;
+}
+
+bool IPDetector::UnInitialize()
+{
+	//Cleanup
+	if (WSACleanup() == SOCKET_ERROR)
+		return false;
+
+	return true;
+}
+
+void IPDetector::SetTargetIP(char* szIP)
+{
+	strcpy(m_szTargetIP, szIP);
+}
+
+void IPDetector::Open()
+{
+	m_bFinished = false;
+	m_bIsConnected = false;
+	m_ClientSocket = socket(PF_INET, SOCK_DGRAM, IPPROTO_UDP);
+	if (m_ClientSocket == -1)
+	{
+		MessageBoxA(NULL, "Error in creating socket", "", MB_OK | MB_TOPMOST);
+		return;
+	}
+
+	SOCKADDR_IN UDPserveraddr;
+	memset(&UDPserveraddr, 0, sizeof(UDPserveraddr));
+	UDPserveraddr.sin_family = AF_INET;
+	UDPserveraddr.sin_port = htons(BROADCAST_PORT);
+	UDPserveraddr.sin_addr.s_addr = INADDR_ANY;
+
+	int len = sizeof(UDPserveraddr);
+
+	if (bind(m_ClientSocket, (SOCKADDR*)&UDPserveraddr, sizeof(SOCKADDR_IN)) < 0)
+	{
+		MessageBoxA(NULL, "ERROR binding in the server socket", "", MB_OK | MB_TOPMOST);
+		return;
+	}
+
+	m_bIsAlive = true;
+	unsigned threadID;
+	m_hThread = (HANDLE)_beginthreadex(NULL, 0, IPDetectorThreadProc, this, 0, &threadID);
+
+	m_ulStartTime = GetTickCount();
+}
+
+void IPDetector::Close()
+{
+	m_bIsAlive = false;
+	if (m_hThread)
+	{
+		::WaitForSingleObject(m_hThread, 1000);
+		m_hThread = 0;
+	}
+
+	if (m_ClientSocket)
+	{
+		::closesocket(m_ClientSocket);
+		m_ClientSocket = 0;
+	}
+	m_bFinished = true;
+}
+
+bool IPDetector::IsAlive()
+{
+	return m_bIsAlive;
+}
+
+void IPDetector::Recieve()
+{
+	EnterCriticalSection(&m_CriticalSection);
+	if (m_ClientSocket <= 0)
+	{
+		LeaveCriticalSection(&m_CriticalSection);
+		return;
+	}
+
+	fd_set fds;
+	struct timeval timeout;
+	timeout.tv_sec = 0;
+	timeout.tv_usec = 100;
+
+	FD_ZERO(&fds);
+	FD_SET(m_ClientSocket, &fds);
+
+	//int rc = select(sizeof(fds) * 8, &fds, NULL, NULL, &timeout);
+	int rc = select(m_ClientSocket + 1, &fds, NULL, NULL, &timeout);
+	if (rc > 0)
+	{
+		SOCKADDR_IN clientaddr;
+		int iAddrSize = sizeof(clientaddr);
+		int iRet = recvfrom(m_ClientSocket, m_RecieveBuf, _BUF_SIZE, 0, (sockaddr*)&clientaddr, &iAddrSize);
+		if (iRet > 0)
+		{
+			for (int i = _BUF_SIZE; i >= 1; i--)
+			{
+				if (m_RecieveBuf[i] == '\n' && m_RecieveBuf[i - 1] == '\r')
+				{
+					m_RecieveBuf[i - 1] = '\0';
+					break;
+				}
+			}
+
+			char *sz_ServerIP = inet_ntoa(clientaddr.sin_addr);
+			int serverportno = ntohs(clientaddr.sin_port);
+		}
+
+		char* pch = strstr(m_RecieveBuf, BROADCAST_MSG);
+		if (pch)
+		{
+			int iMsgLen = strlen(BROADCAST_MSG);
+			int iBufLen = strlen(m_RecieveBuf);
+
+			if (iBufLen > iMsgLen + 2)
+			{
+				BCUDPServerInfo server_info;
+				char szBroadcastMsg[100];
+				sscanf(m_RecieveBuf, "%s %s %s %s %d", szBroadcastMsg,
+					server_info.szServerVersion,
+					server_info.szProtocolVersion,
+					server_info.szIP,
+					&server_info.iPort);
+
+				if (strcmp(m_szTargetIP, server_info.szIP) == 0)
+				{
+					m_bIsConnected = true;
+					Close();
+				}
+
+				//sprintf(szMsg, "[Rev] s_ver:%s p_ver:%s ip:%s port:%d \n", server_info.szServerVersion, server_info.szProtocolVersion, server_info.szIP, server_info.iPort);
+				//OutputDebugStringA(szMsg);
+
+				//AddToRecieveList(&server_info);
+			}
+		}
+	}
+
+	unsigned long ulCurTime = GetTickCount();
+	if (ulCurTime >= m_ulStartTime + DURATION)
+		Close();
+
+	LeaveCriticalSection(&m_CriticalSection);
+}
+
+void IPDetector::WaitForFinished()
+{
+	DWORD dwStart = 0;
+	DWORD dwEnd = 0;
+	bool bDo = true;
+
+	while (bDo)
+	{
+		if (m_bFinished)
+			bDo = false;
+
+		MSG Msg;
+		if (PeekMessage(&Msg, NULL, 0, 0, PM_REMOVE | PM_NOYIELD))
+		{
+			TranslateMessage(&Msg);
+			DispatchMessage(&Msg);
+		}
+		Sleep(1);
+	}
+}
+
+bool IPDetector::IsConnected()
+{
+	return m_bIsConnected;
+}
+
+unsigned int __stdcall IPDetectorThreadProc(void* lpvThreadParm)
+{
+	IPDetector* pNetObj = (IPDetector*)lpvThreadParm;
+	while (pNetObj->IsAlive())
+	{
+		pNetObj->Recieve();
+		Sleep(1);
+	}
+
+	return 0;
+}

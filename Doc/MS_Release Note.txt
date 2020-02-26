@@ -1,0 +1,2254 @@
+=====  V1.2.8.14   =====
+Date: 2019/05/14
+Author: Noah
+
+1.­×¥¿¯S®Ä°õ¦æ³t«×ªº°ÝÃD
+2.¥[¤J·sªº¦P¨B¾÷¨î
+
+=====  V1.2.8.13   =====
+Date: 2019/05/10
+Author: Noah
+
+1.­×¥¿¦h¦¸«öPlay³y¦¨¥\¯à¥¢®Ä©Î·í±¼ªº°ÝÃD (¥u¯àÂI¿ï¤@¦¸¡A²Ä2¦¸¥H¤WµL§@¥Î¡A»Ý¦³ª¬ºA§ïÅÜ®É¤~¯à°õ¦æ)
+2.­×¥¿timeline¤Á´«³y¦¨shape¤WÂÂµe­±¥¼§ó·sªº°ÝÃD
+3.§ïµ½timeline¤Á´«ªºÃ­©w©Ê
+4.§ïµ½³z¹LÁä½L¤è¦¡¤Á´«timelineªºÃ­©w©Ê
+
+=====  V1.2.8.12   =====
+Date: 2019/05/02
+Author: Noah
+
+1.¥[¤JGPU¸Ñ½X±M¥Îªº¯S®Ä
+2.±Æ§Ç¿Ã¹õ¦ì¸m
+3.¯S®ÄÀÉ¤£°µ¥[¸Ñ±K¥\¯à
+
+=====  V1.2.8.11   =====
+Date: 2019/04/25
+Author: Noah
+
+1.´î¤Ö¤£¥²­nªºSleep¤ÎCriticalSectionªº¨Ï¥Î¡A§ïµ½¾ãÅé®Ä¯à
+2.­×¥¿SyncTick¥¼§ó·sªº°ÝÃD¡A¥Î¨Ó§ïµ½°õ¦æ¹L¦h¦¸¼ÆÅã¥Ü
+
+=====  V1.2.8.10   =====
+Date: 2019/04/19
+Author: Noah
+
+1.­×¥¿SINGLE_THREADÃ­©w©Ê°ÝÃD (¦bShape¶}·s±M®×¡B¸ü¤J±M®×)
+2.­×¥¿ª«¥óÅÜ§Î«áªº°ÝÃD
+
+=====  V1.2.8.9   =====
+Date: 2019/04/17
+Author: Noah
+
+1.§âg_lSyncTick­ì¬OglobalÅÜ¼Æ§ï¦¨classªºmemberÅÜ¼Æ¡AÁ×§K¦b¦h­Ópanel³y¦¨°Æ§@¥Î
+2.®³±¼¦b°µ¯S®Ä¤§«eDisplayManager->Suspend()¡A¤Î¤§«áªºm_pDisplayManager->Resume()¡A§ïµ½¾ãÅéªº®Ä¯à
+3.Åã¥Ü¸ê®Æ®æ¦¡¡A¥Ñ­ì¥»ªºRGB32§ï¦¨16bitsªº®æ¦¡¡A§ïµ½Åã¥dÀW¼eªº°ÝÃD
+
+=====  V1.2.8.8   =====
+Date: 2019/04/16
+Author: Noah
+
+1.­×¥¿«öPause«á¡A¯S®ÄÁÙ¦b«ùÄò¹B§@ªº°ÝÃD
+2.­×¥¿¯S®Äªø®É¶¡¹B§@«á¡Aµe­±¶]±¼ªº°ÝÃD
+
+=====  V1.2.8.7   =====
+Date: 2019/04/11
+Author: Noah
+
+1.­×¥¿GetSurfaceLevel¨ú±oªºSurface«ü¼Ð¥¼releaseªº°ÝÃD  (§ïµ½ªø®É¶¡°õ¦æªºÃ­©w©Ê)
+2.§ïµ½¯S®Ä®Ä¯à°ÝÃD
+3.´î¤Ö¤£¥²­nªº°O¾ÐÅé°t¸m
+
+=====  V1.2.8.6   =====
+Date: 2019/04/01
+Author: Noah
+
+·s¼WKChecker.exe¥Î¨ÓÀË¬dkey proªºª¬ºA
+
+=====  V1.2.8.5   =====
+Date: 2019/04/01
+Author: Noah
+
+­×¥¿¦b¸û°ª­±¼Æ±¡ªp¤U¡A°õ¦æÅÜ§Î°é¿ï½d³ò«á³y¦¨hang¦íªº°ÝÃD
+
+=====  V1.2.8.4   =====
+Date: 2019/03/29
+Author: Noah
+
+1.­×¥¿©w¦ìª«¥ó­±¼Æ¸û°ª®É¡AÂI¿ï®É³y¦¨hang¦íªº°ÝÃD
+2.­×¥¿timeline¶i¤J¿ï¾Ü¯S®Äµøµ¡«öEscÁä¡AµLªk¸õ¥Xªº°ÝÃD
+3.­×¥¿timeline¹wÄýµe­±¦b¿Ã¹õ¸ÑªR«×«D1080p¤U¡AµLªk¥¿±`¹B§@ªº°ÝÃD
+4.­×¥¿¦b¿Ã¹õ¸ÑªR«×«D1080p¤U¡AUI¦ì¸m¶]±¼ªº°ÝÃD
+
+=====  V1.2.8.3   =====
+Date: 2019/03/26
+Author: Noah
+
+­×¥¿¨Ï¥Î¬Û¦Psourceªºª«¥ó¡A²Ä2­Ó¤§«á¥[¤J¨S¦³¼v¹³ªº°ÝÃD
+
+=====  V1.2.8.2   =====
+Date: 2019/03/26
+Author: Noah
+
+­×¥¿¬Y¨Ç±¡ªp¤Uª«¥ó¨S¦³Åã¥Üªº°ÝÃD
+
+=====  V1.2.8.1   =====
+Date: 2019/03/20
+Author: Noah
+
+1.ÅÜ§óª©¥»¬°1.2.8.1
+2.ÅÜ§óÀÉ®×¸ê°T¡A¦p¤½¥q¦WºÙ¡B²£«~¦WºÙ¡B..
+3.©w®ÉÀË¬ddongle¥\¯à (¨C¤ÀÄÁÀË¬d¤@¦¸)
+
+=====  V1.2.7.59   =====
+Date: 2019/03/14
+Author: Noah
+
+1.­×¥¿¦bShape«öRÁä³y¦¨·í±¼ªº°ÝÃD
+2.·s¼W3¨¤§Îª«¥ó¡AÅÜ§ó¥­­±ª«¥ó¤ÎºÐ§Îª«¥ó
+
+=====  V1.2.7.58   =====
+Date: 2019/03/13
+Author: Noah
+
+­×¥¿¶i¤Jeffect¤¶­± «öESC·|µLªk¦^´_¤W¤@­¶ªº°ÝÃD
+
+=====  V1.2.7.57   =====
+Date: 2019/03/13
+Author: Noah
+
+­×¥¿ª«¥ó¼Æ¶q¶W¹Lsource¼Æ¶q®É¡Aª«¥óµLªkÅã¥Üªº°ÝÃD
+
+=====  V1.2.7.56   =====
+Date: 2019/03/13
+Author: Noah
+
+§ïµ½¯S®Äªø®É¶¡°õ¦æ¤£Ã­©wªº°ÝÃD
+
+=====  V1.2.7.55   =====
+Date: 2019/03/11
+Author: Noah
+
+1.­×¥¿pause«á¦A¼½©ñÅÜ¦¨­«ÀY¶}©l¼½©ñªº°ÝÃD
+2.³æ¤@effect¥\¯à
+3.·s¼Wtimeline_project1.xmlÀÉ
+
+=====  V1.2.7.54   =====
+Date: 2019/02/27
+Author: Noah
+
+1.­×¥¿timeline¥[¤Jªø«×¤£¤@¼Ëªº¼v¤ù´`Àô¼½©ñ¤£Ã­©wªº°ÝÃD
+2.­×¥¿¶i¤JShape¦btimeline¨S¦³¥ô¦ósource®É¡A¥¼¸õ¥XÄµ§i°T®§ªº°ÝÃD
+3.­×¥¿timeline¤Á´«¤£Ã­©wªº°ÝÃD
+
+=====  V1.2.7.53   =====
+Date: 2019/02/23
+Author: Noah
+
+1.­×¥¿´`Àô¼½©ñ¼v¤ù°±¤î©Î¥d¹yªº°ÝÃD
+2.­×¥¿LoadingCtrl³y¦¨ªº¤£Ã­©w²{¶H
+3.­×¥¿command³z¹Ljump¤Á´«timeline item¤£Ã­©wªº°ÝÃD
+4.­×¥¿³æ¤@source¥[¤J¦h­ÓÀÉ®×¡Aªø®É¶¡°õ¦æ¤£Ã­©wªº°ÝÃD
+5.­×¥¿¤Á´«timeline item¤£Ã­©wªº°ÝÃD
+
+=====  V1.2.7.52   =====
+Date: 2019/02/18
+Author: Noah
+
+1.­×¥¿³æ¤@¿Ã¹õ¦b¸ü¤JShape±M®×®É¡Aª«¥óªº¹Ï¥Ü¤Ï¦Çªº°ÝÃD
+2.§ïµ½¥[¤J¯S®Ä«áªø®É¶¡°õ¦æªºÃ­©w©Ê
+3.­×¥¿LoadingCtrl³y¦¨¶V¶]¶VºCªº°ÝÃD
+4.³æ¤@ª«¥ó³Ì°ª¥i¤ä´©1¸U5¤d­±
+5.­×¥¿´`Àô¼½©ñ¼v¤ù°±¤îªº°ÝÃD (·í¸Ósource¦³¦h­ÓÀÉ®×®É¡A®e©ö³y¦¨¼½¨ì©³«á¤S¦^³Ì«e­±®Éµe­±°±¤î)
+  µù:¥ýÃö³¬_ENABLE_INTERVAL_MODEªº¿ï¶µ
+
+=====  V1.2.7.51   =====
+Date: 2019/01/28
+Author: Noah
+
+1.MessageBox¥[¤JMB_TOPMOST¡A¸Ñ¨MMessageBox¨q¦bµøµ¡¤U­±ªº°ÝÃD
+2.­×¥¿´¡©Þ¿Ã¹õ(§ë¼v¾÷)³y¦¨³nÅéhang¦íªº°ÝÃD  
+3.­×¥¿Shape¦bµLªk¥¿±`¶}±Òfliedialogªº°ÝÃD
+4.­×¥¿´¡©Þ¿Ã¹õ«á³y¦¨¥Dµe­±µLªk³z¹LEscÁä¤Á´«
+
+=====  V1.2.7.50   =====
+Date: 2019/01/24
+Author: Noah
+
+1.§ïµ½Shape¦bGPU¼Ò¦¡¤U¶}±Ò±M®×ªº°ÝÃD
+2.¥[¤Jloading ctrl¾÷¨î¡A§ïµ½loading¤Ó­«³y¦¨·í¾÷ªº°ÝÃD
+3.VWª©¥»¡AÃö³¬¶i¤JMixerµe­±ªº«ö¶s
+4.­×¥¿¥ý¸ü¤J¸û¦hsource«á¡A¦A¸ü¤J¸û¤Ösource®É¡A¼½©ñsourceªº¼Æ¶q¤£¥¿½Tªº°ÝÃD
+5.­×¥¿Shape¦b°õ¦æBeginScene¥¢±Ñ«á³y¦¨hang¦íªº°ÝÃD
+
+=====  V1.2.7.49   =====
+Date: 2019/01/18
+Author: Noah
+
+­×¥¿Shape¨Ï¥ÎÁä½L¾Þ§@®É¡AµLªk¨Ï¥Î¦³undo/redo¥\¯à
+
+=====  V1.2.7.48   =====
+Date: 2019/01/18
+Author: Noah
+
+­×¥¿Shape¨Ï¥ÎÁä½L¾Þ§@¨S¦sÀÉªº°ÝÃD
+
+=====  V1.2.7.47   =====
+Date: 2019/01/16
+Author: Noah
+
+D3D9Exª©¥» (¸Ñ¨MD3D Device lost¬ÛÃöªº°ÝÃD)
+
+=====  V1.2.7.46   =====
+Date: 2019/01/09
+Author: Noah
+
+1.­×¥¿§âz¶b³]¬°¹s²£¥Íªº°ÝÃD
+2.¸üª«¥ó¦h¥[¤J¤@¨ÇÀË¬d¡A·íObjÀÉ¦³°ÝÃD®É·|¸õ¥X¿ù»~°T®§
+
+=====  V1.2.7.45   =====
+Date: 2019/01/08
+Author: Noah
+
+1.­×¥¿¦b«DVW ª©¥»¡A¶i¤JSetting Dlg¡A«öOK«á³y¦¨µLªk¼½©ñªº°ÝÃD
+2.Shape±M®×ÀÉ§ï¦¨*.spf
+3.Setting Dlg¥i¥H«ü©wShape¹w¸üÀÉ®×*.spf
+4.­×¥¿±ÛÂà«á¦AÅÜ§Î¦³¾÷·|³y¦¨¦ì¸m¶]±¼
+5.¥[¤JZLibDll¼Ò²Õ
+6.Áä½L·L½Õ¡AµLªk¦sÀÉªº°ÝÃD
+
+=====  V1.2.7.43   =====
+Date: 2018/12/27
+Author: Noah
+
+1.¥[¤JÅã¥ÜPresentFPSªº¸ê°T¡A¦bSettingDlgµe­±¤W
+2.¥i¦bSettingDlgµe­±¤Wª½±µ³]©wDisplayOrder
+3.¥[¤JAudioDelay ¤Î ReSampleRateOffset¥Î¨Ó³]©wÁn­µ©µ¿ð¼½¥X
+4.MiracleUI.dll¸ü¤J¥¢±ÑªºÀË¬d¡A§ïµ½¶}±Ò³nÅé®É·í±¼ªº°ÝÃD
+
+=====  V1.2.7.42   =====
+Date: 2018/12/22
+Author: Noah
+
+1.§ïµ½VWª©¥»µe­±¦P¨Bªº°ÝÃD
+2.¥[¤JDisplayOrder¥Î¨Ó½Õ¾ãÅã¥Ü¶¶§Ç¡A§ïµ½µe­±¦P¨Bªº°ÝÃD
+3.¥[¤JPlayerWaitForDisplayÅýPlayerµ¥«ÝÅã¥Ü§¹¦¨¤~¥á¥X·sªºµe­±
+4.¥[¤JOrderTable¥Ø«e¤ä´©16²ÕDisplayOrder¡A¥i¥H¦b¯S©w®É¶¡¤Á´«¤£¦PªºÅã¥Ü¶¶§Ç
+5.¥[¤J­pºâµe­±¨ê·sªºFPS
+6.¥[¤JDisplayFPS¥Î¨Ó½Õ¾ãÅã¥Ü¨ê·sªº³t«×
+7.¥[¤JDelay¥Î¨Ó½Õ¾ãÅã¥Ü¨ê·s«á©µ¿ð®É¶¡
+8.SynCtrl¥[MTªºª©¥»¡A¥Î4±øthread¥hµ¥«Ýµe­±§ó·s
+
+=====  V1.2.7.41   =====
+Date: 2018/12/18
+Author: Noah
+
+1.­×¥¿«DVWª©¡A¥¼Ãö³¬SynCtrl³y¦¨¤£Ã­©wªº°ÝÃD
+2.«DVWª©¡AÃö³¬color mark¡Bline mark¡BTimeCodeInterval¤Î¾B¸n¥\¯à
+
+=====  V1.2.7.40   =====
+Date: 2018/12/11
+Author: Noah
+
+¥[¤JSynCtrl¥Î¨Ó±±ºÞ¦P¨BÅã¥Ü
+
+=====  V1.2.7.39   =====
+Date: 2018/12/11
+Author: Noah
+
+1.­×¥¿EdgeBlending¿ïÂIªº°ÝÃD
+2.­×¥¿¶}±Ò¦h­Óª«¥óÅã¥Üªº°ÝÃD
+3.­×¥¿color mark¤£·Çªº°ÝÃD
+4.TimeCodeInterval¥i¥Hª½±µ®M¥Î
+
+=====  V1.2.7.38   =====
+Date: 2018/12/09
+Author: Noah
+
+·s¼W2­Ó¥\¯à:
+1.color mark (¥i¥H°t¦XºC³t¼½©ñ¿ë§O¬O§_¦P¨B)
+  µù:¥Î¨Ó¿ë§Oµe­±¬O§_¬O¦P¤@±i¡A¨C¤@±iframe³£·|¦³¦Û¤vªºÃC¦âbar¡A¥Ñ¤»ºØÃC¦â´`Àô
+2.line mark (¥Î¨Ó»²§U«÷±µ¥Î)
+  µù:¥Ø«e³Ì¤j¥u¯àµe¥X1920x1080ªº¸ÑªR«×
+
+=====  V1.2.7.37   =====
+Date: 2018/12/07
+Author: Noah
+
+Åý¾B¸n¥\¯à¦bSetting«öOK«áª½±µ®M¥Î
+
+=====  V1.2.7.36   =====
+Date: 2018/12/07
+Author: Noah
+
+1.·s¼W¾B¸n¥\¯à (¥Ø«e¥u¦bVW¼Ò¦¡¤U¦³§@¥Î)
+2.´£¨ÑºC³t¼½©ñ¥\¯à
+
+=====  V1.2.7.35   =====
+Date: 2018/12/05
+Author: Noah
+
+1.­×¥¿VW¼Ò¦¡¤U¡A«ö¤Utimeline°±¤î®É¡Aµe­±¥¼²M°£¦¨¶Â¦â
+2.­×¥¿VW¼Ò¦¡¤U¡A«ö¤U³Ð«Ø·s±M®× ©Î¸ü¤J±M®×ÀÉ®É¡A¸õ¥X¿ù»~°T®§ªº°ÝÃD
+
+=====  V1.2.7.34   =====
+Date: 2018/12/04
+Author: Noah
+
+1.´£¨ÑVW¼Ò¦¡¡A±Mªùµ¹2D«÷±µ¦P¨B¨Ï¥Îªºª©¥»
+2.´£¨Ñ2x2«÷±µ³]©w¡A¤è«K´ú¸Õ2D«÷±µ¦P¨B¨Ï¥Î (´ú¸Õ¥Î¿ï¶µ)
+
+=====  V1.2.7.33   =====
+Date: 2018/11/28
+Author: Noah
+
+1.¥[¤Jtooltip¥\¯à
+2.¥[¤JUTip¼Ò²Õ¥Î¨Ó¹ê§@tooltip¥\¯à
+
+=====  V1.2.7.32   =====
+Date: 2018/11/22
+Author: Noah
+
+­×¥¿¸ü¤JÂÂªºmapping³]©wÀÉ¡A³y¦¨°{°hªº°ÝÃD
+
+=====  V1.2.7.31   =====
+Date: 2018/11/22
+Author: Noah
+
+­×¥¿¥[ª«¥ó©Î§Rª«¥ó°{°hªº°ÝÃD
+
+=====  V1.2.7.30   =====
+Date: 2018/11/22
+Author: Noah
+
+§ïµ½¥[ª«¥ó°{°hªº°ÝÃD¤ÎmappingªºÃ­©w©Ê
+
+=====  V1.2.7.29   =====
+Date: 2018/11/21
+Author: Noah
+
+­×¥¿timeline item§R°£«á¡A¦A·s¼W¦P¼Ë¦WºÙªºitem«á¡AÂÂªºsource¥¼³Q²M°£ªº°ÝÃD
+
+=====  V1.2.7.28   =====
+Date: 2018/11/21
+Author: Noah
+
+­×¥¿¥[¤J¯S®Ä«á¡Amapping¤Îtimelineªº¼v¹³µLªk¦P®É¦@¦sªº°ÝÃD
+
+=====  V1.2.7.27   =====
+Date: 2018/11/20
+Author: Noah
+
+Ãö³¬Gobal Time Code¤ÎLocal Time Codeªº³]©w¶µ¥Ø
+
+=====  V1.2.7.26   =====
+Date: 2018/11/20
+Author: Noah
+
+­×¥¿ mapping preload¶}±Ò®É¡A³y¦¨GPU ¨Ï¥Î²vº¡¸üªº°ÝÃD
+
+=====  V1.2.7.25   =====
+Date: 2018/11/19
+Author: Noah
+
+­×¥¿Mapping ªº·s±M®× «ö¤U«á¡A·sª«¥óµLªkÅã¥Ü¥X¨Óªº°ÝÃD
+
+=====  V1.2.7.24   =====
+Date: 2018/11/19
+Author: Noah
+
+§ïµ½Shape GPU¨Ï¥Î¶q
+
+=====  V1.2.7.23   =====
+Date: 2018/11/16
+Author: Noah
+
+­×§ï¦b«D¯S®Ä¼Ò¦¡¤U¡A¤Ö°µIsD3DUsingªºÀË¬d (¬°¤F´ú¸Õ®Ä¯à)
+
+=====  V1.2.7.22   =====
+Date: 2018/11/15
+Author: Noah
+
+­×¥¿µLªk¦hport¿é¥Xªº°ÝÃD
+
+=====  V1.2.7.21   =====
+Date: 2018/11/15
+Author: Noah
+
+1.§ïµ½GPU¸Ñ½X + ¯S®ÄªºÃ­©w©Ê
+2.¼È®ÉÃö³¬3ÂI©w¦ì¥\¯à
+
+=====  V1.2.7.20   =====
+Date: 2018/11/09
+Author: Noah
+
+1.Mixer¤ä´©GPU¸Ñ½X
+2.GPU¸Ñ½X¤ä´©¯S®Ä¥\¯à
+
+=====  V1.2.7.19   =====
+Date: 2018/11/07
+Author: Noah
+
+1.­×¥¿import recreate ¦h¼h¸ê®Æ§¨ ¦btimeline source·|¬Ý¤£¨£
+2.­×¥¿¦btimeline ·s¼Wsource ¨º­Ó¼u¸õµøµ¡¡AÂI¿ïµøµ¡¥H¥~ªº¦a¤èµM«á«öESC¸Óµøµ¡ÁÙ·|¦b³Ì¤W¼hªº°ÝÃD
+
+=====  V1.2.7.18   =====
+Date: 2018/11/06
+Author: Noah
+
+1.reset¥\¯à¡A¥[¤J§â¤w¸Ñ±KªºÀÉ®×­«·s¥[±K¦^¨Ó (¨Ã¥B¦b«D¼½©ñªºª¬ºA¤U)
+2.¦bSetting¤¤¥[¤Jgobal/local time codeªº¿ï¶µ¡A¥Î¨Ó¤Á´«¬O§_­n¶i¦æ¦P¨B
+3.½ÕDisplayManager°õ¦æPresentªº³t²v¬°¨C¬í20±i
+4.mapping¦h¶}¤@±øthread±MªùPresent¥Î¡A³t²v¬°¨C¬í25±i
+5.DisplayManager¤¤OverlayTexture¸ê®Æ®æ¦¡¡A¥ÑRGB32§ï¬°RGB565
+
+=====  V1.2.7.16   =====
+Date: 2018/11/05
+Author: Noah
+
+1.­×¥¿«ö¤U<«á¡Amappingµe­±»ÝÅÜ¦¨¶Âµe­±
+2.GPU¼Ò¦¡¤UÅýtimeline¤Îmappingªºµe­±¥i¥H¦@¦s
+3.­°§CDisplayManager°õ¦æPresentªº¼Æ¶q
+
+=====  V1.2.7.15   =====
+Date: 2018/10/31
+Author: Noah
+
+§ïµ½Import Add file³y¦¨·í±¼ªº°ÝÃD
+
+=====  V1.2.7.14   =====
+Date: 2018/10/30
+Author: Noah
+
+1.­×¥¿Import Add file¹ï¸Üµøµ¡µLªk¦b¤W¼hÅã¥Üªº°ÝÃD
+2.­×¥¿Ãö³¬®É¡A¦³®É·|³y¦¨Exceptionªº°ÝÃD
+3.­×¥¿µLªk¥¿±`¼½¥XÁn­µÀÉªº°ÝÃD
+4.­×¥¿Mixer Delete«ö¶sª¬ºA¥¼§ó·sªº°ÝÃD
+
+=====  V1.2.7.13   =====
+Date: 2018/10/29
+Author: Noah
+
+1.­×¥¿Add file/Add folder­«ÂÐÂI¿ïªº°ÝÃD
+2.­×¥¿¯S®Ä²MªÅ«á¡AÁÙ¦³³Ì«á¤@¦¸ªº¯S®Ä¦b¹B§@ (À³Ãö³¬¯S®Ä)
+3.­×¥¿¯S®Ä§R°£/½s¿è»Ý¦b¦³ÂI¿ï®É¤~¯à¿ï«ö¡A¥¼¿ï®Édisable
+4.­×¥¿¼½©ñ®É¤£¯à§ïÅÜEffectªºªø«×
+5.­×¥¿Button cursorªº°ÝÃD
+
+=====  V1.2.7.11   =====
+Date: 2018/10/29
+Author: Noah
+
+1.§ó´«new projectªºicon
+2.§ó´«lock icon¤Î¨ä¦ì¸m
+3.¥[¤JºµÀY¡B¶êÀ@Åé¡Bdiscª«¥ó
+4.§ó´«¶ê¬WÅéobj
+
+=====  V1.2.7.10   =====
+Date: 2018/10/26
+Author: Noah
+
+1.­×¥¿Media-Tag-LUT.csvÀÉ¡AÅýtag¥\¯à¥i¥H¥¿±`ªº¹B§@
+2.¦bCopyFileªº¦a¤è¦h¥[¤J§PÂ_¬O§_¦¨¥\¡A§ïµ½Import¥[ÀÉ°{°hªº°ÝÃD
+
+=====  V1.2.7.9   =====
+Date: 2018/10/26
+Author: Noah
+
+1.­×¥¿Alt+ªÅ¥Õ«Øªº°ÝÃD
+2.­×¥¿M119 loadª«¥ó->ÂsÄý->µøµ¡¬O¥i¥H¸õ¨ì³Ì¤U¼h
+3.­×¥¿E8 ¯S®ÄEDIT ­«½Æ¦W¦r·|³Q¾×¦í
+4.­×¥¿I5 ¥k¤W¨¤ªº¤U©Ô¦¡¿ï³æ¡A¦³«Ü¦h¿ï¶µ¿ï¤F¤§«á¨S¦³¸ê®Æ
+5.2PortÀô¹Ò¤USource§ï¬°¤»­Ó
+6.Ãö³¬¸ü¤JaudioÀÉ®×¥\¯à
+
+=====  V1.2.7.8   =====
+Date: 2018/10/23
+Author: Noah
+
+­×¥¿mapping ¶}±Ò¸ü¤Jª«¥ó¹ï¸Üµøµ¡«á¡AÂI¿ï¹ï¸Üµøµ¡¥~¡A«öEscÁä¡A¸õ¦^¥Dµe­±ªº°ÝÃD
+
+=====  V1.2.7.7   =====
+Date: 2018/10/23
+Author: Noah
+
+1.­×¥¿mapping Alt + spaceªº°ÝÃD
+2.­×¥¿mapping ¸ü¤Jª«¥ó¹ï¸Üµøµ¡¡A¦³®É·|¦b­I´º
+
+=====  V1.2.7.6   =====
+Date: 2018/10/23
+Author: Noah
+
+1.­×¥¿M15 ¤TÂI©w¦ìªº¥\¯àÂI¿ï¡A¦pªGª½±µ¿ï¨ä¥Lªº¥\¯à¡A´NµLªk·s¼Wª«¥ó
+2.­×¥¿Import¦b«Ø¥ß¸û¦h¶¥¼h®Éªº°ÝÃD
+3.¥h°£timeline ÂI¡B½u½s¿èªº«ö¶s
+
+=====  V1.2.7.5   =====
+Date: 2018/10/22
+Author: Allen
+
+­×¥¿Effect¦WºÙ¥i¥[¤JªÅ¥ÕÀÉ¦W
+
+=====  V1.2.7.4   =====
+Date: 2018/10/19
+Author: Noah
+
+1.¥[¤JReleaseª©¥»ªº3DWorld.dll¤Î3DWorld.lib
+2.ÅýMediaServer¥i¥HBuild¥XReleaseªºª©¥»¡A¨Ã¥i¥H¥¿±`ªº°õ¦æ
+
+=====  V1.2.7.3   =====
+Date: 2018/10/19
+Author: Noah
+
+1.­×¥¿ T68 ·s¼W¤T¤ä¼v¤ù¡A²Ä¤@¤ä¼v¤ù¤£¯à±q0¤À0¬í¶}©l¡A2¡B3¼v¤ù­«Å|¡A¹ï³o¤T°¦¼v¤ùclose to from¡A¼v¤ù·|­«Å|
+2.­×¥¿ T71 timeline setting  source¡BEffect ©ì©Ô²¾°Ê¶¶§Ç·|§ïÅÜ¡A©Ò¥H«ö close to  front ·|¦³°ÝÃD
+
+=====  V1.2.7.2   =====
+Date: 2018/10/18
+Author: Noah
+
+1.­×¥¿ E5 ¦bTreeªº¶¥¼h¥Ø¿ý¤UÂIÀ»¥kÁä„³Search Tag„³µøµ¡¸õ¦^¥Dµe­± Note. µøµ¡¤£À³¸Ó¸õ¨ì¥Dµe­± 
+2.­×¥¿ E4 ÂIÀ»¯S®Ä¤U©Ôµøµ¡«öESC
+3.­×¥¿ S7(¦PS6)	Slave ¯à³sÄò«ö¨â¦¸search·|¥X²{¿ù»~	§ä¤£¨ì master IP
+4.­×¥¿ S6 Slave ¼½©ñ®É»ÝÁ×§K³s½u¡B·j´M¡BIP«ö¶sÁÙ¥i¥H«ö¡A«O¯dStop«ö¶sEnable
+
+=====  V1.2.7.0   =====
+Date: 2018/10/18
+Author: Allen
+
+­×¥¿
+
+E1.»Ý­n¨¾§b¾×ªÅ­Èªº¯S®Ä¦WºÙ©Î¬O·s¼W¨â­Ó¬Û¦Pªº¯S®Ä¦WºÙ
+E2.·s¼W¯S®Ä·|°O¿ý·í¤U¤U©Ôbox¦ì¸m¡A¤U¤@­Ó·s¼W¯S®Ä ¤U©Ô¿ï¶µ¦ì¸m·|¿ù
+
+=====  V1.2.6.9   =====
+Date: 2018/10/18
+Author: Noah
+
+1.­×¥¿ timeline jumpµL§@¥Îªº°ÝÃD
+2.­×¥¿ I15 «ö¤UResetÂI¿ï¶]±ø«öESC·|®ø¥¢
+3.­×¥¿ T60 Alt+F4·|Åý¤U¤è¼½©ñ¾¹ÅÜ¦¨¦Ç¦âªº¥BµLªk¼·©ñsource
+
+=====  V1.2.6.8   =====
+Date: 2018/10/18
+Author: Noah
+
+1.­×¥¿ T65 timeline ­ËÂà¡B¼·©ñ­«½Æ·|NULL
+2.­×¥¿ ¯S®Ä¦b¸û³Ì­±ªºpanel¥¼¥[¤J¯S®Ä®É¡A¸û«á­±ªºpanelµLªk¥¿±`Åã¥Üªº°ÝÃD
+3.timeline¤ÎmixerªºÅã¥Üµe­±ªºframe rate­°¤@¥b¡A§ï¦¨¨C2±i¨q¤@±i¡A´î»´loading
+4.­×¥¿ E3 ¤U©Ô¿ï³æ¨Ï¥Î¤è¦VÁä·|¦³UI°ÝÃD
+
+=====  V1.2.6.7   =====
+Date: 2018/10/16
+Author: Noah
+
+1.­×¥¿ T62 ·í¼½©ñ®É¥i¥H§ó§ïtimeline IDµM«á´N·|Åª¤£¨ìsource¼v¤ù¡A¦pªG¬ORTSPÁÙ·|Ä~Äò¦s¯d
+2.­×¥¿ T63 ·í¨â­Ó¯S®Ä¤§¶¡¥[¤J·sªº¯S®Ä¹ï¥L«öclose to the front ·|¶]¨ì«á­±¦ì¸m
+3.­×¥¿ T64 timeline setting ¦b¼½©ñ¼v¤ùªº¹Lµ{¤¤¡A«ö¤U·s¼W¦b«ö¤U¨ú®ø¡A¦A¼·©ñ·|­«0:00¶}©l¼·©ñ
+4.­×¥¿ T66 ·ítimline setting 1 ¥[¤J¤@­Ó¼v¤ù©M¤@­Ó¯S®Ä¡Atimeline setting 2 ¥[¤J¤@­Ó¼v¤ù¡A¤Á´«¼·©ñ°{°h
+
+=====  V1.2.6.6   =====
+Date: 2018/10/16
+Author: Allen
+
+­×¥¿©Ò¦³¯S®Ä¶µ¥Ø¤¤²Ä¤@­Ó»¡©ú¦rµü¬°Level, ¥H¥¿½T¹ïÀ³¯S®Ä°Ñ¼Æªíªº®æ¦¡¼ÐÃD
+
+=====  V1.2.6.5   =====
+Date: 2018/10/16
+Author: Noah
+
+1.­×¥¿ I6 ¥ª¥bÃäªºTree¥i¥H©R¦W¦¨¬Û¦Pªº¸ê®Æ§¨¦WºÙ¡A­«·s¶}±ÒMedia Server«á«o¥u¬Ý¨ì¤@­Ó¸ê®Æ§¨¡A¤]¥i¥H¿é¤JªÅ¥Õ¸ê®Æ§¨
+2.­×¥¿ I8 ¬Y¨ÇÀÉ®×¥i¥H·s¼W¶i¥h¡A¦p ¹ÏÀÉ¡Brar 
+3.­×¥¿ I14 ¥i¥H¶ë¤J.EXEÀÉ¦Ó¥Btimeline setting ¤]¥i¥H¦Y
+4.­×¥¿ I16 ·ítimeline ¹ï¸Ó¼v¤ù¼·©ñ®É¡A¹ï¼v¤ùDelete©ÎReset¡A¸Ó¼v¤ùªº¹êÅé¸ô®|ÁÙ¦b¡A¤U¦¸¶}STAREÁÙ·|¥X²{¡A¬O§_¼W¥[Äµ§i¼Ð»y
+5.­×¥¿ T63 ·í¨â­Ó¯S®Ä¤§¶¡¥[¤J·sªº¯S®Ä¹ï¥L«öclose to the front ·|¶]¨ì«á­±¦ì¸m
+
+=====  V1.2.6.4   =====
+Date: 2018/10/15
+Author: Noah
+
+1.­×¥¿ I11 ¼v¤ùEdit Tag «á¡Aµ{¦¡Ãö³¬¼v¤ùªºTag·|®ø¥¢
+2.­×¥¿ I17 import ·s¼W¥¼©R¦W¸ê®Æ§¨¡Atimeline source·s¼W·|¥X²{¸ô®|¦ì¸m¦Ó¥BÁÙ¤£¯à·s¼W
+3.­×¥¿ T52 ·s¼W¼v¤ù«á¡A¨S¦³ÂI¿ï¼½©ñ­nª½±µÂ÷¶}¦¹µe­±«öEsc¡AµLªkª½±µ¸õÂ÷µe­±¡C
+4.¼½©ñ®É¡A¤£¯àÅÜ§ótimeline itemªº³]©w (¸Ñ¨MBug T62ªº°ÝÃD)
+5.­×¥¿ T57 ·s¼WCommand®É¡ACommand¦WºÙ¤£¥i¬°ªÅ¥Õ¡C
+6.­×¥¿ T64 timeline setting ¦b¼½©ñ¼v¤ùªº¹Lµ{¤¤¡A«ö¤U·s¼W¦b«ö¤U¨ú®ø¡A¦A¼·©ñ·|­«0:00¶}©l¼·©ñ
+7.­×¥¿ T23 timeline¥u©ñCommad¡A¤£©ñ¼v¤ù¥i¥H¼½©ñ¡AÀ³¸Ó¬O¤£¯à¼½©ñ
+
+=====  V1.2.6.3   =====
+Date: 2018/10/15
+Author: Noah
+
+1.­×¥¿ Bug M106 Media Server ©Ò¦³­¶­±->«ö¤UAlt+ªÅ¥Õ«Ø·|¥X²{¹ï¸Üµ¡¿ï³æ->«ö¤Umove ¥[²¾°ÊÁä·|²¾°Ê¸Óµøµ¡ªº¦ì¸m
+2.¼È®ÉÃö³¬EdgeBlending¥\¯à
+3.­×¥¿ Bug M110	Mapping open project ¹ï¸ê®Æ§¨«ö¥kÁä¡A·|°{°Ê¤£¯àÂI¿ï¶µ		
+
+=====  V1.2.6.2   =====
+Date: 2018/10/12
+Author: Allen
+
+1.­×¥¿µøÄ±¯S®Ä³]©w¿ù»~ªº°ÝÃD
+2.¥h°£µL®Ä¤§µøÄ±¯S®Ä
+3.­×¥¿¯S®Ä³]©w­È¤§¦rµü¹ïÀ³
+
+
+=====  V1.2.6.1   =====
+Date: 2018/10/12
+Author: Noah
+
+1.­×¥¿¶i¤JEffect¥\¯à¡A©Ò¦³port¿é¥X·|¬Owindowsªº­I´ºªº°ÝÃD
+2.³B²zD3DªºD3DERR_DEVICELOSTªº°ÝÃD¡AÅýEffect¤ÎTimeline³¡¥÷¦b«ö¤Uctrl+alt+delete«á¥i¥H¥¿±`ªº¹B§@
+  µù:mapping¥Ø«eÁÙ¬O·|¦³°ÝÃD
+
+=====  V1.2.6.0   =====
+Date: 2018/10/09
+Author: Noah
+
+1.­×¥¿ Bug M101	·s¼W§R°£ª«¥ó30~4X¦¸·|¸õ¥XCreateSurfaces Line 124¡B130
+2.­×¥¿ Bug M17¡BM76	3ÂI©w¦ì®É¤£¯à·s¼Wª«¥ó¡A³Ì«á²Ä¤TÂI·|¼vÅT·sª«¥óªº§Îª¬	»Ý­nDisable¤u¨ã¦C
+3.­×¥¿ Bug M16	7~8¦¸¶}±ÒÂÂÀÉ¥X²{CreateSurfaces()
+4.­×¥¿ Bug M108	­º­¶«öctrl¤u¨ã¦C¶]¥X¨Ó 
+5.­×¥¿ Bug M27 ¦bImport®É·s¼W¸ê®Æ§¨¤Î°ÊµeÀÉ¡A¤]´¿¦bMapping·s¼Wª«¥ó¨Ï¥Î¦¹°ÊµeÀÉ¡A¤§«á¤S¦bImport§R°£¸ê®Æ§¨¨Ã­«·s·s¼W¸ê®Æ§¨¤Î°ÊµeÀÉ¡A ¦bMapping·s¼Wª«¥ó®Éªº¼v¤ù¤U©Ô¦¡¿ï³æªº¸ô®|«o¥X²{¤w¸g§R°£ªº¸ê®Æ§¨¸ô®|¡C
+6.­×¥¿ Bug M111	Mapping §¹¡Aimport ·s¼v¤ù·|ÅýMS loading ­«¡A­µ¼Ö·|ÅÜ½è¡C
+7.´£¨Ñ"none_logo"¡Aµ¹watchdow¨Ï¥Î  (¦b¦¹¼Ò¦¡¤U¤£¨qºµÀYlogo)
+8.­«ÂÐ°õ¦æMedia Server¨q¥XÄµ§i°T®§
+9.·s¼WMedia Serverªì©l¤Æªº¸ê°Tµ¹watchdog¨Ï¥Î
+10.­×¥¿­µ¶q½Õ¾ãªº°ÝÃD
+
+=====  V1.2.5.9   =====
+Date: 2018/10/04
+Author: Noah
+
+1.­×¥¿combobox UI¤¸¥ó¦b¬Y¨Ç¾÷¾¹¤W¶}±Ò¸ûºCªº°ÝÃD
+2.­×¥¿mapping²Ä¤@¦¸¶}±Ò®É¡A·|³y¦¨Án­µ­µ½è¤£¦nªº°ÝÃD
+
+=====  V1.2.5.8   =====
+Date: 2018/10/04
+Author: Noah
+
+1.timelineªºaudioconfig¥[¤J­µ¶q½Õ¾ã¥\¯à
+2.­×¥¿timeline item§ï¦WºÙ«á¡A¤º®e¤£¨£  (Bug T62)
+
+=====  V1.2.5.6   =====
+Date: 2018/09/28
+Author: Noah
+
+§ó·sFFMediaFile.dll§ïµ½reset¨úÁY¹Ï¥¢±Ñªº°ÝÃD
+
+=====  V1.2.5.5   =====
+Date: 2018/09/28
+Author: Noah
+
+¥[¤J²»ÀsªºEdgeBlend¥\¯à
+
+=====  V1.2.5.4   =====
+Date: 2018/09/28
+Author: Noah
+
+1.¦hÀË¬d¸Ñ±K«áÀÉ®×¦WºÙ¬O§_¦s¦b
+2.¸ü¤Jtimeline±M®×ÀÉ®É¡A¥ýÃö³¬­ì¥»ªº¼½©ñ¥\¯à
+
+=====  V1.2.5.3   =====
+Date: 2018/09/27
+Author: Noah
+
+1.§ó´«·sªºsettings«ö¶s
+2.¸ü¤Jtimeline³]©wÀÉ®É¡AÀË¬dÀÉ®×¬O§_¦s¦b
+3.ÅÜ§ósliderªº¹Ï¡A¥ÎºµÀY¨ú¥N­ì¥»¶ê§Î½Õ¾ã­µ¶qªºUI
+
+=====  V1.2.5.2   =====
+Date: 2018/09/27
+Author: Noah
+
+1.­×¥¿timeline¦sÀÉ®É¡Aeffectªº¦WºÙ¥¼³Q¦s¤J¡A³y¦¨¸ü¤J®É·|¦³°ÝÃD
+2.Ãö³¬Sleazy Emboss¯S®Ä
+3.§ïµ½Combobox UI§ó·s¸ûºCªº°ÝÃD
+4.·s¼W¶Ç°eÃö³¬°T®§¨ìWatchDog
+
+=====  V1.2.5.0   =====
+Date: 2018/09/26
+Author: Noah
+
+­×¥¿ReCreate²Ä2¦¸·|§R°£ÀÉ®×ªº°ÝÃD
+
+=====  V1.2.4.9   =====
+Date: 2018/09/26
+Author: Noah
+
+­×¥¿timelineµLªk¦sÀÉªº°ÝÃD (¦]¥[¤Jtimeline¦sÀÉ«e´£¿ô¡A§PÂ_¨S¼g¦n)
+
+=====  V1.2.4.8   =====
+Date: 2018/09/26
+Author: Noah
+
+1.Import icon/list¼Ò¦¡µLªk¤Á´«ªº°ÝÃD
+2.­×¥¿³]©wµe­±­«ÂÐ¶}±Òªº°ÝÃD
+3.timeline¦sÀÉ«e´£¿ô (·íÀÉ®×¦s¦b®É¤~´£¿ô)
+
+=====  V1.2.4.7   =====
+Date: 2018/09/25
+Author: Noah
+
+1.shape¹w¸üÀÉ¡A§ï¦¨¹w³]ªºmapping.xml¡A¨Ã§â³]©wµe­±ªºUI§ï¦¨¦Ç¦âªº
+2.­×¥¿³]©wµe­±­«ÂÐ¶}±Òªº°ÝÃD
+
+=====  V1.2.4.6   =====
+Date: 2018/09/25
+Author: Noah
+
+1.timeline³]©wÀÉ¡A¹w³]¦sÀÉ°ÆÀÉ¦W§ï¬°*.tlf
+2.ReCreate±j¨î¥[¤J
+3.³]©wµe­±
+  (1)¸ü¤Jtimeline setting
+  (2)¸ü¤Jshape
+  (3)²M°£shape¼È¦sÀÉ (reset)
+
+=====  V1.2.4.5   =====
+Date: 2018/09/19
+Author: Noah
+
+1.­×¥¿ShapeÅã¥Ü¯S®Äªº°ÝÃD
+2.­×¥¿timeline¬Ý¤£¨ì¯S®Ä²M³æªº°ÝÃD (¦b¤£¶i¤JMixerª½±µ¶}±Òtimeline)
+
+=====  V1.2.4.4   =====
+Date: 2018/09/19
+Author: Noah
+
+1.crash report¥\¯à
+  µù:ÀÉ®×±N¦s¦bC:\ProgramData\MediaServer\CrashRPTªº¥Ø¿ý¤¤
+2.Mixerªº¯S®Ä¦b«D1080pªº¼v¤ù·|¦³´Ý¼vªº°ÝÃD
+3.LogFileCtrl¥[¤Jcrash reportÀÉ®×ªº¦^¦¬¾÷¨î
+
+=====  V1.2.4.3   =====
+Date: 2018/09/18
+Author: Noah
+
+1.¥[¤JReCreateªº¥\¯à¡A¥Î¨Ó­««Ø MOV\User ©³¤Uªº¸ê®Æ
+2.°õ¦æ­«³] ®É¤£¯àÂI¿ï«á­±ªºUI
+3.­×¥¿shape±ÛÂà¬ÛÃöªº°ÝÃD
+
+=====  V1.2.4.2   =====
+Date: 2018/09/18
+Author: Noah
+
+1.­×¥¿MixerÅã¥Ü¼v¹³¨S¦³§¹¥þÅã¥Ü¥X¨Óªº°ÝÃD
+2.­×¥¿¨S¦³³B²z¼½©ñ¶i«×ªºcallback³y¦¨·í±¼ªº°ÝÃD
+
+=====  V1.2.4.1   =====
+Date: 2018/09/17
+Author: Noah
+
+1.Mixer¥h°£Change¶s¡A§ï¦¨ÀHÂIÀH¼½   
+2.¥[¸Ñ±K§ï¦¨¥u¹ï¯S®ÄÀÉ°µ¡A¨Ï¥ÎªÌªºÀÉ®×¤£°µ¥[¸Ñ±K
+3.Mixer¹w³]¼½©ñªºÀÉ®×Àu¥ý¶¶§Ç (·í§ä¤£¨ì¹w³]ÀÉ®É¡A§ï§ä²Ä¤@­ÓÀÉ®×¡A³£§ä¤£¨ì®É¤£¼½©ñ)
+4.Mixer¥[¤Jplay,pause,stop,seek  ¥\¯à
+
+=====  V1.2.4.0   =====
+Date: 2018/09/12
+Author: Noah
+
+1.§ïµ½Importµøµ¡°{Ã{ªº°ÝÃD
+2.AudioConfig¥Î¨Ó³]©w¨º¨Çsource­n¼½¥XÁn­µ
+3.­×¥¿Mixer¼Ò¦¡¤U¡A¬Y¨Çµøµ¡µLªk¶}±Ò¨ì¤W­±ªº°ÝÃD
+
+=====  V1.2.3.9   =====
+Date: 2018/09/11
+Author: Noah
+
+1.­×¥¿Reset®É¡AÀÉ®×¥¼§R°£ªº°ÝÃD
+2.­×¥¿Sample Versionª©¥»¡Atimeline¤£´£¨Ñ¯S®Äªº¥\¯à
+
+=====  V1.2.3.8   =====
+Date: 2018/09/11
+Author: Noah
+
+1.­×¥¿source treeªº°ÝÃD
+2.¥[¤JAudioConfigªº³]©wµe­±
+
+=====  V1.2.3.6   =====
+Date: 2018/09/07
+Author: Noah
+
+1.Simple Mixer¦sÀÉ/¸ü¤J¥\¯à
+2.Simple Mixer¯S®Ä¶µ¥Øªº½Õ¾ã (ÂI¿ï«á§â¤£¥²­nªº¶µ¥ØÁôÂÃ)
+3.Simple Mixer Edit¥\¯à
+4.­×¥¿±µ¦¬MidiCtrl¼½©ñ¥\¯àªº°ÝÃD
+
+=====  V1.2.3.5   =====
+Date: 2018/09/06
+Author: Noah
+
+1.Simple Mixer¹ê§@
+  (1)¯S®Ä²M³æ - Add , Delete
+  (2)media source tree
+  (3)¹wÄýµøµ¡
+  (4)¯S®Ä½s¿èµøµ¡
+2.TimeLine¥[¤JSimple Mixerªº¿ï¨úµe­±
+3.TimeLine¥[¤JEffect1~Effect10ªºtrack¥Î¨Ó½s¿è¯S®Ä
+4.Effect track¥[¤J·s¼W,§R°£,²¾°Ê,µ¥¥\¯à
+5.­×¥¿¿ï«ö"<"«ö¶s«á¡A¦A«ö¼½©ñ«ö¶s®É¡A¦³®É·|µLªk¥¿±`¼½©ñªº°ÝÃD
+6.§ïµ½¯S®Ä®Ä¯à
+
+=====  V1.2.3.1   =====
+Date: 2018/08/23
+Author: Allen
+
+­×¥¿
+1.[E30] ¼v¤ù no effect®É¨S¿ìªk¶i¤U¥ª¤U©ì©Ô¡A¦ý¥[¤J¯S®Ä«á¥i¥H
+2.¼v¤ù¦b¥¿±`¤j¤p(¨SÁY©ñ®É)±¡§Î¤U, ¯S®Ä¥¢®Äªº°ÝÃD
+
+=====  V1.2.3.0   =====
+Date: 2018/08/22
+Author: Noah
+
+1.­×¥¿Bug E7 ÂI¿ï¼½©ñ¾¹«ö¶s¡A·í±¼¡C
+2.­×¥¿Bug E19 ¦bTimeLine¦³¼½©ñSource1, Source4¡A¦b¨ìEffect¡A²Ä¤G¤ä¼v¤ùµLªk²¾°Ê¨ì¥kÃäªºµøµ¡¡C
+
+=====  V1.2.2.9   =====
+Date: 2018/08/21
+Author: Noah
+
+1.­×¥¿¸Ñ±KÀÉ®×list¥¼§¹¾ã°O¿ý¡A³y¦¨¦A¦¸¶}±Ò³nÅé®É¬Y¨ÇÀÉ®×¥¼¥[¤Jªº°ÝÃD
+2.­×¥¿ Bug E4 "¦btimeline¨ä¤¤¤@­ÓSource·s¼W¨â­Ó¼v¤ù¡AEffect ¼½©ñ¨â½ü·|Ãö³¬µ{¦¡"
+3.­×¥¿Mixer¿ï¨ú¯S®Ä²M³æ®É¡A³y¦¨·í±¼ªº°ÝÃD
+
+=====  V1.2.2.8   =====
+Date: 2018/08/21
+Author: Noah
+
+­×¥¿rtspµLªk¦btimeline¤¤¥¿±`ªº¥[¤J
+
+=====  V1.2.2.7   =====
+Date: 2018/08/21
+Author: Noah
+
+·s¼WMidiCtrlReciever¥Î¨Ó±µ¦¬MidiCtrlªºcommand¡A¥Ø«e¥u°µplay,stop,¤Îtimecode³¡¥÷
+
+=====  V1.2.2.6   =====
+Date: 2018/08/20
+Author: Jack
+
+1. ¨Ö±µ¿Ä¦X¥[¨ì³Ì¦h¤@­ÓPannel¥i¥H¦³6­Ó¿Ä¦X°ÏØ¬
+2. ¿Ä¦X°ÏØ¬ªº­pºâ§ï¦¨Å|¥[¤è¦¡¡A¦Ó«D¶È¬O«á»\«eªº¤è¦¡
+3. ¿Ä¦X¥i¥H½Õ¾ã¥ô·N¨¤«×¿Ä¦X¤è¦¡¡A¦Ó«D¶È¬O¥ª¥k¿Ä¦X
+4. ¿Ä¦XGamma Table·|µ¹«ØÄ³ªº¦±½u¡A¨Ã¥B¥i¥H¥|ÂI½Õ¾ã¡A¨Ì©Ò»Ý½Õ¾ã·Q­nªº½u«¬
+5. °O¿ý¤§«e¿Ä¦Xªºª¬ºA¡A¨Ã¥B°O¿ý¤§«eªº³]©w­È¡C¥H«K¤U¦¸­×§ï¥i¥H±µÄò¤§«eªº­×§ï
+6. ­×¥¿Bug M105 ·s¼Wª«¥ó´£¥Üµ¡->ª½±µÂIª«¥ólock->¦A½T»{·s¼Wª«¥ó->¦¹®É¸Óª«¥ó¥i¥H¶i¦æ°Ê§@¦Ó¥Blockª¬ºA¬Otrue
+
+=====  V1.2.2.5   =====
+Date: 2018/08/17
+Author: Noah
+
+1.­×¥¿Bug T59 timeline¼½©ñ®É¡AAlt+tab¶}±Ò¤W¼hµøµ¡¦A¹ïtimeline´§°Ê·Æ¹«¡Atimeline·|µu¼È°±¦í
+2.§ïµ½³nÅé¶}±Ò®É¥[±K¤§«e¸Ñ±K¹LªºÀÉ®×ªº®Ä¯à¡A­ì¥»·|·j´M«ü©wªº¥Ø¿ý¦ì¸m¡A§ï¦¨§â¸Ñ±K¹LªºÀÉ®×°O¿ý¤U¨Ó¡A¶}±Ò®É®É¥[±K³o¨Ç°O¿ýªºÀÉ®×¡A´î»´·j´MÀÉ®×ªºloading
+3.­×¥¿Media Ctrl¥[¤J¶W¹L²Ä2¼h¡A¸ê®Æ¿ù¶Ãªº°ÝÃD
+4.­×¥¿Media Ctrl¦h¼h¾ðª¬µ²ºc§R°£ÀÉ®×ªº°ÝÃD
+
+=====  V1.2.2.4   =====
+Date: 2018/08/17
+Author: Allen
+
+­×¥¿[E6]¦bTimeLine¥¼¼½©ñ¼v¤ù®É¡AEffect«o¥i¥HÂI¿ï¶i¤J¡C
+
+
+=====  V1.2.2.3   =====
+Date: 2018/08/17
+Author: Allen
+
+­×¥¿
+[E10]Â÷¶}­¶­±¦A¶i¥hEffect½s¿è­¶­±¡A¯S®Äªº¤å¦r´N®ø¥¢¤F¡C
+[E15]¼v¤ù¶i¦æ¥ª¤U©ì©Ô®É«ö¥kÁä¡A­«½Æ2¡B3¦¸·|¥X²{Video Effect 2 ¿ù»~
+
+=====  V1.2.2.2   =====
+Date: 2018/08/14
+Author: Noah
+
+1.­×¥¿¤Á´«time setting®É¡Artsp¦ê¬y³y¦¨·í±¼ªº°ÝÃD
+2.¥[¤JUser¥Ø¿ý¡A§â¨Ï¥ÎªÌ¥[¤Jªº¥Ø¿ý¥[¨ì¦¹¥Ø¿ý¤¤
+3.­«³]®É§R°£©Ò¦³ªºÀÉ®×¤Î¥Ø¿ý
+
+=====  V1.2.2.1   =====
+Date: 2018/08/02
+Author: Noah
+
+­×¥¿timeline¼v¹³¤£¶¶ªº°ÝÃD
+
+=====  V1.2.2.0   =====
+Date: 2018/08/01
+Author: Jack
+
+1. ­×¥¿ 218ª©¡A±µ§ë¼v¾÷®É¡A¿ïÂI¦ì²¾®É¡A·|¾É­PUI³QÂê¦íªº°ÝÃD
+2. ­×¥¿ ¿ïÂI¦ì²¾®É·|Àþ¶¡°{°Êªº°ÝÃD
+3. ­×¥¿ ¿ïÂI¦ì²¾«á¦ì¸m¶]±¼ªº°ÝÃD
+4. ¼W¥[Âê¦íShape UIªº«ö¶s¡A Sample Version®ÉµL¦¹¥\¯à¡C
+
+=====  V1.2.1.9   =====
+Date: 2018/08/01
+Author: Noah
+
+1.­×¥¿ Bug T54 ·s¼W¨â­ÓTimeLine setting T1,T2¡A±qT1 jump¨ìT2®É¡A¼v¤ù¤´ºû«ùT1ªº¼v¤ùªº¼È°±ª¬ºA¡C(jump ¦³®É­Ô¤]·|©¿²¤)
+2.­×¥¿timeline¦b°õ¦æcommand¸õÂI®É¡Aµe­±¥¼¤Á´«ªº°ÝÃD
+
+=====  V1.2.1.8   =====
+Date: 2018/07/31
+Author: Jack
+
+1. ­×§ïShape®Ø¿ïÂI®É¡A¥i¥H®Ø¿ï¾ã­Óµøµ¡½d³òªºÂI¡A¤£³Q«ö¶s¼vÅT¡A¨Ã¥B¤£­­©w¶È¯à¥Ñ¥ª¦Ü¥k®Ø¿ï
+   ­×¥¿ Bug M23 --> ¦³µL¿ï¨úª«¥ó¡AÅÜ§Îªº¬õ½uµe¦b¤u¨ã½u¤W¡A¬õ½u·|«ùÄò¦s¦b¨Ã°{Ã{
+   ­×¥¿ Bug M71 --> ±ý¶i¦æª«¥óÅÜ§Î®É¡A¿ï¾Üªº½d³ò¥u¯à¥Ñ¥ª¦Ü¥k³]©w¡AµLªk¥Ñ¥k¦Ü¥ª³]©w½d³ò¡C
+
+2. Åª¨úShape ±M®×ÀÉ®É¡A·|½T»{¬OÄÝ©óShapeªº¡A¨Ã¥B¥¼²§±`¡A¤~·|Åª¨ú
+   ­×¥¿ Bug M103 --> ¶}±ÒÂÂÀÉ®É¡A¶}±ÒªºÀÉ®×¬OTimeLine¦sªºxmlÀÉ®É¡A©ÎªÌ¬O·l·´ªºxmlÀÉ®×®É¡A¨t²Î·|±¾±¼¡C   
+
+
+=====  V1.2.1.7   =====
+Date: 2018/07/30
+Author: Jack
+
+¿òº|LoadObjVdo.cpp¨S Update¨ì
+
+=====  V1.2.1.6   =====
+Date: 2018/07/30
+Author: Jack
+
+1. ­×¥¿STARE_UPDATE §ó·s®É¡A·|»\±¼¨Ï¥ÎªÌ¦Û©w¸qª«¥óªº°ÝÃD
+2. ¨Ï¥ÎªÌ¦Û©w¸qªºª«¥ó¥Ñ 0~ 9§ï¬° 1~9
+3. ±NTimeline Seting IDªº Combox¥H¤Î RSTPªº®É¶¡ Combox§ï¬°DropList«¬ºA(¤£¯à¤â°Ê¿é¤J)
+
+=====  V1.2.1.5   =====
+Date: 2018/07/27
+Author: Jack
+
+1. ­×¥¿Timeline¡B¼v¤ù¤Á´«®É¡A¥i¯à¾É­P·í¾÷ªº°ÝÃD
+2. ±NTimeline Command CCombox§ï¬°Drop List«¬ºA(¤£¥i¥´¦r¿é¤J)
+
+=====  V1.2.1.4   =====
+Date: 2018/07/26
+Author: Noah
+
+1.­×¥¿Bug S8 Master «ö¤U­ËÂà¦A¼·©ñ·|Åý¤k¹Î¼v¤ù·|¼·©ñ¤£¥X¨Ó§e²{¶Â«Ì(®É¦³®ÉµL¡AºÉ¶q¼·¤F¤@¤ÀÄÁ¦h)
+2.­×¥¿¦bImportµe­±«öEnterÁä³y¦¨ªº°ÝÃD
+3.­×¥¿Command¸õ¨ì¥t¤@­Ótimeline item®É¡A¼v¹³µLªk¥¿±`¼½©ñªº°ÝÃD
+4.­×¥¿¸ü¤Jtimeline item®É¡A¸ü¤J«Dtimeline item®æ¦¡ªºxml³y¦¨·í±¼ªº°ÝÃD
+
+=====  V1.2.1.3   =====
+Date: 2018/07/26
+Author: Jack
+
+1. µ¹«È¤áªºª©¥»®³±¼¤@¨ÇShape¥¼§¹¦¨ªº¥\¯à(«÷±µ§ë¼v¡BOffset Rotate)¡C
+   ¨Ã¥B±N­ì¥ýªºSetting.ini°Ñ¼Æ ¥ÑDisable Mixer§ï¬° Sample Version¡C
+   ¥Î¥Hº¸«á­Yµ¹«È¤á®É¡A¥\¯à¥¼§¹¦¨¥ý¥H¦¹FlagÃö³¬¨ä¥\¯à¡C
+   (¥Îªk¬°[System] Sample Version = 1)
+2. ¥[¤J¨Ï¥ÎªÌ Define Objectªº¥\¯à¡A¦b¦Û¦æLoad Object®É¡A¤U¤è·|¦h¤F Save To User Defineªº Checkbox,
+   ­Y¤Ä¿ï«á¡A¥i¿ï¾Ü¦s¨ì 0~ 9ªºIndex.¤U¦¸­n¿ï¾ÜUser Defineªº Object®É¡A«ö¤UShape¤W¦C³Ì¥kÃäªº«ö¶s¡A
+   ¦A¿ï¾Ü¹ïÀ³ªºIndex§Y¥i¡C
+
+=====  V1.2.1.2   =====
+Date: 2018/07/25
+Author: Jack
+
+1. ¥[¤J¥iÃö³¬ Mixer¥\¯àªº³]©w (¬°¤FÀ³¥Iªñ´Áªº«È¤áSample)
+   ¥Îªk¡G¦bSetting.ini¤¤ [System]¥[¤W Disable Mixer = 1 §Y¥i
+2. ­×¥¿·íLoadª«¥ó®É¡Aª«¥ó¸ô®|¬°ªÅ®É¡C©ÎªÌ·íÀx¦s±M®×®É¡A¿ï¾Ü¤£ÂÐ»\²{¦³±M®×®É¡A
+   ³o¨â­Ó±¡ªp·|¾É­P¦^¨ìShape«á¡AUIµLªkÂI¿ïªº°ÝÃD
+
+=====  V1.2.1.1   =====
+Date: 2018/07/24
+Author: Noah
+
+1.§ó´«timeline UI¹Ï
+2.­×¥¿ClientPlayer¦b¬Y¨Ç¸ÑªR«×·|³y¦¨·í±¼ªº°ÝÃD
+3.§âtimeline¥[¤JÂI©Msource¤À¶}
+
+=====  V1.2.1.0   =====
+Date: 2018/07/24
+Author: Jack
+
+­×¥¿¥þ·sªºMedia Serverª©¥»¡A¥¼¦Û°Ê²£¥ÍTempShape©Ò¾É­Pªº·í¾÷°ÝÃD
+
+=====  V1.2.0.9   =====
+Date: 2018/07/24
+Author: Jack
+
+1. ­×¥¿Bug M78 --> ·s¼Wª«¥ó->ÁY©ñ¡AµM«áÅÜ§Î->¥´¤Ä¡Aª«¥ó¦ì¸m¶]±¼¤F¡C
+2. ­×¥¿Bug M93 --> ª«¥óÁY¨ì«Ü¤p¹ï¦A¥LÅÜ§Î«á·|°{°Ê¶W¥X¥iµø½d³ò
+
+=====  V1.2.0.8   =====
+Date: 2018/07/20
+Author: Noah
+
+1.timeline setting¥[¤Jmsªº¸ê°T (µ¹TimeCodeServer.exe¨Ï¥Î)
+2.§ïµ½ºô¸ô¦P¨BClientºÝ³B²z±µ¦¬¸ê®Æ¸ûºCªº°ÝÃD
+3.ºô¸ô¦P¨BServerºÝ¥[¤Jmessage queueªº¾÷¨î¡A§ïµ½¸ê®Æ¶Ç°eªºÃ­©w©Ê
+4.·s¼WTimeCodeServer.exe¥i¥H¨ú¥N²{¦³Master¥\¯à
+5.·s¼WClientPlayerCtrl.exe , ClientPlayer.exe¥Î¨Ó¼ÒÀÀ¦h¥x³s½uªº´ú¸Õµ{¦¡
+
+=====  V1.2.0.7   =====
+Date: 2018/07/18
+Author: Jack
+
+1. ­×¥¿Bug M88 --> ­è¶i¤JMappingªº®É­Ô¦³ÂI·í¾÷ªº´Ý¼vµe­±¡C (§ï¨qLoading­I´º¹Ï)
+2. ­×¥¿Bug M89 --> ¨t²Î§ó·sª©¥»«á¡A­n°O±o§R°£ÂÂªºrelease note¡C
+3. M74 ¦]­×¥¿M89ªºÃö«Y¡A©Ò¥H¤£·|¦A¦³¦¹°ÝÃD¡C
+4. ­×¥¿Bug M90 --> Media Server¶}±Ò®É¡A¤£À³¸Ó¥i¥H¨Ï¥Îupdate.exe¡A¦]¬°§ó·s§¹ªº¨t²Î·|¦³°ÝÃD¡C (§ï¬°·í¥ô¤@¶}±Ò®É¡A¥t¤@­ÓµLªk¥´¶})
+
+STARE_UPDATE.exe§ï¬°¥i¨qDownload¶i«×±ø¡C¦ý¦]FTP Server¤£¤ä´©Äò¶Ç¡A©Ò¥H¥Ø«eÁÙµLªkÄò¶Ç¡C
+
+=====  V1.2.0.6   =====
+Date: 2018/07/13
+Author: Jack
+
+1. ­×¥¿Shape UI,¿òº|¶êµ©ª«¥ó
+2. ­×¥¿¶}±Òª«¥ó¥¼«ö½T©w«e, ¤´¥i¾Þ§@Shape UIªº°ÝÃD
+3. ­×¥¿®Ø¿ïÂI¦ì²¾®×½T©w«á, §ë¼vµøµ¡¤´´Ý¯d®Øªº°ÝÃD
+4. ­×¥¿¿ïÂI¦ì²¾¨q´£¥Üµøµ¡®É, ¤´µM¥i¥H¹ïª«¥ó¾Þ§@ªº°ÝÃD
+
+=====  V1.2.0.5   =====
+Date: 2018/07/12
+Author: Jack
+
+1. ¦A¦¸­×¥¿Bug M65 --> ¶}±ÒÂÂÀÉ®É¡Aª½±µÂI¿ï¨â¤U·|«ö¨ì«á­±ªº«ö¶s¡C
+2. ¦A¦¸­×¥¿Bug M73 --> ÅÜ§Î«ö¤U½T»{«á§Ö³tÂI¿ï©ì©ÔÅÜ§Î¡A·|¦h¥XÅÜ§Î¬õ¦âªº®Ø½u
+3. ¿ïÂI¦ì²¾§¹«á¡A§ï¬°²M°£¤§«eªº°Ê§@¡AµLªkUpdo(·|¥ý¨q´£¥Üµøµ¡)¡A¼vÅTBug M82, M83
+4. ­×§ïShape UI, §ï¬°¦Á¤î°Q½×«áªº¤¶­±³W¹º¡C
+
+=====  V1.2.0.4   =====
+Date: 2018/07/12
+Author: Allen
+
+­×¥¿:
+1.[E16]¸g¹L¯S®Ä«á¡A¼v¹³¤£¯à¦b¥ª¤U¨¤©ì©Ô¡C
+2.[E20]¦b¤T­Óµøµ¡³£¦³¼v¤ùªº±¡ªp¤U¡A¿ï¨ú¨ä¤¤¤@­Óµøµ¡¡A¬Ý¤£¥X¨Ó¿ï¨ú¤F­þ¤@­Óµøµ¡¡C
+3.[E21]¿ï¨ú¯S®Ä®É¡A¥ª¤U¨¤ªººñ¦â®Ø®ø¥¢¤F¡C
+4.¸Ñ¨M¾Þ§@effect«á,¦A±N¹Ï¹³²¾°Ê¨ìªÅªº¦ì¸m®É,·|¦³·í¾÷ªº²{¶H
+
+
+=====  V1.2.0.3   =====
+Date: 2018/07/10
+Author: Noah
+
+§ó·sCamViewerªºcode
+
+=====  V1.2.0.2   =====
+
+Date: 2018/07/10
+Author: Noah
+
+1.­×¥¿Bug T49 - ·s¼WtimeLine setting«á·s¼W¼v¤ùÀÉ¡A«öEsc¸õ¥X¡A¦A¶i¤JTimeLine±ý·s¼W¼v¤ùÀÉ¡A¨t²Î±¾±¼¡C
+2.­×¥¿Bug T50 - ·s¼WtimeLine setting«á­ì¥»­n·s¼W¼v¤ùÀÉ¡A«á¨Ó«o¨S¦³ÂI¿ï¨ì¼v¤ù´N«öCancel¡A«öEsc¸õ¥X¡A¦A¶i¤JTimeLine¡A±ý§R°£timeLine Setting¡A¨t²Î±¾±¼¡C
+3.Import·s¼WÀÉ®×®É¡A¹w³]§ï¬°*.*
+4.CamViewer·s¼WAlways on top¥\¯à
+
+=====  V1.2.0.1   =====
+
+Date: 2018/07/09
+Author: Jack
+
+1. ­×¥¿Bug M65 --> ¶}±ÒÂÂÀÉ®É¡Aª½±µÂI¿ï¨â¤U·|«ö¨ì«á­±ªº«ö¶s¡C
+2. ­×¥¿Bug M73 --> ÅÜ§Î«ö¤U½T»{«á§Ö³tÂI¿ï©ì©ÔÅÜ§Î¡A·|¦h¥XÅÜ§Î¬õ¦âªº®Ø½u
+3. ­×¥¿Bug M75 --> ·s¼W¤@­Óª«¥ó¤£­n«öOK->ÂIÀ»²Ä¤@­ÓPort¿é¥X->¦A«ö¤UOK¡A¦¹®É·s¼Wªºª«¥ó¶]¨ì¥t¤@­ÓªÅ¶¡¸Ì¡A¦^¨ì­ì©lport·s¼Wª«¥ó¦¹ª«¥ó¤£¯à¨Ï¥Î¥ô¦ó¥\¯à
+4. ­×¥¿Bug M77 --> ¥¿¤èÅé¡B¤T¨¤Åé¡B¶ê¬WÅé¡A¤TªÌÅÜ§Î¤§«á¡A¦sÀÉ¤§«á¦b¶}ÀÉ¡Aµ²ªG¨S¦³ÅÜ§Î¡A¦ì¸m¤]¶]±¼¤F¡C
+5. ­×¥¿Bug M82 --> ·s¼W¶ê§Îª«¥ó->ÅÜ§Î->redo¡Aª«¥ó¦ì¸m¦³°ÝÃD (ÅÜ§Î§¹¦¨ª«¥ó°{°Êªº°ÝÃD)
+6. ­×¥¿Bug M83 --> ·s¼Wª«¥ó->ÅÜ§Î->redo->redo->©ñ¤j->redo(¨S¦³¤ÏÀ³)->±ÛÂà->redo(¨S¦³¤ÏÀ³) (ÅÜ§Î§¹¦¨ª«¥ó°{°Êªº°ÝÃD)
+
+=====  V1.2.0.0   =====
+
+Date: 2018/07/05
+Author: Noah
+
+1.·s¼WCamViewer¥\¯à
+2.­×¥¿Bug T47-"¦b°_©lÂI10¬íªº¦ì¸m·s¼W¤@­Ó2¬íªº¼v¤ù¡A¦b¦P¤@­ÓSourceªº°_©lÂI2¬í·s¼W¤@­Ó20¬íªº¼v¤ù¡AµM«á¶i¦æ¼½©ñ¡A¼½©ñ¨ì12¬íªº¦ì¸m¼v¹³´N­«0¬í¶}©l¼½©ñ¡C"
+
+=====  V1.1.9.9   =====
+
+Date: 2018/06/29
+Author: Noah
+
+1.­×¥¿Bug T36-·s¼WTimeLine->·s¼W¼v¤ù->¼½©ñ->¼È°±¡A§R°£TimeLine¡A¦A·s¼WTimeLine->·s¼W¼v¤ù¡A®É¶¡¶b(ºñ¦â½u)°±¯d¦b¤W¤@¦¸TimeLine¼È°±ªº¦ì¸m¡C
+2.­×¥¿Bug T35-¦P®É¦³4­ÓSource¡A¼½©ñ->¼È°±¡A§R°£Source2, Source4¡A¼½©ñ->¼È°±¡A§R°£Source3¡A¦³´Ý¯d¼v¤ùÀÉ¡C
+3.­×¥¿Bug T18-"§R°£TimeLine«á¡A®É¶¡¶b°±¯d¦b¬Y¤@­Ó®É¶¡ÂI¡AÂ÷¶}TimeLine¤§«á¦A¶i¥hTimeLine¡A®É¶¡¶b¤´°±¯d¦b¤W¤@­Ó¾Þ§@ªº®É¶¡ÂI¡C"
+4.­×¥¿Bug T29-"¦b¦P¤@­ÓSource·s¼W¨â­Ó¼v¤ù(¨ä¤¤¤@¤ä¬OºµÀY¼v¤ù)¡A¦b2¤ä¼v¤ù­«Å|ªº±¡ªp¤U¡A¥ª¥k²¾°Ê¼v¤ù¸ûµuªº¡A²¾°Ê®Éµo²{·|¬ðµMÅÜ¦¨¥t¤@¤ä¼v¤ù¦b²¾°Ê¡C"
+5.­×¥¿Bug T30-2¤ä¼v¤ù­«Å|ªº±¡ªp¤U¡A§R°£¼v¤ù®É«o§R¨ì«á­±¨º¤ä¼v¤ù¡C
+6.­×¥¿Mixer¦b°µ°Ï°ìÁY¤p©ñ¤j®É¡A³y¦¨¼v¹³¤£¥¿±`ªº°ÝÃD
+
+=====  V1.1.9.8   =====
+
+Date: 2018/06/28
+Author: Allen
+
+Mixer:
+1.Àu¤Æµ{¦¡¼gªk
+2.­×¥¿mixer effect­È»PUI¨S¦³¹ïÀ³»P¶]±¼ªº°ÝÃD
+3.­×¥¿©I¥s©³¼hÁn­µ¨ç¦¡·|·í±¼ªº°ÝÃD
+4.­×¥¿¿ï¹Ï¹wÄý®É¾Þ§@¤§¤£«K ­­¨î¥u¯à±q¥ª¨ì¥k¸`¿ï¾Þ§@
+5.¯S®Ä¥[¤J½s¸¹»¡©ú
+
+=====  V1.1.9.7   =====
+
+Date: 2018/06/27
+Author: Jack
+
+1. ­×§ïShape Loadª«¥ó®É¡A¤£»Ý­n¸ò¤§«e¼½©ñ¼v¤ù¼Æ¥Ø¤@¼Ë¡A·|¥ýLoadª«¥ó¶i¨Ó¡A¥i¤§«á¦A¼½©ñ¹ïÀ³ªº¼v¤ù¡C
+2. ­Y­ìª«¥ó¦³¼½©ñ¼v¤ù¡A¦A¤Á´«Timeline«á¡AµL¹ïÀ³¼v¤ù¡A·|±Nª«¥ó²M¶Â¡A¦Ó«D´Ý¯d¤W¦¸¤w¼½©ñ¼v¤ùªºµe­±¡C
+3. ­×¥¿¦bµL¿é¥Xportªº±¡ªp¤U·s¼Wª«¥ó->µ{¦¡­«¶}+±µ§ë¼v¾÷->·s¼Wª«¥ó->¦¹ª«¥ó¤£¯à¦ì²¾ªº°ÝÃD
+4. ­×§ïShape±M®×¾Þ§@ªºIcon
+
+=====  V1.1.9.6   =====
+
+Date: 2018/06/22
+Author: Noah
+
+1.­×¥¿GPU¸Ñ½X¼Ò¦¡¤UShape³]©wµe­±¥X²{¦bUI³Ì¤W¼hªº°ÝÃD
+2.§âtimeline¤¤ªº¯S®Ä¶µ¥Ø²¾°£
+
+=====  V1.1.9.4   =====
+
+Date: 2018/06/22
+Author: Noah
+
+­×¥¿GPU¸Ñ½X²Ä3,4portµLªk¥¿±`¹B§@ªº°ÝÃD
+
+=====  V1.1.9.3   =====
+
+Date: 2018/06/22
+Author: Noah
+
+­×¥¿GPU¸Ñ½X§ë¼v¼v¹³­«Å|ªº°ÝÃD
+
+=====  V1.1.9.2   =====
+
+Date: 2018/06/22
+Author: Jack
+
+­×¥¿Shape²¾°Ê®É¡A·Æ¹«©ñ¶}·|¾É­P·í¾÷ªº°ÝÃD
+
+=====  V1.1.9.1   =====
+
+Date: 2018/06/21
+Author: Noah
+
+1.°O¾ÐÅé°t¸m¤è¦¡§ï¦¨VirtualAlloc
+2.·s¼WDebug_GPUªº½sÄ¶¿ï¶µ¡A¥Î¨ÓBuild¥XGPUªºª©¥»
+3.§ïµ½Audio Bufferªº°t¸m¤è¦¡
+4.­×¥¿Ctrl+PageUp / Ctrl+PageDown¤Á´«®É³y¦¨´Ý¼vªº°ÝÃD
+5._ENABLE_DUAL_PLAYER§ï¬°_ENABLE_GPU
+6.§ë¼vªº³¡¥÷¤ä´©GPU¸Ñ½X 
+  µù:¼v¹³­«Å|ªº°ÝÃD«Ý¸Ñ¨M
+
+=====  V1.1.9.0   =====
+
+Date: 2018/06/21
+Author: Jack
+
+¦bSTARE_UPDATE.exe¤¤¥[¤J´ú¸Õ¼Ò¦¡¡C
+¦bSetting.ini¦p¤U³]©w¥i¥H¶}±Ò´ú¸Õ¼Ò¦¡
+[System]
+FTP Test = 1
+
+¦¹±¡ªp¤U·|±qFTP¤U¸üTest¸ê®Æ§¨¤UªºÀÉ®×¡A
+¥H«á´ú¸Õ®É¡A¥ý©ñ¤@ª©¨ìTest¸ê®Æ§¨¤º¡A
+½T»{OK«áª½±µ±qFTP Copy¨ì®Ú¥Ø¿ý¤§¤U¡A
+½T«O¨Ï¥ÎªÌ¸ò§Ú­Ì´ú¸Õ©Ò¥ÎªºÀÉ®×§¹¥þ¤@­P¡C
+
+=====  V1.1.8.9   =====
+
+Date: 2018/06/21
+Author: Jack
+
+1. ­×¥¿¤£±µ§ë¼v¾÷®É¡AµLªk¹ïª«¥ó¾Þ§@ªº°ÝÃD
+2. ­×¥¿¤Á´«±M®×¥d¦íªº°ÝÃD
+3. ­×¥¿¦hª«¥ó¦ì²¾¦AUpdo¦h¦¸«á¡Aª«¥ó²¾°Ê¤£¥¿½Tªº°ÝÃD
+4. ­×¥¿ª«¥ó¹ï¸ÑÅÜ«¬«á¡A¦A¦ì²¾«á¡A¤U¦¸¦A¶}±Ò®É¦ì¸m¤£¥¿½Tªº°ÝÃD
+   (­×¥¿¦Á¤î¤ÏÀ³, ¦³®Éª«¥ó¹ïÂI§¹­«¶}¾÷«á, ¦ì¸m±`¦³¶]±¼ªº°ÝÃD)
+
+=====  V1.1.8.8   =====
+
+Date: 2018/06/19
+Author: Noah
+
+1.­×¥¿Bug T37-³]©w¦n¨â­Ótimeline¸g¹Lmapping«á¡Atimeline°µ¤Á´«¼·©ñ·|·í¾÷
+2.­×¥¿Bug T39-¦bTimeLine A·s¼W10­ÓSource¡A¦bTimeLine B·s¼W1­ÓSource¡A¤Á´«TimeLine¶i¦æ¼½©ñ®É¡A·|¦³´Ý¯dªº¼v¹³¡C
+
+=====  V1.1.8.7   =====
+
+Date: 2018/06/15
+Author: Jack
+
+1. ­×¥¿«öESC¦³®É·|´Ý¯dUIªº°ÝÃD
+2. ­×¥¿Delete Object·í¾÷ªº°ÝÃD
+3. ­×¥¿¿ïÂI²¾°Ê«á¡A¦A§R°£ª«¥ó¡AµLªkª½±µ¦A¿ïÂI²¾°Êªº°ÝÃD
+
+=====  V1.1.8.6   =====
+
+Date: 2018/06/15
+Author: Noah
+
+1.­×¥¿ÂI¿ï¤£¦Ptimeline item¼½©ñ¡A³y¦¨·í±¼ªº°ÝÃD
+2.ºô¸ô¦P¨BClientºÝ¡A³s½u®ÉÀË¬d¬O§_¥i¥H¥¿±`ªº³s½u
+
+=====  V1.1.8.5   =====
+
+Date: 2018/06/14
+Author: Allen
+
+¨ä¥L:
+1.²¾°£MediaServer¥D¥\¯à­¶¤¤, F1¥\¯àÁähelpªº¥\¯à
+Mixer:
+2.¼v¹³¥i¥H´«µøµ¡¦ì¸m, ¦ý¦P¤@­Ó®É¶¡¥u¯àÅã¥Ü¦b¤@­Óµøµ¡¤W
+3.zoom In-Out ªº¦â®Ø­n¤@ª½°±¯d¨ä¤W
+4.zoom In-Out ¦b¤è®æ¯È¥~ªº¦â®Ø­n®ø°£
+5..zoom In-OutªºX: Y:ªºÄæ¦ì­È,¥H¸ü¤J¼v¤ùªø¼e­È¬°°ò·Ç,¥¿¦h¤Ö©Î­t¦h¤Ö¥Nªí¥ª¥k©Î¤W¤U¦h¤Ö,
+   ¤ñ¤è»¡(0,0)ªí¦b­ìÂI (5,0)ªí¥Ü®Ø©¹¤S¥X¥h¤F5­Ópixels ¥H¦¹Ãþ±À
+6.µL¼v¤ù¿ï¶i¹wÄýªº¸Ü,¤U­±ªºbar¤£¯à³Q©Ô°Ê
+
+
+=====  V1.1.8.4   =====
+
+Date: 2018/06/13
+Author: Jack
+
+1. ­×¥¿¿ïÂI²¾°Ê«á¡A¤Á´«View Port¬°«D¿ï¾Ü®É¡A·Æ¹«°Ê§@·|¾É­P·í¾÷ªº°ÝÃD
+2. ±NLoad Objªº­¿¼Æ©Ô±ì¨ú®ø¡C
+3. ­×¥¿Shape­¶­±¡A«öESC¦³®ÉµL¤ÏÀ³ªº°ÝÃD
+4. ­×¥¿2Port ¥H¤W¤Á´«·í¾÷ªº°ÝÃD. 
+5. ­×¥¿ÅÜ«¬«á¡A²Ä¤G¦¸ÅÜ«¬®É¡A¤´°O¦í·Æ¹«¤W¦¸²¾°Ê¶qªº°ÝÃD
+6. ­×¥¿ÅÜ«¬®É¡A¤£«ö½T©w¡A¤Á²Ä¤G­Óª«¥ó¡A²Ä¤@­Óª«¥óÅÜ«¬ÁÙÄò´Ý¯dªº°ÝÃD
+7. ­×¥¿¥Dµøµ¡¡A³Q¿ïª«¥ó¼Ð¥Ü¤£©úÅãªº°ÝÃD
+
+­×¥¿Bug M25, M35, M36, M37, M38, M39
+
+=====  V1.1.8.3   =====
+
+Date: 2018/06/13
+Author: Noah
+
+1.­×¥¿Import «öESCÁäªº°ÝÃD 
+2.T8 - ¦bTimeLine·s¼W¯S®Ä¼½©ñ¼v¹³®É¡A¨S¦³¼v¹³ªºSource¤]·|¦³¼½©ñªº´Ý¼v¡C
+3.­×¥¿Shape¯S®ÄµLªk¥¿±`¹B§@ªº°ÝÃD 
+4.Shape­n¯à¨ú±oTimeLine¼È°±®Éªº¼v®æµe­±
+5.­×¥¿ªø®É¶¡¦hsource¹B§@ªºÃ­©w©Ê
+
+=====  V1.1.8.0   =====
+
+Date: 2018/05/30
+Author: Jack
+
+1. Shapeª«¥ó½u±øÃC¦â§ï¬°·|¨Ì¬O§_¿ï¨ì¦¹Pannel¦Ó§ïÅÜ¡C
+   ¿ï¨ì¬°¬õ¦â¡A¥¼¿ï¨ì§ï¬°ÂÅ¦â¡C
+2. ±Nµ{¦¡¤U¸ü¸ò§ó·s¤À¶}¡CÁ×§K¤U¸ü¨ì¤@¥bÂ÷¶}¾É­Pµ{¦¡µLªk¶}±Òªº°ÝÃD
+3. Á×§K¦bShape¤¤«öEsc¾É­P¥¿§ë¼vªºª«¥óPannel³Q»~Ãö³¬ªº¥i¯à©Ê¡C
+4. Á×§K¦bShapeÂ÷¶}¥¼§¹¥þ®É¡A¤´¥i«ö¨ä¥¦¾Þ§@©Ò¾É­Pªº»~°Ê§@¡C
+5. Á×¶}¼u¥X©Êªºµøµ¡¦³¾÷·|¶]¨ì«D¥Dµøµ¡ªº¥i¯à©Ê¡C
+6. ¿ïÂI²¾°Ê«á¡A­Y¦A¦¸¿ïÂI¡A·|¥ý²M°£¤§«e²¾°Ê¦ý©|¥¼Àx¦sªºµ²ªG¡CÁ×§K¿ïÂI²¾°Ê²§±`¡C
+7. ¼W¥[¤@¨Ç¾÷¨î¡AÁ×§K§R°£ª«¥ó¡A¾Þ§@ª«¥ó¡A¾É­P·í¾÷©Ê¥i¯à©Ê¡C
+8. Á×§K¿ïÂI²¾°Ê®É¡A·|¦³«D©Ò¿ïÂIÅÜ¦â¡A¸òµÛ²¾°Êªº°ÝÃD
+9. ±NSTARE_UPDATEµ{¦¡¿W¥ß¤U¸ü¡AÁ×§K§ó·sµ{¦¡¦Û¤wµLªk³Q§ó·s¨ìªº°ÝÃD
+
+­×¥¿BugList¤¤ªº M4¡BM6¡BM7¡BM9¡BM12¡BM13¡BM14¡BM15¡BM17¡BM25¡BM29¡BM30¡BM32¡BM33
+
+M20¡BM31³o¤GÂIÀ³¤£ÄÝ©óBug¡A¸ò´ú¸Õ²Õ°Q½×«á¥i±µ¨ü
+M22¨Ì«ØÄ³­×§ï
+
+=====  V1.1.7.9   =====
+
+Date: 2018/05/30
+Author: Noah
+
+1.I4 - Import ¼v¤ù¸ê®Æ§¨©³¤Uªº¼v¤ù¤£¯àÂI¿ï©M§R°£
+2.I5 - Import Add folder¡BAdd file ¡BAdd RTSP Url ¡BSearch Tag Dialog µøµ¡¤£¯à¥ÎESCÃö³¬¡A·|¸õ¦^­º­¶
+3.I2 - §R°£©Ò¦³ªº°ÊµeÀÉ¡A¥kÃä·|¦³´Ý¯dªº¸ê®ÆÅã¥Ü¦bµe­±¤¤¡C
+4.T24 - command ¬Û¦Pªºgoup(J¡BE¡BS)¤£¯à­«½Æ©R¦W(»Ý­n°Q½×)
+  µù:¤£¯à­«½Æ©R¦W
+5.T25 - Stop¡BNone¤£¯à¿ï¾Ü jump to¡A¯à¤£¯à¹ï¤U©Ô¦¡¿ï³æ°µ enable ©Î disable
+6.T26 - ¦A·s¼Wsource¿ï¼v¤ùªº¦a¤è¹ï¸ê®Æ§¨«ö¤Usearch tag ·|¦b¥Dµøµ¡¤U­±
+7.T27 - ¦A·s¼Wsource¿ï¼v¤ùªº¦a¤è«ö¤UESC·|¸õ¦^­º­¶¡AÀ³¸Ó¬OÃö³¬µøµ¡
+8.T3 - ¥ªÃä·s¼Wµøµ¡¡A«Ø¥ß¬Û¦Pªº¦WºÙ¡BID ¡A1.°Ñ¼Æ¼v¹³·|¦P¨B 2.µLªk¼½©ñ 3.°£«D·s¼W¬Y¶µ¯S®Ä¤~¥i¥H¥¿±`¼½©ñ
+  µù:¤£¯à­«½Æ©R¦W
+
+=====  V1.1.7.8   =====
+
+Date: 2018/05/28
+Author: Noah
+
+·s¼WMediaServerDlg log¥\¯à¡A¿é¥XÃö³¬®Éªº°T®§
+µù1:¦bSetting.iniÀÉ¤¤·s¼W©³¤Uªº³]©w¶}±Òlog¥\¯à
+[LogFile]
+MediaServerDlg = 1
+µù2:¿é¥Xªº¦ì¸m
+C:\ProgramData\MediaServer\MediaServerDlg
+µù3:¦³®É­Ô³z¹L°O¨Æ¥»¶}±Ò®É·|ÅÜ¦¨¶Ã½X¡A«ØÄ³§ï¥ÎEmEditor¡BNotepad++¶}±Ò
+
+=====  V1.1.7.7   =====
+
+Date: 2018/05/25
+Author: Noah
+
+1.Source§ï¦¨Source1
+2.­×¥¿jump¸õ­¶¤ÎÃ­©w©Êªº°ÝÃD
+3.­×¥¿ - «ö¥kÁä±ý·s¼W¸ê®Æ§¨¡A·Æ¹««ü¼Ð­n¦Û°Ê²¾°Ê¨ì¿é¤JÀÉ¦Wªº¦a¤è
+4.­×¥¿ - Source­«Å|®Éªº²¾°Ê³W«h½Ð§ï¦¨¥H®É¶¡¶b¸û«á­±ªº°ÊµeÀÉ¬°¥D
+5.­×¥¿ - §R°£©Ò¦³ªº°ÊµeÀÉ¡A¥kÃä·|¦³´Ý¯dªº¸ê®ÆÅã¥Ü¦bµe­±¤¤
+
+=====  V1.1.7.6   =====
+
+Date: 2018/05/23
+Author: Noah
+
+Shape¤ä´©GPU¸Ñ½X
+  µù1:¹w³]¬OÃö³¬ªº¡A¦]¬°¦³§ï°Ê¨ìShapeµøµ¡«Ø¥ßªº®É¾÷¡A¥i¥H³z¹L _ENABLE_DUAL_PLAYER§â¦¹¥\¯à¶}±Ò
+  µù2:GPU¸Ñ½X±N·|¼vÅT¯S®Äªº³¡¥÷¡A¼È®É¯S®Ä¬OµLªk¨Ï¥Î
+  µù3:§ë¼v³¡¥÷»Ý°µ­×§ï
+
+=====  V1.1.7.5   =====
+
+Date: 2018/05/21
+Author: Noah
+
+1.­×¥¿Bug:·s¼WSource®É¡ASource¨S¦³²¾¨ì³Ì«e­±¶i¦æ¼½©ñ®É¡A¼½©ñ²Ä¤G½ü¤§«á·|¦³°ÝÃD
+2.­×¥¿Bug:·s¼W¼v¹³ªºµøµ¡¥X²{®É¡A¤£¤p¤ß¤Á´«¨ì¥Dµøµ¡¡A·s¼W¼v¹³ªºµøµ¡¶]¨ì¥Dµøµ¡ªº¤U­±
+3.move to¥\¯à¥i¥HÅýsource²¾¨ì«ü©wªº¦ì¸m
+4.¦b¼½©ñ®É¡A¤£¯à·s¼W/§R°£ source¤Î¯S®Ä
+5.Close to the front¨ú¥N­ì¥»ªºMove To Beginning¤Î©M²¾¨ì«e­±sourceªº«á­±
+6.·s¼Wsource¥H·í«eªº¦ì¸m¬°¥[¤Jªº¶}©l¦ì¸m
+
+=====  V1.1.7.4   =====
+
+Date: 2018/05/18
+Author: Noah
+
+1.­×¥¿GPU¸Ñ½X¨SÁn­µªº°ÝÃD
+2.­×¥¿¼v­µ¦P¨Bªº°ÝÃD
+3.­×¥¿¸ü¤JTimeline item·í±¼ªº°ÝÃD
+4.§ïµ½³nÅéµ²§ô®É°O¾ÐÅé¥¼ÄÀ©ñªº°ÝÃD
+
+=====  V1.1.7.3   =====
+
+Date: 2018/05/16
+Author: Jack
+
+1. ­×§ï«÷±µ¿Ä¦X¤è¦¡¡A¥i¤â°Ê°é¿ï¥ô·N§Îª¬¿Ä¦X°Ï°ì©ÎMask¡A³]©wGain¡AÀç¹õGamma, ¤Î¿Ä¦X°Ï°ì¦±½u¡C
+2. ¥i¦Û©w¸q¤£¦P°Ï°ì©ÎMask¡A¥Ø«e°Ï°ì¤W­­¬°6­Ó¡A¿Ä¦X¤è¦¡¬°¥ª¥k¿Ä¦X¡C6/15«e¥ý¥H¦¹¤è¦¡¿Ä¦X¡A¤§«á¦A­×¥¿¬°¥ô·N¨¤«×¿Ä¦X¡C
+   ¥H¤Î¦Û°Ê²£¥Í¿Ä¦X¦±½u¡C
+3. ­×§ïTimeLine ID¬°¤£¥i¤â°Ê¿é¤J¡A»Ý¥Î¿ï¾Üªº¡C
+4. ­×¥¿¿ïÂI¦ì²¾®É¡A¥¼§¹¦¨«ö§R°£ª«¥ó¡C·|¾É­P¤U­Ó·s¼Wªºª«¥ó¦³°ÝÃD
+
+=====  V1.1.7.2   =====
+
+Date: 2018/05/15
+Author: Allen
+
+·sª©Effect¤¶­±»P¥\¯à¥[¤J
+
+=====  V1.1.7.0   =====
+
+Date: 2018/05/11
+Author: Noah
+
+1.³z¹L ³æ¦ì«ö¶s¤Î <,>¥h«ü©w­n¶}©l¼½©ñªº¦ì¸m (·|±q¸Ó­¶ªº¶}ÀY¦ì¸m¶}©l¼½©ñ¡A¥B­ì¥»ªººñ¦âbar»Ý¤ñ¥¦¤p¤~·|¦³§@¥Î)
+2.§ïµ½StretchRect() failedªº°ÝÃD¡A³o¤]¥i¥H­×¥¿¦P¤@Source¤£¦P¸ÑªR«×°µ¯S®Ä²£¥Íªº°ÝÃD
+3.§ïµ½ºô¸ô¦P¨BªºÃ­©w©Ê §ï¥ÎÃþ¦üring bufferªº¤è¦¡§ïµ½°ÊºA°t¸m°O¾ÐÅé¥i¯à²£¥Íªº¤£Ã­©w©Ê
+
+=====  V1.1.6.9   =====
+
+Date: 2018/05/09
+Author: Noah
+
+1.¤W¶ÇNWin.cpp¤ÎNWin.hÀÉ
+
+=====  V1.1.6.8   =====
+
+Date: 2018/05/09
+Author: Noah
+
+1.­×¥¿¿ý¼v¥\¯à¨SÁn­µªº°ÝÃD
+2.§ïµ½ºô¸ô¦P¨BClientºÝªø®É¶¡°õ¦æªºÃ­©w©Ê
+
+=====  V1.1.6.7   =====
+
+Date: 2018/05/03
+Author: Noah
+
+1.Ãö³¬MFilePlayerªºRepeat¥\¯à¡A§ïµ½µ²§À®É°µRepeat©M¤U¤@¦¸¶}ÀYªº¼v¹³­«ÂÐªº°ÝÃD¡A¥i¥H§ïµ½ºô¸ô¦P¨BªºÃ­©w©Ê
+2.­×¥¿¸ûµuÀÉ®×¦³®ÉµLªk­«ÂÐ¼½©ñªº°ÝÃD
+
+=====  V1.1.6.6   =====
+
+Date: 2018/05/02
+Author: Noah
+
+1.§ïµ½ºô¸ô¦P¨Bªº°ÝÃD¡A¦h¥[§PÂ_·í¥Ø«eªºtimecode©M¤U¤@­Ótimecode®t¶Z¸û¤j®É¡A°õ¦æseek¡AÁ×§K§Ö¼½ªº²{¶H
+2.­×¥¿·sª©¥»³nÅéµLªk¸ü¤JÂÂª©FileList.mflÀÉ®×ªº°ÝÃD
+3.­×¥¿ºô¸ô¦P¨BClientºÝStart¥¢®Äªº°ÝÃD (³s½u«á«öStop¦A«öStart)
+
+=====  V1.1.6.5   =====
+
+Date: 2018/04/26
+Author: Noah
+
+1.§ó·sRTSPPlayerDll.h¤ÎRTSPPlayerDll.cppÀÉ¡A¸Ñ¨M½sÄ¶¿ù»~ªº°ÝÃD
+
+=====  V1.1.6.4   =====
+
+Date: 2018/04/26
+Author: Noah
+
+1.­×¥¿·íRTSPµLªk³s¤WIP camera®É·|³y¦¨·í±¼ªº°ÝÃD
+2.­×¥¿µLªk¨ú±oRTSPÁY¹Ï³y¦¨·í±¼ªº°ÝÃD
+3.¤â°ÊÃö³¬PlayerªºRepeat¥\¯à
+  µù:¥i¥H¦bSetting.iniÀÉ¤¤¥[¤J©³¤Uªº³]©w¸ê®Æ
+[Media]
+EnableRepeat = 0
+
+=====  V1.1.6.3   =====
+
+Date: 2018/04/24
+Author: Jack
+
+1.Load Obj®É¡A·|¥ý½T»{¼v¤ù¬O§_¦³¶}±Ò¤~¥i¿ï¨ú
+2.¶i¤JShape®É¡A·|¥ý½T»{¤§«eª«¥ó¹ïÀ³ªº¼v¤ù¬O§_¦³¶}±Ò¡C­Y¨S¦³¼v¤ù¥¼¶}±Ò«h¤£¨q¦¹ª«¥ó¡C
+
+=====  V1.1.6.2   =====
+
+Date: 2018/04/24
+Author: Noah
+
+1.­×¥¿timeline§R°£ÂÂ¦³source«á¡A¼½©ñ®ÉÂÂ¦³source¼v¹³ÁÙ¬O·|¥X²{ªº°ÝÃD
+2.§ïµ½deque¿ù»~°T®§ªº°ÝÃD¡A§â­ì¥»std::queue§ï¥Î¦Û¤v¼gªºSQList¨ú¥N
+3.§ïµ½¹«·Æ¥ªÁä§Ö³t«öªº°ÝÃD
+4.TimeLineDlg±Nhot key¸ê®Æ¼È¦s¡A¨Ã©µªø°õ¦æ®É¶¡¡A§ïµ½µu®É¶¡³sÄò¶}ÀÉ³y¦¨¤£Ã­©w
+
+=====  V1.1.6.1   =====
+
+Date: 2018/04/23
+Author: Jack
+
+1. Shape¨ú¼v¹³µe­±®É¡A·|¥ý½T»{¼v¤ù¬O§_¦³¶}±Ò
+2. ²¾°£¦b¥Dµe­±¡A«öESC®É§YÂ÷¶}µ{¦¡ªº¥\¯à¡C»Ý«öPower Icon
+
+=====  V1.1.6.0   =====
+
+Date: 2018/04/23
+Author: Jack
+
+1. µ{¦¡¥[¤JGamma Table½Õ¾ã Function
+2. Ãö³¬Shapeª½±µLoad¼v¤ù¥\¯à¡A»Ý¥ý¶iTimeline¼½©ñ¼v¤ù¡A¤~¥i¶i¤JShape
+
+=====  V1.1.5.9   =====
+
+Date: 2018/04/19
+Author: Jack
+
+1. ­×¥¿§R°£ª«¥ó®É, ¦³¾÷·|¾É­P·í¾÷ªº°ÝÃD
+2. ­×¥¿Shape LoadÀÉ®×®É, ¦³®É¸ô®|¿ù»~ªº°ÝÃD
+
+=====  V1.1.5.8   =====
+
+Date: 2018/04/17
+Author: NOah
+
+¤ä´©RTSP¦ê¬y(IP Camera)
+
+=====  V1.1.5.7   =====
+
+Date: 2018/04/17
+Author: Noah
+
+1.¹ê§@©¹¤W¡B©¹¤U¤Á´«timeline item¼½©ñsource¥\¯à
+2.­×¥¿Bug - ·s¼WTimeLine Setting«á«öEnter¡A¨t²Î¦Û°Ê¦^¨ì«e¤@­¶·í±¼
+3.­×¥¿Bug - ¥ªÃä·s¼Wµøµ¡¡A¤â°ÊKey ID¶i¥h·|²£¥Í429¡K¸¹ªºµøµ¡ (³Ì¤j­È¦n¹³¥u¨ì429¡A¦]¬°¿é¤J430´NÅÜ0)
+
+=====  V1.1.5.6   =====
+
+Date: 2018/04/03
+Author: Jack
+
+1. ­×¥¿Shape Load Video®É¡A­Y¨S¦³¿ï¼v¤ù·|¾É­P·í¾÷ªº°ÝÃD
+2. ­×§ïShape UI¾Þ§@¡C·í°Ê§@¥¼§¹¦¨®É¡A©¿²¤¨ä¥¦ªº°Ê§@«ü¥O¡AÁ×§K²£¥Í¤@¨ÇBug
+
+=====  V1.1.5.5   =====
+
+Date: 2018/04/02
+Author: Noah
+1.§ó´«MediaCtrl·sªºUI
+2.­×¥¿¿ï«öplay , ©¹«e «ö¶s­«ÂÐ¦h¦¸®É¡A¦³®É·|³y¼v¹³­n¦b¬Y¨Ç®É¶¡ÂI¤~·|¥X²{ªº°ÝÃD
+3.LogFileCtrl¼Ò²Õ - ·s¼WMCTCC_DUMP¥\¯à
+4.IOSourceCtrl¼Ò²Õ - 
+  (1)­×¥¿§R°£ÀÉ®×¥\¯à
+  (2)¶}ÀÉ²§±`®Éª¬ºA¿é¥X¨ìLogFile
+
+=====  V1.1.5.4   =====
+
+Date: 2018/03/30
+Author: Jack
+
+1. ¥[¤J¨Ö±µ§ë¼v®É¡A¥i¤Á´«¼v¤ù¡B¤Î¤£¦PÃC¦â§÷½è¡A¤è«K®Õ¥¿ÃC¦â¡C
+2. Shapeª«¥ó½u±øÃC¦â­×§ï¡A¤è«K½T»{©Ò¿ïªºÂI¡C
+
+=====  V1.1.5.3   =====
+
+Date: 2018/03/29
+Author: Jack
+
+1. §¹¦¨2ºû¨Ö±µ§ë¼vªì¨BUI¡A¥iÀH®É°ÊºA½Õ¾ã¤£¦PPannel ªºGamma¤ÎGain­È
+2. §ïµ½Shape©¼¦¹¶¡¦P¨Bªº°ÝÃD
+3. ­×¥¿New Project¡A¦³¾÷²v¥d¦íªº°ÝÃD
+4. ­×¥¿³æ¨q¼v¤ù®É¡A­Y¥¼¿ï¾Üª«¥ó·|¾É­P·í¾÷ªº°ÝÃD
+5. ­×¥¿¦h¥xÀç¹õ3ÂI¹ï¦ì¡A¦³®ÉµLªk°Ê§@ªº°ÝÃD¡C
+6. ­×¥¿¦³®É·Æ¹«¥i²¾¨ì¥D±±¥~ªºÀç¹õªº°ÝÃD
+
+=====  V1.1.5.2   =====
+
+Date: 2018/03/27
+Author: Noah
+
+1.­×¥¿ÂI¿ï©¹«eªº«ö¶s®É¡AClient/Server¤£¤@­Pªº°ÝÃD
+2.§ïµ½Shape GPU¨Ï¥Î²v¹L°ªªº°ÝÃD
+
+=====  V1.1.5.1   =====
+
+Date: 2018/03/27
+Author: Jack
+
+1. ­×¥¿·í¿ïÂI¿ù»~®É¡A·|¾É­P¥D±±¸ò§ë¼v¾÷Åã¥Ü¤£¤@­Pªº°ÝÃD
+2. ¥[¤J¿Ä¦X Gamma Table½Õ¾ãªº¤¶­±
+3. ­×¥¿ª«¥ó¨ì¤W­­®É¡A¿ù»~°T®§¥i¥H­«ÂÐ¼u¥Xªº°ÝÃD
+4. ­×¥¿·íLoad Obj¡A½Õ¾ã¤ñ¨Ò«á¡C¤ñ¨Ò¦³®É¥¼³Q°O¿ý¦íªº°ÝÃD
+5. ­×¥¿¼W§Rª«¥ó«á¡A¦³®ÉVideo¹ïÀ³ªº¼v¤ù·|¿ù¶Ãªº°ÝÃD
+
+=====  V1.1.5.0   =====
+
+Date: 2018/03/23
+Author: Noah
+
+1.­×¥¿¦h¦¸´`Àô¼½©ñ«á­µ½èÅÜ®tªº°ÝÃD
+2.§ïµ½TimeCodeEngine ²£¥Ítime code¤£Ã­©w(¦p­«ÂÐ)ªº°ÝÃD
+
+=====  V1.1.4.9   =====
+
+Date: 2018/03/22
+Author: Noah
+
+§ïµ½¦h¦¸´`Àô¼½©ñ«á­µ½è¤£¦nªº°ÝÃD
+
+=====  V1.1.4.8   =====
+
+Date: 2018/03/22
+Author: Noah
+
+1.Log¾÷¨î¡A¥[¤JLogFileCtrl¼Ò²Õ
+  µù1:Log¸ê®Æ±N·|¼g¨ìC:\ProgramData\MediaServerªº¥Ø¿ý¤¤
+  µù2:¥Ø«e¸ê®Æ«O¯d¤Ñ¼Æ¬O30¤Ñ
+2.±NMediaCtrl¾Þ§@°O¿ý¿é¥X¨ìC:\ProgramData\MediaServer\MediaCtrlªº¥Ø¿ý¤¤
+3.±Nºô¸ô¦P¨Bªº¸ê°T¿é¥X¨ìC:\ProgramData\MediaServer\TCAdapterªº¥Ø¿ý¤¤ 
+  µù:¦¹¥\¯à»Ý¦bSetting.ini¤¤³]©w¶}±Ò
+
+=====  V1.1.4.7   =====
+
+Date: 2018/03/22
+Author: Noah
+
+1.­×¥¿¼½©ñ¥\¯à²§±` («öpause«á¦A«öplayÀ³Äò¼½)
+2.­×¥¿¦b¥¼¼½©ñ«e°õ¦æseek(0.0)³y¦¨«e­±·|¦³¤@¬q¼v¹³¥¼¼½¥Xªº°ÝÃD (preload¼ç¦bªºbug)
+3.§ïµ½­µÁn«e­±¦b½Õ¾ãÁn­µ³t²v­µ½èªº³¡¥÷
+4.ºô¸ô¦P¨BÂ_½u­«½u¾÷¨î (ClientºÝ)
+
+=====  V1.1.4.6   =====
+
+Date: 2018/03/21
+Author: Jack
+
+1. ­×¥¿³sFtp®É¡A­YµLºô¸ô·|¾É­P¿ù»~ªº°ÝÃD¡C
+2. Shape¥[¤J Offset«á±ÛÂàªº¥\¯à¡C (©|¥¼§¹¦¨)
+3. ­×§ïShapeªºUndo¡BRedo¡BDeleteªºUI
+
+=====  V1.1.4.5   =====
+
+Date: 2018/03/20
+Author: Noah
+
+­×¥¿²£«~¾÷Án­µ¼½©ñ­µ½è°ÝÃD¤Îframe rate¤£¨¬ªº°ÝÃD
+
+=====  V1.1.4.4   =====
+
+Date: 2018/03/19
+Author: Jack
+
+¥[¤JFTP¦Û°ÊUpdate³Ì·sª©ªº¥\¯à, »Ý·f°t·sªºSTARE_UPDATE.exe
+
+=====  V1.1.4.3   =====
+
+Date: 2018/03/15
+Author: Jack
+
+­×¥¿·í¼v¤ù°ßÅª®É¡A¶×¤J¼v¤ù«áµLªk¥[¸Ñ±Kªº°ÝÃD
+
+=====  V1.1.4.2   =====
+
+Date: 2018/03/15
+Author: Noah
+
+­×¥¿¨SÁn­µªº°ÝÃD
+
+=====  V1.1.4.1   =====
+
+Date: 2018/03/14
+Author: Jack
+
+1. ­×¥¿Shape¼Ò¦¡¡A«öÁäµLªk²¾°Êª«¥óªº°ÝÃD
+2. ­×¥¿Shape¼Ò¦¡¡A«öCtrlµLªkÁôÂÃUIªº°ÝÃD
+
+=====  V1.1.4.0   =====
+
+Date: 2018/03/12
+Author: Jack
+
+1. ­×¥¿Shape Modify PT®É¡A½uªºÃC¦â¤£¤@ªº°ÝÃD¡A§ï¦¨³£¬O¬õ¦â
+2. ­­¨îLoad Obj®É¡A­Y¥H¼½©ñ¼v¤ù¤w¹F10­Ó¡A«h¨q¥XÄµ§i¡A¤£¦A·s¼W¼v¤ù
+3. Shape¶}±Ò±M®×©M¶}±M®×®É¡A·|¥ý§â¥ÑShape¶}±ÒªºMediaÃö³¬¡CÁ×§K¶}Ãö±M®×®É¡A¶W¹L´CÅé10­Ó¤W­­
+4. ¶}±Òª«¥ó®É¡A·|¦Û°Ê¿ï¨ú³Ìªñª«¥ó¬°±±¨îªºª«¥ó
+5. ­×¥¿¦b¿ïÂI²¾°Ê®É¡A©|¥¼§¹¦¨®É«öUndo·|¾É­Pª«Åé¿ù¶Ãªº°ÝÃD
+6. Á×¶}Shape Message¸òTimer Function¦P®É¶i¤Jªº°ÝÃD¡C
+7. ±NShape±M®×©Ò»ÝÀÉ®×¥]¦¨¤@­ÓFile, ¨Ã¥B¶}Ãö®É·|¥[¸Ñ±K¡C
+
+=====  V1.1.3.9   =====
+
+Date: 2018/03/08
+Author: Noah
+
+­×¥¿ªºBug¦p¤U:
+1.·s¼W20¬íªºSourceÀÉ¡A¨Ã¦b5~10¬í¥[¤JRedªº°Ñ¼Æ¡A¦¹®É¶i¦æ¼v¹³¼½©ñ®É¡A1~5¬í­ì©l¼v¹³ÀÉ¼½©ñ¡A5~10¬í¦³Redªº¼vÅT¡A10~20¬í«o¤]¨ü¨ì¢à¢í¢ìªº¼vÅT¡C
+2.·s¼W¤@­ÓTimeLine Setting¥[¤JSource¨Ã¦sÀÉÃö³¬ÀÉ®×¡A¦A·s¼W¥t¤@­ÓTimeLine Setting¥[¤JSource¨Ã¦sÀÉÃö³¬ÀÉ®×¡A
+¦¹®É¥´¶}²Ä¤@­ÓTimeSetting¡ASourceÀÉ¥¿±`¡A¦A¥´¶}²Ä¤G­ÓTimeLine Setting®É¡A²Ä¤@­ÓTimeLine SettingªºSourceÀÉ¤£¨£¤F
+
+=====  V1.1.3.8   =====
+
+Date: 2018/03/07
+Author: Jack
+
+1. ­×¥¿¤TÂI¹ï¦ì®É¡A¨q¥XToo Close·|¾É­P¹ïÀ³Àç¹õª«¥ó¶]±¼ªº°ÝÃD
+2. ­×¥¿ª«¥óÁ`¼Æ¤j©ó12¡A·|¾É­P·í¾÷ªº°ÝÃD
+3. ­×¥¿Shape¶È¨q¼v¤ù®É¡A·|·í¾÷ªº°ÝÃD
+4. ¦b¥[¸Ñ±K¥¢±Ñ®É·|¨q¿ù»~Äµ§i¡C¥ý¥[¿ù»~Äµ§i¡A½T»{µo¥Í¾÷²v¡A©|¥¼§¹¦¨«áÄò­×¥¿
+5. ­×¥¿¥¼¿ï¾Üª«¥ó®É¡A«o¥i¹ïª«¥ó¾Þ§@ªº°ÝÃD
+6. ­×¥¿¿ï¾Ü´CÅéÀÉ®É¡A¤£¿ï¾ÜÀÉ®×¡A«o«öOK·|¾É­Pµ{¦¡¥d¦íªº°ÝÃD
+
+=====  V1.1.3.7   =====
+
+Date: 2018/03/07
+Author: Noah
+
+­×¥¿ªºBug¦p¤U:
+1.¶}±ÒTimeLine­¶­±«á¡Aª½±µÂI¿ï¥ª¤W¨¤ªº¤e¤e«ö¶s¡A¥X²{¿ù»~µøµ¡
+2.¥ý·s¼W¨â­ÓTimeLine Setting(¨Ã¥¼¥[¤J¥ô¦óSource)¡A¦b§R°£®É¥X²{¿ù»~µøµ¡
+
+=====  V1.1.3.6   =====
+
+Date: 2018/03/06
+Author: Aleen
+
+±N©Ò¦³¬ÛÃöªº±M®×¥[¤JMediaServer¤è®×¤¤
+
+=====  V1.1.3.5   =====
+
+Date: 2018/03/05
+Author: Jack
+
+1. ­×¥¿¦hPannel®É¡A¦³®Éª«¥ó¼Æ¤£¹ï¡A©Î¬ODeleteª«¥ó®É·|¿ù¶Ãªº°ÝÃD
+2. ­×¥¿Shape¾Þ§@®É¡A¦³¾÷²v¼u¥X¿ù»~°T®§·í¾÷ªº°ÝÃD
+3. ­×¥¿Shape®É«öESC¦³®ÉµLªk¤ÏÀ³ªº°ÝÃD
+4. Shaep ­×§ïLoad Obj°Ê§@¡C·|³Æ¥÷¤@­ÓObjÀÉ¡A¹ï¦¹Obj°µ¥ô¦ó¾Þ§@¡A¤£·|¼vÅT­ì¥»ªºObjÀÉ®×¡C
+   ¨Ã¥B¦bSave±M®×®É¡A·|¤@¨Ö±N±M®×¤ºªº³Æ¥÷Obj¤@¨ÖCopy¨ì«ü©w¸ô®|
+5. Shape Á×¶}¥¼¿ï¾ÜPannel¡Bª«¥ó¡A«o¤´¥i¾Þ§@ª«¥óªº°ÝÃD
+6. Shape Á×¶}·í¾Þ§@¤Ó§Ö®É¡A¥¼°Ê§@§¹¦¨¡A²£¥Í»~°Ê§@ªº°ÝÃD
+
+=====  V1.1.3.4   =====
+
+Date: 2018/03/02
+Author: Noah
+
+1.MediaCtrl¥[¤JReset¥\¯à
+2.µù¸Ñ±¼MediaCtrl­ì¥»µ{¦¡µ²§ô®É¦sÀÉªº³¡¥÷¡AÁ×§K¥i¯à³y¦¨¸ê®Æ¿ò¥¢ªº°ÝÃD
+3.MediaCtrl¦b¿ï¾Ü¸ê®Æ¨Ó·½®É¡A¤]¥i¥H³z¹LTreeCtrlªº¾ð¸`ÂI¿ï¾Ü
+4.­×¥¿·íSource¥[¤J¤Ó¦h­Ó«á¡A¦³®É·|µLªk¦A¥[¤Jªº°ÝÃD
+
+=====  V1.1.3.3   =====
+
+Date: 2018/02/27
+Author: Noah
+
+1.­×§ïPresentationIntervalªº°Ñ¼Æ§ï¬°D3DPRESENT_INTERVAL_IMMEDIATE
+2.§R°£timelineªºItem²M°£ÂÂ¦³ªºµe­±
+
+=====  V1.1.3.2   =====
+
+Date: 2018/02/27
+Author: Noah
+
+1.¤Á´«Item®É¡A¥ý¼È°±­ì¥»ªºª¬ºA (´N¬O¤£¤¹³\¼½©ñ®É¤Á´«¤£¦PªºItem)
+2.­×¥¿·íÁ`®É¶¡«Ü¹s®É¡A¦b«ö¤U¼½©ñ®Étimeline¤£¸Ó±Ò°Êªº°ÝÃD
+3.§R°£item©Î¤Á´«Item®É¡A²M°£ÂÂªºµe­±¸ê®Æ
+4.§ïµ½PreloadSourceªº°ÝÃD
+5.­×¥¿StretchRect() failed.ªº°ÝÃD
+
+=====  V1.1.3.1   =====
+
+Date: 2018/02/27
+Author: Jack
+
+¥[¤JShareMemory¥Î¥H§PÂ_µ{¦¡¬O§_¤w¸g¶}±Ò¡AÁ×§K³Q­«ÂÐ¶}¡Cµ²§ô®É¤]¥[Sleep¤T¬í¡AÁ×§K¦³¨ÇThread©|¥¼§¹¦¨°Ê§@¡C
+
+=====  V1.1.3.0   =====
+
+Date: 2018/02/23
+Author: Jack
+
+1.­×¥¿Shape¾Þ§@®É¾÷²v·í¾÷ªº°ÝÃD
+2.?¥¿¦b¤Á´«3ÂI¿ïÂIMapping®É,¦³»~°Ê§@ªº°ÝÃD
+3.¥[¤J2D«÷±µ¿Ä¦Xªº©³¼h¥\¯à,¥\¯à¶}µo¤¤,©|¥¼§¹¦¨
+4.­×¥¿·Æ¹«¥i²¾¥X¥Dµøµ¡Àç¹õªº°ÝÃD
+5.¥ÑShape¥[¤JMedia®É,¤£¾É¤J¦P¨B¾÷¨î,¥H¨Ï¨ä¥i¥H¶¶§Q¼½©ñ
+6.Á×¶}Shape¨S¦³¿ï¾ÜÀç¹õ®É,«o¥i¥H¹ïª«¥ó¾Þ§@ªº»~°Ê§@
+
+=====  V1.1.2.9   =====
+
+Date: 2018/02/23
+Author: Noah
+
+­×¥¿½sÄ¶ªº°ÝÃD
+
+=====  V1.1.2.8   =====
+
+Date: 2018/02/23
+Author: Noah
+
+1.¥[¤Jtimeline item§R°£®É¤@¨Ç¨¾§b¾÷¨î
+2.ºô¸ô¦P¨B - ºô¸ô¤¤Â_®É¥ÑTimeCodeEngine±µ¤âªº¾÷¨î  (¸ûµu®É¶¡Â_½u)
+3.ºô¸ô¦P¨B - ºô¸ô«ì´_«áÄ~Äò¹B§@ªº¾÷¨î (¸ûµu®É¶¡Â_½u)
+
+=====  V1.1.2.7   =====
+
+Date: 2018/02/09
+Author: Noah
+
+1.IntervalMode¹w³]§ï¬°DIM_GOBAL
+
+=====  V1.1.2.6   =====
+
+Date: 2018/02/08
+Author: Noah
+
+­×¥¿ClientºÝµLªkloginªº°ÝÃD
+
+=====  V1.1.2.5   =====
+
+Date: 2018/02/07
+Author: Noah
+
+1.·s¼WTCClient¡BTCServer¼Ò²Õ (¹ê§@Client/Server¬ÛÃö¥\¯à)
+  µù:¥HTCP¨ó©w¬°¥D¡AUDP¥Î¨Ó¹ê§@·j´MServer¥Î
+2.·s¼WNetCommon.h¥Î¨Ó©w¸qºô¸ô¥\¯à¬ÛÃö
+3.·s¼WServerListDlg¥Î¨ÓÅã¥ÜServer IP / Port¸ê°T¡A¨ÑClientºÝ¿ï¨ú
+4.TCClientDll / TCServerDll¥Î¨Ó¸ü¤JTCClient¡BTCServer¼Ò²Õ¨Ã´£¨Ñ¬ÛÃöªº·¾³q¤¶­±
+5.·s¼WTxtButtonCtrl¥Î¨Ó¹ê§@¤å¦r«¬ºAButton¨Ï¥Î  (Search , Start , Stop)
+6.·s¼WWaitingDlg·í°õ¦æSearch¥\¯à®É¡A¸õ¥Xµ¥«Ýµøµ¡
+
+=====  V1.1.2.4   =====
+
+Date: 2018/02/06
+Author: Noah
+
+·s¼WTimelineEditFacade::PreloadSource()¸Ñ¨M½sÄ¶°ÝÃD
+
+=====  V1.1.2.3   =====
+
+Date: 2018/02/06
+Author: Jack
+
+1. ¦bShape¤¤¥[¤JNew, Open, Save±M®×ªº¥\¯à¡A¥iDelete¥þ³¡ª«¥ó¡A¨Ã¶}±Ò¤§«eÀx¦sªº±M®×¡C
+2. ­×§ï¸Ñ±K«áªº´CÅéÀÉ¦W¡AÁ×§KxmlÀx¦s®É¡A·|±N¨ä»{¬°¯S®í¦r¤¸
+3. ¼È¯dFTP´ú¸ÕCode, ¥Ø«e¥i³sFTP¡A¦ý¤£¥i³sSFTP
+4. ­×§ïShape¤¤Undo, Redo, Deleteªº¥\¯à¦ì¸m¡A§ï¦b¥ªÃä¥\¯à¦C¡C¦Ó«D¨C¤@Obejct¦³¦¹«ö¶s¡C
+
+=====  V1.1.2.2   =====
+
+Date: 2018/02/05
+Author: Noah
+
+1.¥[¤JPreload¾÷¨î§ïµ½DIM_GOBAL²Ä¤@¦¸¼½©ñ®É¡AÁn­µ¤ñ¼v¹³ºCªº°ÝÃD
+2.­×¥¿TimelineManager.h ¯ÊTCAdapter* m_pTCAdapter;³y¦¨½sÄ¶¿ù»~ªº°ÝÃD
+
+=====  V1.1.2.1   =====
+
+Date: 2018/02/01
+Author: Noah
+
+1.·s¼WTCAdapter§@¬°time code¤¶­± 
+  µù:DIM_GOBAL¼Ò¦¡¤w¥i¥H¥¿±`ªº¹B§@
+2.­×¥¿·í«e·Æ¹«¦ì¸m®É¶¡¸ê°T¥¼§ó·sªº°ÝÃD
+3.·s¼WSetStartTime¥Î¨Ó¸Ñ¨MDIM_GOBAL¼Ò¦¡¤U¡A¤£¦Pªø«×¤£¦P¦ì¸m³y¦¨ªº°ÝÃD
+
+=====  V1.1.2.0   =====
+
+Date: 2018/01/29
+Author: Jack
+
+1. ­×¥¿§R°£ª«¥ó¡A¦³¾÷²v¥d¦íªº°ÝÃD
+2. ­×§ï¥Dµe­±¡A¤ÎShapeªºUI
+3. ¶×¤J¼v¤ù®É¡A·|¥ý½T»{ÀÉ®×¬O§_¦s¦b
+
+=====  V1.1.1.9   =====
+
+Date: 2018/01/29
+Author: Noah
+
+Mixer·sUI:
+(1)·s¼W\UI Folder\Mixer2¥Ø¿ý
+(2)·s¼WÀÉ®×BitSlider.h , BitSlider.cpp , BitWnd.h , BitWnd.cpp , IconListCtrl.h , IconListCtrl.cpp , Mixer2Dlg.h , Mixer2Dlg.cpp , RoundSliderCtrl.h , RoundSliderCtrl.cpp
+(3)·s¼W#define _MIXER2 1¥Î¨Ó±Ò¥Î·sªºUIµ{¦¡
+
+=====  V1.1.1.8   =====
+
+Date: 2018/01/22
+Author: Noah
+
+­×¥¿OutXAudio2¦b¥¼ªì©l¤Æ¦¨¥\®É¡A¥h°õ¦æGetVolume³y¦¨ªºBug
+
+=====  V1.1.1.7   =====
+
+Date: 2018/01/19
+Author: Jack
+
+1. ±Nª«¥ó¤W­­¼Æ©w¬°10­Ó¡A¨Ã¥B¹F¨ì­­¨î®É¡A±NµLªk¦A¥[¤J
+2. ±N¥[±K¤è¦¡§ï¬°­ìÀÉ®×¥[±K¡A¨Ã¥B¸Ñ±K®É­×§ïÀÉ¦W¥H«K½T»{¡C
+3. ­×¥¿§R°£ª«¥ó«á¡A¤U¦¸¶}±Òª«¥ó¤´¦s¦bªº°ÝÃD
+4. ­×¥¿3ÂI¹ï¦ì®É¡A­Y¬°too close¡Cª«¥ó¶]±¼ªº°ÝÃD
+5. ­×¥¿­Yobject.ini¤£¦s¦b®É¡A¾É­P3ÂI¹ï¦ì§¹·|·í¾÷ªº°ÝÃD
+6. ¥[¤J¶}±Ò®É¡A±½´y¨Ã­×¥¿¤W¦¸¶}±Ò¡A«o¥¼¥¿±`¥[±K¦^¨Óªº´CÅéÀÉ¡C
+
+=====  V1.1.1.6   =====
+
+Date: 20187/01/19
+Author: Noah
+
+­×¥¿OutXAudio2¥¼ªì©l¤Æªº°ÝÃD
+
+=====  V1.1.1.5   =====
+
+Date: 2018/01/18
+Author: Noah
+
+­×¥¿DIM_LOCAL / DIM_GOBAL¼Ò¦¡¤U¡A¦b°õ¦æpause«á¦A¼½©ñ®É¡Atimestamp¶¡¹j¹L¤jªº°ÝÃD
+
+=====  V1.1.1.4   =====
+
+Date: 2018/01/18
+Author: Noah
+
+1.MFilePlayer·s¼WSetDisplayIntervalMode¡A¥Î¨Ó³]©w¤£¦Pªº­p¼Æ¼Ò¦¡
+ (1)DIM_NORMAL - ­ì¥»ªº¼Ò¦¡  
+ (2)DIM_LOCAL - ¤º³¡time code¼Ò¦¡
+ (3)DIM_GOBAL - ¥~³¡time code¼Ò¦¡  (¥Î¨Ó¦P¨B¦h­ÓÀÉ®×¼½©ñ¶i«×¡A¤Î¥¼¨Ó¦h¥x¦P¨B¨Ï¥Î)
+2.­×¥¿¼v­µ¦P¨Bªº°ÝÃD
+  µù:DIM_LOCAL / DIM_GOBAL¤~·|¦³§@¥Î
+3.·s¼WOutXAudio2¼Ò²Õ - ¥Î¨Ó¸Ñ¨M¼v­µ¦P¨B¤Î­µ½è¬ÛÃö°ÝÃD
+
+=====  V1.1.1.3   =====
+
+Date: 2018/01/12
+Author: Noah
+
+1.timeline ·sUI
+2.­×¥¿timeline¦h¦¸´`Àô¼½©ñ«á°±¤îªº°ÝÃD
+3.m_ImgEffect3D§ï¦¨¥uªì©l¤Æ¤@¦¸¡A¬°¤F§ïµ½¼v¤ù²Ä¤@¦¸¼½©ñ»Ýªá¶O¤@¬q®É¶¡©l¤Æ¡A®e©ö³y¦¨¼½©ñµe­±¤£¦P¨B
+4.­×¥¿¼½©ñ«á«öpause¡A¦A«ö¼½©ñ®É³y¦¨·í±¼ªº°ÝÃD
+
+=====  V1.1.1.2   =====
+
+Date: 2018/01/12
+Author: Jack
+
+1. «Ø¥ß´CÅé®wªº¾ðª¬µ²ºc®É¡A¥ý½T»{ÀÉ®×¬O§_¦s¦b¡CÁ×§KÀÉ®×³Q»~¬å«á¡Aµ{¦¡Crashed¡C
+2. TimeLine¼½©ñ®É¡A¥ý½T»{¬O§_¬°¥[±K¼Ò¦¡¡C­Y¬°¥[±K¼Ò¦¡¥ý¶i¦æ³B²z¡C
+3. ­×¥¿´CÅé¦bSeek®É¡A±N·í¤UªºFrame²M°£ªº°Ê§@¡CÁ×§K¤w¸g­n©ñ·í¤UªºFrame®É¡A¸ê®Æ«o³Q²MªÅ¡C
+
+=====  V1.1.1.1   =====
+
+Date: 2018/01/12
+Author: Noah
+
+1.MediaFileManager¦h§PÂ_ÀÉ®×¬O§_¦s¦b¡AÁ×§KÀÉ®×¤£¦s¦b³y¦¨ÀÉ±¼
+2.·íCreateSurfaces°t¸m¥¢±Ñ®É¡A§ï¥ÎYV12ªº®æ¦¡°t¸m¡A¥Î¨Ó­×¥¿¦h¿Ã¹õ¿é¥X·í±¼ªº°ÝÃD
+3.­×§ï¸Ñ±K«áÀÉ®×ªº¦ì¸m
+4.µù¸Ñ±¼§RÀÉªº³¡¥÷¡AÁ×§K»~§RÀÉ®×¡A³y¦¨ÀÉ®×¤£¦s¦bªº°ÝÃD
+
+=====  V1.1.1.0   =====
+
+Date: 2018/01/04
+Author: Noah
+
+1.timelineªºsource¥i¥H¿ï¾Ü¶}©l®É¶¡
+  (1)²¾°Ê¨ì«ü©wªº®É¶¡ 
+  (2)¼W/´î³æ¦ì®É¶¡ (+1 Sec , +2 Secs , +5 Secs , +10 Secs , -1 Sec , -2 Secs , -5 Secs , -10 Secs)
+2.timelineªºsource¥i¥H³z¹L <- , -> Áä²¾°Êsourceªº¦ì¸m 
+  µù:¦]timelineµLªk±µ¦¬<- , -> Áä¡A§ï¥Î -Áä / =Áä ¼È´À
+3.timelineªºsource¦b¥[¤J¥t¤@­Ósource®É¦Û°Ê¥[¨ì«e¤@­Óªº³Ì«á­±
+
+=====  V1.0.0.9   =====
+
+Date: 2018/01/03
+Author: Jack
+
+1. ±NEncode Media§ï¬°1¡A·Ç³Æ¥¿¦¡¥X³f¡C
+2. ¦bMediaFileCommon.h¥[¤J #define PLAY_3D_MODE, Á×§K²¤¹L¥[¸Ñ±K°Ê§@¡C
+3. ¦b±½´yIP Address¡A¥[¤J¦hºô¥d±½´y¡C
+
+=====  V1.0.0.8   =====
+
+Date: 2017/12/27
+Author: Noah
+
+¥[¤Jºô¸ô³]©wUI¤Î¬ÛÃöªºUI¤¸¥ó
+
+=====  V1.0.0.7   =====
+
+Date: 2017/12/25
+Author: Jack
+
+·s¼W¦P¨B¥\¯à¡A©|¥¼§¹¦¨UI³¡¥÷¡A¥Ø«eªìª©§¹¦¨¡A¥i§Y®É¥[¤JClient©ÎServer¡A¤£³Qºô¸ô«~½è¡A
+©Îºô¸ô¤¤Â_¼vÅT¡C¥Ø«e¨ü­­UDP³t«×µLªkºë·Ç¹ï®É¡A«Ý¤é«á§ïµ½¡C
+
+=====  V1.0.0.6   =====
+
+Date: 2017/12/21
+Author: Noah
+
+1.shapeµe­±¿ý¼v¥\¯à¤ä´©¿ý»sÁn­µ¸ê®Æ
+2.player¤ä´©¼½©ñÁn­µÀÉ®×¤Îtimeline¥i¥H¥[¤JÁn­µÀÉ®×
+3.shapeµe­±¿ý¼v¥\¯à´£¨Ñ¦Û°Êµ²§ô¥\¯à (¼½¨ìÀÉ®×µ²§ô®É¦Û°Êµ²§ô¿ý¼v¥\¯à)
+
+=====  V1.0.0.5   =====
+
+Date: 2017/12/20
+Author: Noah
+
+§ó·sFFMediaFile.dll­×¥¿timestamp¿ù¶Ãªº°ÝÃD
+
+=====  V1.0.0.4   =====
+
+Date: 2017/12/18
+Author: Jack
+
+1. ­×¥¿µ²§ôÂ÷¶}®É¡A·|·í¾÷ªº°ÝÃD¡C(¦bSimpleMediaCtrl ¸Ñºc¤¤¡A¥ý¼È¥Î¦¹¤è¦¡¸Ñ)
+2. ­×¥¿¦h§ë¼v¾÷®É¡ALoad Project®É¡A²Ä¤G§ë¼v¾÷ªºª«¥óµLªkÅã¥Üªº°ÝÃD¡C
+3. ­×¥¿LogoDlg.cppµ²§À¦r¤¸¤£¤@ªº°ÝÃD¡C
+
+=====  V1.0.0.3   =====
+
+Date: 2017/12/15
+Author: Noah
+
+­×¥¿player¦b¬Y¨Çª¬ºA¤U§ó·s¶i«×®É¡A·|³y¦¨·í±¼ªº°ÝÃD
+
+=====  V1.0.0.2   =====
+
+Date: 2017/12/14
+Author: Jack
+
+­×§ïMedia¼½©ñ®Éªº®É¶¡¸ê°T¡A¨Ã­×§ïMixerªºSeek¡A¨Ï¨ä°Ê§@¥¿±`
+
+=====  V1.0.0.1   =====
+
+Date: 2017/12/14
+Author: Jack
+
+­×§ï¿ý¼vSleep®É¶¡¡A¨Ï¨ä¸ò­ì¼v¤ù¤@­P¡C
+
+=====  V1.0.0.0   =====
+
+Date: 2017/12/14
+Author: Noah
+
+­×¥¿Player´£¨Ñªºframe time¿ù¶Ãªº°ÝÃD
+
+=====  V1.0.9.9   =====
+
+Date: 2017/12/14
+Author: Jack
+
+1. ­×§ïShape¥iª½±µLoad Video¡A¨Ã¾É¤J¥Ø«eg_MediaStreamAry¤¤©|¥¼¶}ÀÉªº¦ì¸m
+2. ­×§ïShape±M®×¶}±Ò¤è¦¡¡C¥i«e¦¸¥ÎTimeLine¶}±Ò¼v¤ù¡A¦Ó³o¦¸¥¼¶}TimeLineª½±µ¶iShape¡A
+   ¥ç¥i¦Û°Ê¶}±Ò¼v¤ù¡C
+3. ­×¥¿·íShape±M®×¶}±Ò®É¡A­Y¹ïÀ³ªº§ë¼v¾÷¤£¦s¦b·|¾É­P·í¾÷ªº°ÝÃD. 
+4. ¦bMixCrtlDLg¾É¤J DispManager¬[ºc¡C¥Ø«e¥i¦Û°Ê¨q«e¤T­Óg_MediaStreamAryªº¼v¤ù¡A
+   ¨Ã¥B¥iª½±µ3D¯S®Ä½Õ¾ã¡C ¥Ø«eMixerCtrlªº DisplayManagerªº Index¼È©w¬°100+
+
+=====  V1.0.9.8   =====
+
+Date: 2017/12/14
+Author: Noah
+
+MFRecorder§ï¬°ÀRºA³sµ²
+
+=====  V1.0.9.7   =====
+
+Date: 2017/12/13
+Author: Noah
+
+·s¼W¿ý¼v¥\¯à 
+µù1:¶i¤Jshape«á¡A«ö"R"Áä±Ò°Ê¿ý¼v¡A«ö"S"°±¤î¿ý¼v
+µù2:¿ý¼vÀÉ®×¦s©ñ¦ì¸m C:\ProgramData\ (©M¨t²Î¦w¸Ë¦ì¸m¦³Ãö) ©³¤U ÀÉ¦W®æ¦¡ shape_xxxxxx.avi
+
+=====  V1.0.9.6   =====
+
+Date: 2017/12/08
+Author: Jack
+
+1.  ­×§ïShape Lock D3Dªº¤è¦¡¡A¥H¤Î¦bMedia Stream¦b¯S®Ä®É¨ú¥ÎSurfaceªº®É¶¡ÂI¡C
+    ¥H´î¤Öµ{¦¡¶ë¨®±¡ªp
+
+2.  ¥~¥]¯S®Ä¡A¤w±N©Ò¦³¯S®Ä­×§ï¬°¥ÎHLSL¤è¦¡³B²z¡C¨Ã±Nrandom²¾°£¡A§ï¥ÎGetTickCountªº¤è¦¡¡C
+    ¥H«K©ó¤§«á¸òªO¤l¦P¨B¯S®Ä³¡¥÷¡C
+
+=====  V1.0.9.5   =====
+
+Date: 2017/12/08
+Author: Noah
+
+­×¥¿timeline¦bÂI¿ïtrack item«á¡A³y¦¨ÂI¿ï¤£¥¿±`ªº°ÝÃD
+
+=====  V1.0.9.4   =====
+
+Date: 2017/12/06
+Author: Noah
+
+1. ¼W¥[ShapeDispManager Class, Ä~©Ó¦Û DisplayManager¡A¥D­n¥Î¦bShape¡A
+   ¼W¥[PannelIdx¤Î D3D¬O´¿§_¦b¨Ï¥Î¤¤ªº°Ñ¼Æ
+2. ±NMediaStream¤ºªº DisplayManager§ï¦¨ ShapeDispManager Arrayªº«¬ºA
+3. Noah ­×¥¿MixerEffect¡A·íPitch¼e«×¤£µ¥©ó¼v¤ùÒø«×®É¡A¶]¯S®Ä®É¼v¤ù·|¿ù¶Ãªº°ÝÃD¡C
+4. ­×¥¿3ÂIMappingºâ¦¡¡AÁÙ¦b½Õ¾ã¤¤¡C
+
+=====  V1.0.9.3   =====
+
+Date: 2017/11/28
+Author: Noah
+
+1.Åýshaderªº¯S®Ä¥i¥H¥¿±`ªº¹B§@
+2.·í¤Á´«¥Xtime line®É¡AÃö³¬previewªº¼v¹³³¡¥÷¡A´î¤ÖGPU¨Ï¥Î¶q
+
+=====  V1.0.9.2   =====
+
+Date: 2017/11/20
+Author: Noah
+
+1.´î¤Ö¶}ÃöÀÉ®×¦¸¼Æ¡A§ïµ½ªø®É¶¡°õ¦æ®É°O¾ÐÅé¨Ï¥Î¶q
+2.§ï¼g­ì¥»stl queue§ï¥Î¦Û¤v¼gªºSQQueue¨ú¥N
+3.¯S®Ä¥i¥H¥¿±`ªº¹B§@
+
+=====  V1.0.9.1   =====
+
+Date: 2017/11/06
+Author: Jack
+
+1. ¶}±ÒMenu Radio, ¥i°ÊºA¤Á´«¼Ò¦¡¡A¨Ã¯B°Ê¦b¨C­Ó¼Ò¦¡ªº³Ì¤U­±
+2. ¼W¥[±ÛÂàªº¼Ò¦¡³]©w¡A¥i­­©w³æ¶b(X, Y, Z)±ÛÂà¡A¥ô·N¶b±ÛÂà
+3. ­×§ïLoadª«¥ó¹ï¸Ü²°, ¶ÈÅã¥Ü¼½©ñ¤¤ªºVideo, ¨Ã¨q¥XFile Name
+4. ­×§ïShape¤ºªºª«¥ó¸ê°T, ¨q¥Xª«¥óªº Obj, Video ÀÉ¦W¡A¨Ã¥i§Y®É¤Á´«¼v¤ù
+5. ¼W¥[§R°£ª«¥óªº¥\¯à
+6. ­×¥¿Shape¤Á´«UI®É°{Ã{ªº°ÝÃD
+7. §¹¦¨Shapde¤¤ Undo/Redoªº¥\¯à(Point Mapping½Õ¾ã©|¥¼¾É¤J), ¥Ø«e¼ÈµL¨B¼Æ¤W­­
+
+=====  V1.0.9.0   =====
+
+Date: 2017/11/02
+Author: Noah
+
+1.Åý«Dshaderªº¯S®Ä¥i¥H¥¿±`ªº¹B§@
+2.Gray , Negative , RGB Color§ï¥Ñavfilter¨ú¥N
+
+=====  V1.0.8.9   =====
+
+Date: 2017/10/31
+Author: Noah
+
+§ó·sFFMediaFile.dll¤ÎMFilePlayer.dll
+
+=====  V1.0.8.8   =====
+
+Date: 2017/10/31
+Author: Noah
+
+1.§ïµ½¼v­µ¦P¨B°ÝÃD
+2.§ïµ½playerÃ­©w©Ê
+3.§ïµ½Án­µªº°ÝÃD
+4.·s¼Wsetscale¥\¯à¥Î¨Ó½Õ¾ã¿é¥X¼v¹³¤j¤p (³z¹LSourceScale.ini¥h³]©w)
+
+=====  V1.0.8.5   =====
+
+Date: 2017/10/05
+Author: Jack
+
+1. ¥[¤J¦Û°Ê§ó·sªº¥\¯à¡Aµ{¦¡¬°START_UPDATE.exe¡A¥\¯à¤w¸g¼g¦n¡C
+   «Ý¦³Server®É©ñ¤J¹ïÀ³ªº¸ô®|§Y¥i¥¿½T°õ¦æ¡C
+2. ¶}±ÒMenu Radio, ¥h°£¨ä¤¤ªº¹Ï¤ù¤òÃä
+
+
+=====  V1.0.8.4  =====
+
+Date: 2017/10/05
+Author: Noah
+
+1.¥[¤Jx64\Release¥Ø¿ý (¶}±ÒCFileDialog«á³y¦¨Ãö³¬®Écrash¡A§ï¥ÎRelease¥i¥H¸Ñ¨M¦¹°ÝÃD)
+µù:¦]3dworld.lib¨S¦³x64\Releaseªºª©¥»¡A©Ò¥H¦bx64\Releaseªºª©¥»¤U¥ýµù¸ÑPLANE_SCENE_3D¥\¯à¡C
+
+=====  V1.0.8.3   =====
+
+Date: 2017/09/28
+Author: Noah
+
+1.­×¥¿timeline¥[¤Jsource«á¡A°õ¦æplayµM«á¶i¤Jshape¦Aµ²§ô³nÅé¡A·|³y¦¨crashªº°ÝÃD
+
+
+=====  V1.0.8.2   =====
+
+Date: 2017/09/28
+Author: Noah
+
+1.±Ò¥ÎDisplayManager¥Î¨Ó±±ºÞ¸Ñ½X«áªº¸ê®Æ
+2.±Ò¥ÎI420¸ê®Æ®æ¦¡¡A´î»´³nÅé¾ãÅé®Ä¯à¤Î§ïµ½¦P¨B°ÝÃD
+
+=====  V1.0.8.1   =====
+
+Date: 2017/09/25
+Author: Noah
+
+1.§ïµ½time line UI³y¦¨CPU¨Ï¥Î²v¹L°ªªº°ÝÃD
+2.§ïµ½¦P®É¶}±Ò¦h­Ó¸ê®Æ¨Ó·½®É¡A¼½©ñ®É¼v¹³¤£¦P¨Bªº°ÝÃD
+
+=====  V1.0.8.0   =====
+
+Date: 2017/09/25
+Author: Jack
+
+1. ¥[¤JShape¤¤¿òÅS¤W¶ÇªºUI
+2. ­×¥¿Allocator¼u¥Xªº°T®§µøµ¡¬°¤£¥i²¤¹Lªº
+3. ±NShape UI§ï¬°¥iÁôÂÃ¡A«öCtrl¥iShow/Hide
+4. ­×¥¿32Bit HASP¸ô®|µLªk¨Ï¥Îªº°ÝÃD
+
+=====  V1.0.7.9   =====
+
+Date: 2017/09/18
+Author: Noah
+
+1.­×¥¿¸Ñ½XÄÀ©ñ°O¾ÐÅé®É³y¦¨¤£Ã­©wªº°ÝÃD 
+  µù:¦b¦P®É¶}±Ò¦h­ÓÀÉ®×®É¸û®e©öµo¥Í
+2.§ïµ½timeline UI CPU¨Ï¥Î²v¹L°ªªº°ÝÃD
+
+=====  V1.0.7.8   =====
+
+Date: 2017/09/07
+Author: Noah
+
+1.­×¥¿time line¯S®ÄµL§@¥Îªº°ÝÃD
+2.­×¥¿ÀÉ®×¥½ºÝ¸ê®Æ¥¼Åã¥Üªº°ÝÃD
+3.­×¥¿repeat«á­«³]RGB,Brightness,Contrast,Saturation,Hueªº­È
+
+=====  V1.0.7.7   =====
+
+Date: 2017/09/08
+Author: Noah
+
+1.¤W¶Çtimeline_project2.xml  (Á×§K«Ø¥ßx64ª©¥»¦btimeline®É²£¥Í°ÝÃD)
+2.§ó·sFFMediaFile.dll
+
+=====  V1.0.7.6   =====
+
+Date: 2017/09/07
+Author: Jack
+
+¥Ø«e¼v¤ùµw¸Ñ¡AAllocatorÁÙ¦³¨Ç°ÝÃD¡A¦¹¦¸°Ñ®i¥ý¼È¥Î³n¸Ñ¡C
+
+¥Ø«eTime Line¥i¸òShape¥i¾ã¦X¡C¥Îªk¥ý¦bTime Line«Ø±M®×¡A§â´CÅéInsert«á¨ÃPlay,
+µM«á¦bShape¥i¿ï¾Ü¥¿¼½©ñªºÀÉ®×¡C¤U¦¸¶}±Ò®É¡A¥ý¶}Tine Lineªº±M®× Play«á¦A¶i¤JShape¡A
+¤Î¥i¦^¨ì¤W¦¸ª¬ºA¡C
+
+¾ã¦X¼È§i¤@¬q¸¨¡A«Ý°Ñ®i§¹«á¡A¦A³°Äò§¹µ½¡C
+
+=====  V1.0.7.5   =====
+
+Date: 2017/09/07
+
+Fixed:
+1. ­×¥¿time line­«ÂÐ°õ¦æ¦h¦¸«á¡Aµe­±¤£°Êªº°ÝÃD
+
+=====  V1.0.7.6   =====
+
+Date: 2017/09/07
+
+Note:
+1. ¥Ø«e¼v¤ùµw¸Ñ¡AAllocatorÁÙ¦³¨Ç°ÝÃD¡A¦¹¦¸°Ñ®i¥ý¼È¥Î³n¸Ñ
+2. ¥Ø«eTime Line¥i¸òShape¥i¾ã¦X¡C¥Îªk¥ý¦bTime Line«Ø±M®×¡A§â´CÅéInsert«á¨ÃPlay,
+µM«á¦bShape¥i¿ï¾Ü¥¿¼½©ñªºÀÉ®×¡C¤U¦¸¶}±Ò®É¡A¥ý¶}Tine Lineªº±M®× Play«á¦A¶i¤JShape¡A
+¤Î¥i¦^¨ì¤W¦¸ª¬ºA¡C
+
+=====  V1.0.7.7   =====
+
+Date: 2017/09/08
+
+Fixed:
+1.¤W¶Çtimeline_project2.xml  (Á×§K«Ø¥ßx64ª©¥»¦btimeline®É²£¥Í°ÝÃD)
+2.§ó·sFFMediaFile.dll
+
+=====  V1.0.7.8   =====
+
+Date: 2017/09/14
+
+Fixed:
+1.Time line¯S®ÄµL§@¥Îªº°ÝÃD
+2.ÀÉ®×¥½ºÝ¸ê®Æ¥¼Åã¥Üªº°ÝÃD
+
+Added:
+1.Repeat«á­«³]RGB,Brightness,Contrast,Saturation,Hueªº­È
+
+=====  V1.0.7.9   =====
+
+Date: 2017/09/18
+
+Fixed:
+1.¸Ñ½XÄÀ©ñ°O¾ÐÅé®É³y¦¨¤£Ã­©wªº°ÝÃD
+2.§ïµ½timeline UI CPU¨Ï¥Î²v¹L°ªªº°ÝÃD
+
+=====  V1.0.8.0   =====
+
+Date: 2017/09/25
+
+Fixed:
+1. ¥[¤JShape¤¤¿òÅS¤W¶ÇªºUI
+2. Allocator¼u¥Xªº°T®§µøµ¡¬°¤£¥i²¤¹Lªº
+3. ­×¥¿32Bit HASP¸ô®|µLªk¨Ï¥Îªº°ÝÃD
+
+Added:
+1. ±NShape UI§ï¬°¥iÁôÂÃ¡A«öCtrl¥iShow/Hide
+
+=====  V1.0.8.1   =====
+
+Date: 2017/09/25
+
+Fixed:
+1.§ïµ½time line UI³y¦¨CPU¨Ï¥Î²v¹L°ªªº°ÝÃD
+2.§ïµ½¦P®É¶}±Ò¦h­Ó¸ê®Æ¨Ó·½®É¡A¼½©ñ®É¼v¹³¤£¦P¨Bªº°ÝÃD
+
+=====  V1.0.8.2   =====
+
+Date: 2017/09/28
+
+Added:
+1.±Ò¥ÎDisplayManager¥Î¨Ó±±ºÞ¸Ñ½X«áªº¸ê®Æ
+2.±Ò¥ÎI420¸ê®Æ®æ¦¡¡A´î»´³nÅé¾ãÅé®Ä¯à¤Î§ïµ½¦P¨B°ÝÃD
+
+=====  V1.0.8.3   =====
+
+Date: 2017/09/28
+
+Fixed:
+1.Timeline¥[¤Jsource«á¡A°õ¦æplayµM«á¶i¤Jshape¦Aµ²§ô³nÅé¡A·|³y¦¨crashªº°ÝÃD
+

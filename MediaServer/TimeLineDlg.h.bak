@@ -1,0 +1,168 @@
+#pragma once
+
+#include "Item_Class.h"
+#include "gdiplus.h"
+
+#include "TimelineEditView.h"
+#include "TimelineItemView.h"
+#include "ServiceProvider.h"
+#include "OutputService.h"
+#include "TimelineService.h"
+
+#include "xSplitterWnd.h"
+#include "View1.h"
+#include "TLPreview.h"
+#include "CheckBoxCtrl.h"
+#include "CStaticCtrl.h"
+#include "CIPCtrl.h"
+#include "CEditCtrl.h"
+#include "LogFileDll.h"
+#include "MidiCtrlReciever.h"
+#include "UTipDll.h"
+
+#include "../../../Include/SQList.h"
+
+#ifdef _ENABLE_TC_NET
+#include "TxtButtonCtrl.h"
+#include "WaitingDlg.h"
+#endif
+
+#ifdef _ENABLE_DISPLAY_MANAGER
+#include "D3DRender.h"
+#endif
+
+#define _MAX_PREVIEW_WIN 10
+
+using namespace Gdiplus;
+using namespace Timeline;
+
+class MyStatic : public CStatic
+{
+		HBRUSH m_hBlackBrush;
+	public:
+		MyStatic();
+		~MyStatic();
+
+		void SetBKColor(unsigned char r, unsigned char g, unsigned char b);
+
+protected:
+	afx_msg void OnPaint();
+
+	DECLARE_MESSAGE_MAP()
+};
+
+// CTimeLineDlg 對話方塊
+
+class CTimeLineDlg : public CDialog
+{
+	DECLARE_DYNAMIC(CTimeLineDlg)
+
+public:
+	CTimeLineDlg(CWnd* pParent = NULL);   // 標準建構函式
+	virtual ~CTimeLineDlg();
+
+	void SetIOSourceCtrlDll(IOSourceCtrlDll* pObj);
+	void ReDraw();
+	void AddTip(wchar_t* wszTipID, int left, int top, int right, int bottom);
+	void SetTip();
+
+// 對話方塊資料
+#ifdef AFX_DESIGN_TIME
+	enum { IDD = IDD_TEMP_DLG};
+#endif
+
+protected:
+	enum
+	{
+		TIMER_ITEM = 101
+	};
+	CMenu_Class* m_FramePic;
+	BOOL m_bTimerEnable;
+
+	//CSplitterWnd m_wndSplitter;
+	CxSplitterWnd m_wndSplitter;
+	CFrameWnd* m_pFrameSplit;
+	
+	ServiceProvider m_serviceManager;
+	OutputService m_outputService;
+	TimelineService m_timelineService;
+
+	GdiplusStartupInput m_gdiplusStartupInput;
+	ULONG_PTR m_gdiplusToken;
+
+	HBRUSH m_hBrush;
+
+	CheckBoxCtrl m_NetType;
+	CStaticCtrl m_IPText;
+	CStaticCtrl m_PortText;
+	CIPCtrl m_CIPCtrl;
+	CEditCtrl m_CEditCtrl;
+
+	LogFileDll* m_pLogFileDll;
+	void* m_pLogFileObj;
+
+	SQList* m_pHotKeyQueue;
+	int m_iTimerCount;
+
+	UTipDll* m_pUTipDll;
+	DWORD m_dwLastHotkeyRunTime;
+	int m_iLastHotkey;
+
+#ifdef _ENABLE_TC_NET
+	TxtButtonCtrl* m_pStartBtn;
+	TxtButtonCtrl* m_pStopBtn;
+	TxtButtonCtrl* m_pSearchBtn;
+
+	bool m_bUpdateTxtButtonCtrl;
+	int m_iUpdateTxtButtonCtrlCount;
+
+	bool m_bUpdateUIState;
+	int m_iUpdateUIStateCount;
+
+	MidiCtrlReciever* m_pMidiCtrlReciever;
+
+	//CWaitingDlg m_WaitingDlg;
+#endif
+
+	//CStatic* m_pPreviewWin;
+
+#ifdef MULTI_STREAM
+	MyStatic* m_pPreviewWins[_MAX_PREVIEW_WIN];
+	TLPreview* m_pTLPreviews[_MAX_PREVIEW_WIN];
+#else
+	MyStatic* m_pPreviewWin;
+	TLPreview* m_pTLPreview;
+#endif
+
+#ifdef _ENABLE_DISPLAY_MANAGER
+	D3DRender* m_pD3DRender;
+#endif
+
+	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV 支援
+
+	DECLARE_MESSAGE_MAP()
+	virtual void OnCancel();
+	afx_msg void OnHotKey(UINT nHotKeyId, UINT nKey1, UINT nKey2);
+public:
+	afx_msg void OnTimer(UINT_PTR nIDEvent);
+	virtual BOOL OnInitDialog();
+	virtual BOOL OnWndMsg(UINT message, WPARAM wParam, LPARAM lParam, LRESULT* pResult);
+	afx_msg void OnDestroy();
+	afx_msg void OnPaint();
+	virtual void OnOK();
+
+	void SetLogFileDll(LogFileDll* pObj);
+	void DoPause();
+
+#ifdef _ENABLE_TC_NET
+	afx_msg void OnMouseMove(UINT nFlags, CPoint point);
+	afx_msg void OnLButtonDown(UINT nFlags, CPoint point);
+	afx_msg void OnLButtonUp(UINT nFlags, CPoint point);
+	afx_msg LRESULT OnButtonClick(WPARAM wParam, LPARAM lParam);
+	afx_msg LRESULT OnUpdateUIState(WPARAM wParam, LPARAM lParam);
+
+	void EnableSyncButtons(bool bEnable);
+#endif
+	afx_msg LRESULT OnUpdateNetworkSetting(WPARAM wParam, LPARAM lParam);
+	afx_msg LRESULT OnDeviceNotReset(WPARAM wParam, LPARAM lParam);
+};
