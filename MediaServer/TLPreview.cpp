@@ -134,12 +134,12 @@ void TLPreview::Stop()
 	m_pMedisStream->Stop();
 }
 
-
+/*
 void TLPreview::Stop2()
 {
 	m_pMedisStream->Stop2();
 }
-
+*/
 void TLPreview::Seek(float fPos)
 {
 	m_pMedisStream->Seek(fPos);

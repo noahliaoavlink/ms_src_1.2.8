@@ -126,6 +126,7 @@ namespace Timeline
 		UnitMode GetUnitMode();
 		void SetTotalTimeOfCurrentItem(TimeCode timecode);
 		void ChangeTo(char* szName);
+		void ChangeTo(int iIndex);
 		void Back();
 		void Next();
 		void UpdateTotalTime();

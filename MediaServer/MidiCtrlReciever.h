@@ -34,6 +34,7 @@ public:
 	void Pause();
 	bool IsAlive();
 	void TimeCodeLoop();
+	void SwitchTo(int iItem);
 
 	void* WinMsg(int iMsg, void* pParameter1, void* pParameter2);
 };

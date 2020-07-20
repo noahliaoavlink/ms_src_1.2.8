@@ -45,7 +45,6 @@ public:
 	void Close(BOOL bCloseFromShape = FALSE);
 	void Play();
 	void Stop();
-	void Stop2();
 	void Pause();
 	void Seek(int iPos);
 	void EnableUpdatePos(bool bEnable);

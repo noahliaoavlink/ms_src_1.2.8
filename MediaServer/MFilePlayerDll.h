@@ -12,7 +12,7 @@ typedef int (*_In_MFP_Open_Proc)(void* pMFPObj,char* szFileName);
 typedef void (*_In_MFP_Close_Proc)(void* pMFPObj);
 typedef void (*_In_MFP_Play_Proc)(void* pMFPObj);
 typedef void (*_In_MFP_Stop_Proc)(void* pMFPObj);
-typedef void(*_In_MFP_Stop2_Proc)(void* pMFPObj);
+//typedef void(*_In_MFP_Stop2_Proc)(void* pMFPObj);
 typedef void (*_In_MFP_SetRepeat_Proc)(void* pMFPObj,bool bEnable);
 typedef void (*_In_MFP_EnableFadeIn_Proc)(void* pMFPObj,bool bEnable);
 typedef void (*_In_MFP_EnableFadeOut_Proc)(void* pMFPObj,bool bEnable);
@@ -80,7 +80,7 @@ class MFilePlayerDll
 		void Close(int iIndex);
 		void Play(int iIndex);
 		void Stop(int iIndex);
-		void Stop2(int iIndex);
+		//void Stop2(int iIndex);
 		void SetRepeat(int iIndex, bool bEnable);
 		void EnableFadeIn(int iIndex, bool bEnable);
 		void EnableFadeOut(int iIndex, bool bEnable);
@@ -140,7 +140,7 @@ class MFilePlayerDll
 		_In_MFP_Close_Proc _In_MFP_Close;
 		_In_MFP_Play_Proc _In_MFP_Play;
 		_In_MFP_Stop_Proc _In_MFP_Stop;
-		_In_MFP_Stop2_Proc _In_MFP_Stop2;
+		//_In_MFP_Stop2_Proc _In_MFP_Stop2;
 		_In_MFP_SetRepeat_Proc _In_MFP_SetRepeat;
 		_In_MFP_EnableFadeIn_Proc _In_MFP_EnableFadeIn;
 		_In_MFP_EnableFadeOut_Proc _In_MFP_EnableFadeOut;

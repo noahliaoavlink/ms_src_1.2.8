@@ -4,6 +4,7 @@
 #define _Schedule_H
 
 #include "ThreadBase.h"
+#include "PBSchedule.h"
 
 class Schedule : public ThreadBase
 {
@@ -17,6 +18,8 @@ class Schedule : public ThreadBase
 	HANDLE m_hProcess;
 
 	bool m_bShutdownIsFinished;
+
+	PBSchedule* m_pPBSchedule;
 
 public:
 	Schedule();

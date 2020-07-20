@@ -21,7 +21,7 @@
 
 #define _ENABLE_XAUDIO2 1
 #define _ENABLE_LOADING_CTRL 1
-//#define _ENABLE_MEDIA_FILE_CTRL 1
+#define _ENABLE_MEDIA_FILE_CTRL 1
 //#define _ENABLE_VIDEO_FILTER 1
 
 #ifdef _ENABLE_XAUDIO2
@@ -239,6 +239,10 @@ class AVFilePlayer : public ThreadBase
 		int m_iAudioDelay;
 		float m_fReSampleRateOffset;
 
+		int m_iCurConvVideoBufLen;
+		int m_iCurRawVideoFrameLen;
+		int m_iCurBufferLen;
+
 #ifdef _ENABLE_LOADING_CTRL
 		LoadingCtrl m_LoadingCtrl;
 #endif
@@ -257,6 +261,7 @@ class AVFilePlayer : public ThreadBase
 		void Stop2();
 		void Reset();
 		void ReleaseBuffers();
+		void ReleaseBuffers2();
 		void ResetBuffer();
 
 		void DisplayVideoFrame();

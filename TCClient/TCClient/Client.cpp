@@ -689,7 +689,7 @@ void Client::ProcessRecvData()
 				}
 #endif
 			}
-			Sleep(1);
+//			Sleep(1);
 		}
 	}
 
@@ -929,6 +929,15 @@ void Client::ProcessRecvData()
 					if (m_pEventCallback)
 						m_pEventCallback->Event(pCurPacketItem->lID, (void*)pCurPacketItem->lData, 0);
 					break;
+				case CID_SWITCH_TO:
+					{
+						sprintf(szMsg, "#SwitchTo# TC Client::ProcessRecvData() - CID_SWITCH_TO %u\n", pCurPacketItem->lData);
+						OutputDebugStringA(szMsg);
+
+						if (m_pEventCallback)
+							m_pEventCallback->Event(pCurPacketItem->lID, (void*)pCurPacketItem->lData, 0);
+					}
+					break;
 				default:
 				{
 					sprintf(szMsg, "TC Client::ProcessRecvData() - unknow packet!! [%d]\n", pCurPacketItem->lID);
@@ -985,7 +994,7 @@ void Client::CheckReceiveStatus()
 			m_dwRcvLastTime = dwCurTime;
 		else
 		{
-			if (dwCurTime >= m_dwRcvLastTime + 960)
+			if (dwCurTime >= m_dwRcvLastTime + 50)
 			{
 				m_iReceiveStatus = CRS_HUNGER;
 
@@ -999,7 +1008,7 @@ void Client::CheckReceiveStatus()
 		{
 			int iTmpNum = dwCurTime - m_dwIoctlLastTime;
 
-			if (iTmpNum > 900)
+			if (iTmpNum > 100)
 			{
 				m_iReceiveStatus = CRS_HUNGER;
 				sprintf(szMsg, "TC Client::CheckReceiveStatus() - dwCurTime - m_dwIoctlLastTime > 400 : %d\n", iTmpNum);

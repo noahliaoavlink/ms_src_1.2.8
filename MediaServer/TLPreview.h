@@ -57,7 +57,7 @@ public:
 	void Close();
 	void Play();
 	void Stop();
-	void Stop2();
+	//void Stop2();
 	void Pause();
 	void Seek(float fPos);
 	void EnableUpdatePos(bool bEnable);

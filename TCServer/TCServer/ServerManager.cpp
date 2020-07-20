@@ -36,7 +36,7 @@ ServerManager::ServerManager()
 	m_pUDPServer = new UDPServer;
 
 	m_pTimeCodeQueue = new SQQueue;
-	m_pTimeCodeQueue->Alloc(sizeof(long),200);
+	m_pTimeCodeQueue->Alloc(sizeof(long),400);
 	m_iWaitCount = 0;
 
 	InitializeCriticalSection(&m_CriticalSection);
@@ -412,6 +412,20 @@ void ServerManager::TC_Pause()
 	}
 }
 
+void ServerManager::TC_SwitchTo(long lIndex)
+{
+	if (m_SocketList.size() > 0)
+	{
+		std::list<Server*>::iterator it;
+		for (it = m_SocketList.begin(); it != m_SocketList.end(); it++)
+		{
+			Server* pCurItem = *it;
+			if (pCurItem)
+				pCurItem->TC_SwitchTo(lIndex);
+		}
+	}
+}
+
 int ServerManager::GetTCStatus()
 {
 	return m_iTCStatus;
@@ -465,8 +479,15 @@ void ServerManager::TimeCodeLoop()
 					Server* pCurItem = *it;
 					if (pCurItem)
 					{
-						pCurItem->UpdateCurFrameTime(m_ulCurFrameTime);
-						pCurItem->TC_UpdateTimeCode(m_ulCurTimeCode);
+						if (pCurItem->IsPassed())
+						{
+							pCurItem->UpdateCurFrameTime(m_ulCurFrameTime);
+							pCurItem->TC_UpdateTimeCode(m_ulCurTimeCode);
+						}
+						else
+						{
+							pCurItem->ResendHello();
+						}
 					}
 				}
 			}
@@ -484,11 +505,15 @@ void ServerManager::TimeCodeLoop()
 
 void ServerManager::UpdateTimeCode(unsigned long ulTimeCode)
 {
+	char szMsg[512];
 #if 0
 	m_ulCurTimeCode = ulTimeCode;
 #else
 	if (m_iTCStatus == TCS_RUNNING)
 	{
+//		sprintf(szMsg, "TCS Server ServerManager::UpdateTimeCode: %d ,m_ulTotalOfTimeCode = %d\n", ulTimeCode, m_ulTotalOfTimeCode);
+//		OutputDebugStringA(szMsg);
+
 		if (ulTimeCode > m_ulTotalOfTimeCode)
 			return;
 
@@ -507,6 +532,10 @@ void ServerManager::UpdateTimeCode(unsigned long ulTimeCode)
 
 void ServerManager::SetTotalOfTimeCode(unsigned long ulTimeCode)
 {
+//	char szMsg[512];
+//	sprintf(szMsg, "TCS Server ServerManager::SetTotalOfTimeCode: %d \n", ulTimeCode);
+//	OutputDebugStringA(szMsg);
+
 	m_ulTotalOfTimeCode = ulTimeCode;
 	m_iWaitCount = 4;
 	m_pTimeCodeQueue->Reset();

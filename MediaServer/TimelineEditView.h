@@ -99,6 +99,7 @@ namespace Timeline
 		afx_msg LRESULT OnNextTLItem(WPARAM wParam, LPARAM lParam);
 		afx_msg LRESULT OnTMPlay2(WPARAM wParam, LPARAM lParam);
 		afx_msg BOOL OnCopyData(CWnd* pWnd, COPYDATASTRUCT* pCopyDataStruct);
+		afx_msg LRESULT OnSwitchToTLItem(WPARAM wParam, LPARAM lParam);
 
 		afx_msg void OnTimer(UINT_PTR nIDEvent);
 

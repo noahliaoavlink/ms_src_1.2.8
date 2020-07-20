@@ -33,6 +33,8 @@
 
 extern CWaitingDlg g_WaitingDlg;
 
+unsigned int __stdcall _RunNetwork_ThreadProc(void* lpvThreadParm);
+
 // CTimeLineDlg ¹ï¸Ü¤è¶ô
 
 BEGIN_MESSAGE_MAP(MyStatic, CStatic)
@@ -514,6 +516,15 @@ void CTimeLineDlg::ReDraw()
 
 	pWnd->PostMessage(WM_TM_REDRAW, 0, 0);
 
+	bool bRepeat = GetPrivateProfileInt("Timeline_Setting", "Repeat", 0, theApp.m_strCurPath + "Setting.ini");
+
+	auto service = ServiceProvider::Instance()->GetTimelineService();
+	if (service != nullptr)
+	{
+		auto engine = service->GetTimeCodeEngine();
+		engine->EnableRepeat(bRepeat);
+	}
+
 #ifdef _ENABLE_TC_NET
 	m_bUpdateTxtButtonCtrl = true;
 	m_iUpdateTxtButtonCtrlCount = 10;
@@ -669,6 +680,9 @@ void CTimeLineDlg::OnDestroy()
 	DisplayManager* pDisplayManager = m_timelineService.GetTimelineManager()->GetDisplayManager();
 	pDisplayManager->Stop();
 
+	if (m_pMidiCtrlReciever)
+		delete m_pMidiCtrlReciever;
+
 	if (m_pD3DRender)
 		delete m_pD3DRender;
 
@@ -704,9 +718,6 @@ void CTimeLineDlg::OnDestroy()
 
 	if (m_pHotKeyQueue)
 		delete m_pHotKeyQueue;
-
-	if (m_pMidiCtrlReciever)
-		delete m_pMidiCtrlReciever;
 
 	if (m_pUTipDll)
 		delete m_pUTipDll;
@@ -791,11 +802,12 @@ LRESULT CTimeLineDlg::OnUpdateNetworkSetting(WPARAM wParam, LPARAM lParam)
 	auto service = ServiceProvider::Instance()->GetTimelineService();
 	if (service != nullptr)
 	{
+		/*
 		auto engine = service->GetTimeCodeEngine();
 		engine->SetMaster(bCheck);
 		engine->SetIPAdress(szIP);
 		engine->SetPort(iPort);
-
+		*/
 #ifdef _ENABLE_TC_NET
 		tc_adapter->SetServerIP(szIP);
 		tc_adapter->SetPort(iPort);
@@ -930,8 +942,10 @@ void CTimeLineDlg::DoPlay()
 	bool bRunNetwork = GetPrivateProfileInt("Network_Setting", "Run", 0, theApp.m_strCurPath + "Setting.ini");
 	if (bRunNetwork)
 	{
+		bool bEnablePBSchedule = GetPrivateProfileInt("PBSchedule", "Enable", 0, theApp.m_strCurPath + "Setting.ini");
+
 		bool bMaster = GetPrivateProfileInt("Network_Setting", "Master", 0, theApp.m_strCurPath + "Setting.ini");
-		if (bMaster)
+		if (bMaster && !bEnablePBSchedule)
 		{
 			m_AutoPBHelper.Run();
 		}
@@ -941,15 +955,26 @@ void CTimeLineDlg::DoPlay()
 	}
 	else
 	{
-		CWnd* pEditViewWnd = m_timelineService.GetTimelineManager()->GetEditViewWnd();
-		::SendMessage(pEditViewWnd->GetSafeHwnd(), WM_TM_PLAY2, 0, 0);
+		bool bEnablePBSchedule = GetPrivateProfileInt("PBSchedule", "Enable", 0, theApp.m_strCurPath + "Setting.ini");
+
+		if (!bEnablePBSchedule)
+		{
+			CWnd* pEditViewWnd = m_timelineService.GetTimelineManager()->GetEditViewWnd();
+			::SendMessage(pEditViewWnd->GetSafeHwnd(), WM_TM_PLAY2, 0, 0);
+		}
 	}
 }
 
 void CTimeLineDlg::RunNetwork()
 {
+	unsigned threadID1;
+	HANDLE hThread = (HANDLE)_beginthreadex(NULL, 0, _RunNetwork_ThreadProc, this, 0, &threadID1);
+}
+
+void CTimeLineDlg::RunNetwork2()
+{
 	if (!m_bDoRunNetwork)
-		return ;
+		return;
 
 	if (m_bDoRunNetwork)
 		m_bDoRunNetwork = false;
@@ -1027,11 +1052,12 @@ void CTimeLineDlg::RunNetwork()
 			auto service = ServiceProvider::Instance()->GetTimelineService();
 			if (service != nullptr)
 			{
+				/*
 				auto engine = service->GetTimeCodeEngine();
 				engine->SetMaster(bMaster);
 				engine->SetIPAdress(szIP);
 				engine->SetPort(iPort);
-
+				*/
 #ifdef _ENABLE_TC_NET
 				tc_adapter->SetServerIP(szIP);
 				tc_adapter->SetPort(iPort);
@@ -1039,7 +1065,7 @@ void CTimeLineDlg::RunNetwork()
 			}
 
 			//if (bMaster)
-				tc_adapter->Start();
+			tc_adapter->Start();
 
 			if (tc_adapter->IsWorking())
 				m_NetType.Enable(false);
@@ -1054,12 +1080,26 @@ void CTimeLineDlg::RunNetwork()
 
 			if (m_pSearchBtn)
 			{
-				m_pSearchBtn->Enable(true);
-				m_pSearchBtn->Draw();
+			m_pSearchBtn->Enable(true);
+			m_pSearchBtn->Draw();
 			}
 			*/
 		}
 
+	}
+}
+
+void CTimeLineDlg::DoRunNetwork()
+{
+	bool bDo = true;
+	while (bDo)
+	{
+		if (CheckNetwork())
+		{
+			bDo = false;
+			RunNetwork2();
+		}
+		Sleep(3000);
 	}
 }
 
@@ -1104,6 +1144,36 @@ LRESULT CTimeLineDlg::OnSetNetwork(WPARAM wParam, LPARAM lParam)
 	}
 
 	return true;
+}
+
+bool CTimeLineDlg::CheckNetwork()
+{
+	IP_ADAPTER_INFO AdapterInfo[16];
+	DWORD dwBufLen = sizeof(AdapterInfo);
+	DWORD dwStatus = GetAdaptersInfo(AdapterInfo, &dwBufLen);
+
+	if (dwStatus == ERROR_SUCCESS)
+	{
+		PIP_ADAPTER_INFO pAdapterInfo = AdapterInfo;
+		while (pAdapterInfo)
+		{
+			if (atoi(pAdapterInfo->IpAddressList.IpAddress.String) != 0)
+			{
+				//pAdapterInfo->GatewayList.IpAddress;
+				if (strcmp(pAdapterInfo->IpAddressList.IpAddress.String, "") != 0)
+					return true;
+				break;
+			}
+			else
+				pAdapterInfo = pAdapterInfo->Next;
+		}
+
+		return false;
+	}
+	else
+	{
+		return false;
+	}
 }
 
 #ifdef _ENABLE_TC_NET
@@ -1250,3 +1320,10 @@ void CTimeLineDlg::EnableSyncButtons(bool bEnable)
 }
 
 #endif
+
+unsigned int __stdcall _RunNetwork_ThreadProc(void* lpvThreadParm)
+{
+	CTimeLineDlg* pObj = (CTimeLineDlg *)lpvThreadParm;
+	pObj->DoRunNetwork();
+	return 0;
+}

@@ -38,7 +38,7 @@ bool MFilePlayerDll::LoadLib(CString strLibPath)
 		_In_MFP_Close = (_In_MFP_Close_Proc)GetProcAddress(m_hInst, "_In_MFP_Close");
 		_In_MFP_Play = (_In_MFP_Play_Proc)GetProcAddress(m_hInst, "_In_MFP_Play");
 		_In_MFP_Stop = (_In_MFP_Stop_Proc)GetProcAddress(m_hInst, "_In_MFP_Stop");
-		_In_MFP_Stop2 = (_In_MFP_Stop2_Proc)GetProcAddress(m_hInst, "_In_MFP_Stop2");
+		//_In_MFP_Stop2 = (_In_MFP_Stop2_Proc)GetProcAddress(m_hInst, "_In_MFP_Stop2");
 		_In_MFP_SetRepeat = (_In_MFP_SetRepeat_Proc)GetProcAddress(m_hInst, "_In_MFP_SetRepeat");
 		_In_MFP_EnableFadeIn = (_In_MFP_EnableFadeIn_Proc)GetProcAddress(m_hInst, "_In_MFP_EnableFadeIn");
 		_In_MFP_EnableFadeOut = (_In_MFP_EnableFadeOut_Proc)GetProcAddress(m_hInst, "_In_MFP_EnableFadeOut");
@@ -172,7 +172,7 @@ void MFilePlayerDll::Stop(int iIndex)
 			_In_MFP_Stop(m_pMFPObjs[iIndex]);
 	}
 }
-
+/*
 void MFilePlayerDll::Stop2(int iIndex)
 {
 	if (iIndex < _MAX_MF_OBJS)
@@ -181,7 +181,7 @@ void MFilePlayerDll::Stop2(int iIndex)
 			_In_MFP_Stop2(m_pMFPObjs[iIndex]);
 	}
 }
-
+*/
 void MFilePlayerDll::SetRepeat(int iIndex, bool bEnable)
 {
 	if (iIndex < _MAX_MF_OBJS)

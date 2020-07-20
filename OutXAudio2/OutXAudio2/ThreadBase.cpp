@@ -41,7 +41,7 @@ void ThreadBase::Stop()
 	if(m_hWorkerThread)
 	{
 		m_bIsAlive = false;
-		::WaitForSingleObject(m_hWorkerThread,1000);
+		::WaitForSingleObject(m_hWorkerThread,3000);
 		m_hWorkerThread = 0;
 	}
 }

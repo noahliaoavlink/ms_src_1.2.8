@@ -150,17 +150,23 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="APProcessCtrl.h" />
+    <ClInclude Include="MidiCtrlSender.h" />
     <ClInclude Include="MSLauncher.h" />
     <ClInclude Include="NWin.h" />
+    <ClInclude Include="PBSchedule.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="Schedule.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\SList.cpp" />
+    <ClCompile Include="..\..\Source\SQList.cpp" />
     <ClCompile Include="APProcessCtrl.cpp" />
+    <ClCompile Include="MidiCtrlSender.cpp" />
     <ClCompile Include="MSLauncher.cpp" />
     <ClCompile Include="NWin.cpp" />
+    <ClCompile Include="PBSchedule.cpp" />
     <ClCompile Include="Schedule.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

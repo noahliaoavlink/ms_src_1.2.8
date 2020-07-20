@@ -554,6 +554,7 @@ void CMediaCtrlDlg::LoadCSV(bool bReset)
 				}
 			}
 		}
+//		Sleep(1);
 	}
 	m_pTreeCtrlUI->Save();
 

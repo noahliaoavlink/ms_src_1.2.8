@@ -355,6 +355,19 @@ void TCAdapter::TC_Pause()
 	}
 }
 
+void TCAdapter::TC_SwitchTo(int iIndex)
+{
+	char szMsg[512];
+	sprintf(szMsg, "TCAdapter::TC_SwitchTo: %d\n", iIndex);
+	OutputDebugStringA(szMsg);
+
+	if (m_iMode == TCM_SERVER)
+	{
+		if (m_pTCServerDll)
+			m_pTCServerDll->TC_SwitchTo(iIndex);
+	}
+}
+
 bool TCAdapter::IsWorking()
 {
 	if (m_iMode == TCM_SERVER)
@@ -577,6 +590,15 @@ void* TCAdapter::Event(int iMsg, void* pParameter1, void* pParameter2)
 			{
 				int iLevel = (int)pParameter1;
 				Add2LogFile(iLevel, (char*)pParameter2);
+			}
+			break;
+		case CID_SWITCH_TO:
+			{
+				long lIndex = (long)pParameter1;
+				manager->ChangeTo(lIndex);
+
+				sprintf(szMsg, "#SwitchTo# TCAdapter::Event: CID_SWITCH_TO %d\n", lIndex);
+				OutputDebugStringA(szMsg);
 			}
 			break;
 	}

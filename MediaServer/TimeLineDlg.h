@@ -163,6 +163,10 @@ public:
 	void DoPlay();
 
 	void RunNetwork();
+	void RunNetwork2();
+	void DoRunNetwork();
+
+	bool CheckNetwork();
 
 #ifdef _ENABLE_TC_NET
 	afx_msg void OnMouseMove(UINT nFlags, CPoint point);

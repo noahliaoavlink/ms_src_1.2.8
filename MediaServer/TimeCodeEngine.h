@@ -167,14 +167,15 @@ namespace Timeline
 
 		void ResetTimeCode();
 		void SetRefTimeCode(DWORD dwRefTime);
-		void SetIPAdress(char* szIP);
-		void SetPort(int iValue);
-		void SetMaster(bool bEnable);
+//		void SetIPAdress(char* szIP);
+//		void SetPort(int iValue);
+//		void SetMaster(bool bEnable);
 		void CloseSocket();
 		void ApplySetting();
 
 		int CheckStatus();
 		void DoWait();
+		void EnableRepeat(bool bEnable);
 
 		// ==== Public member fields ==== //
 	public:
@@ -201,13 +202,15 @@ namespace Timeline
 		TimeCode m_total_timecode;
 		DWORD m_dwRefTime;
 		DWORD m_dwStartTime;
-		bool m_bMaster;
+//		bool m_bMaster;
 
 		int m_iIndex;
 		TimeCode m_tmp_timecode[100];
 
 		int m_iStatus;
 		int m_iWaitCount;
+
+		bool m_bRepeat;
 
 #ifndef _ENABLE_TC_NET
 		SOCKET m_Socket;
@@ -216,8 +219,8 @@ namespace Timeline
 		bool m_bIsRunning;
 #endif
 
-		char m_szIPAdress[64];
-		int m_iPort;
+//		char m_szIPAdress[64];
+//		int m_iPort;
 
 	};
 

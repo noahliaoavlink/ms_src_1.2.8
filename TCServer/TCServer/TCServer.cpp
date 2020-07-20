@@ -133,3 +133,8 @@ extern "C" __declspec(dllexport)int _Net_TCS_GetTotalOfClients(void* pTCSObj)
 {
 	return ((ServerManager*)pTCSObj)->GetTotalOfClients();
 }
+
+extern "C" __declspec(dllexport)void _Net_TCS_TC_SwitchTo(void* pTCSObj, long lIndex)
+{
+	((ServerManager*)pTCSObj)->TC_SwitchTo(lIndex);
+}

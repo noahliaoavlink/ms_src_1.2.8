@@ -71,6 +71,7 @@ extern "C" __declspec(dllexport)void* _Out_OXA_Create()
 
 extern "C" __declspec(dllexport)void _Out_OXA_Destroy(void* pOXAObj)
 {
+//	((XA2Stream*)pOXAObj)->Destroy();
 	delete (XA2Stream*)pOXAObj;
 }
 

@@ -83,9 +83,11 @@ CMediaStream::~CMediaStream()
 
 	if (m_pBuffer)
 		delete m_pBuffer;
+	m_pBuffer = 0;
 
 	if (m_pYUVBuffer)
 		delete m_pYUVBuffer;
+	m_pYUVBuffer = 0;
 
 	if (m_pMixerEffect)
 		m_pMixerEffect->DestroySurfaces();
@@ -524,16 +526,28 @@ void CMediaStream::Close(BOOL bCloseFromShape)
 #endif
 	}
 
+	/*
 	if (m_pBuffer)
-		delete m_pBuffer;
+	{
+		try
+		{
+			delete m_pBuffer;
+		}
+		catch (...)
+		{
+			OutputDebugString("HEError - Catching an exception in CMediaStream::Close !! \n");
+//			::MessageBoxA(NULL, "m_pTreeCtrlUI->RemoveAll() Failed!!", "", MB_OK | MB_TOPMOST);
+		}
+	}
+	*/
 
-	if (m_pYUVBuffer)
-		delete m_pYUVBuffer;
+//	if (m_pYUVBuffer)
+	//	delete m_pYUVBuffer;
 
 	m_strFileName = "";
 	m_strFilePath = "";
-	m_pBuffer = 0;
-	m_pYUVBuffer = 0;
+//	m_pBuffer = 0;
+//	m_pYUVBuffer = 0;
 	m_iWidth = 0;
 	m_iHeight = 0;
 }
@@ -601,41 +615,6 @@ void CMediaStream::Stop()
 #else
 		if (m_pMFilePlayerDll)
 			m_pMFilePlayerDll->Stop(0);
-#endif
-	}
-
-	m_iFrameCount++;
-}
-
-void CMediaStream::Stop2()
-{
-	if (IsRTSPUrl(m_szFileName))
-	{
-		if (m_pRTSPPlayerDll && m_pRTSPObj)
-			m_pRTSPPlayerDll->_In_RTSP_Stop(m_pRTSPObj);
-	}
-	else
-	{
-#ifdef _ENABLE_GPU
-		if (m_pMFilePlayerDll)
-			m_pMFilePlayerDll->Stop(0);
-
-		for (int i = 0; i < g_PannelAry.GetCount(); i++)
-		{
-
-			if (i > 0)
-			{
-				if (m_pMFilePlayerDll)
-					m_pMFilePlayerDll->Stop(i);
-			}
-			/*
-			if (m_pMFilePlayerDll)
-			m_pMFilePlayerDll->Stop(1 + i);
-			*/
-		}
-#else
-		if (m_pMFilePlayerDll)
-			m_pMFilePlayerDll->Stop2(0);
 #endif
 	}
 
@@ -1474,15 +1453,15 @@ void CMediaStream::DisplayVideoWithoutEffect(unsigned char* pBuffer, int w, int 
 	}
 }
 
-void CMediaStream::DisplayVideo(unsigned char* pBuffer, int w, int h)
-{
-	char szMsg[512];
-
-	EnterCriticalSection(&m_csInUse);
-
-	if (IsRTSPUrl(m_szFileName))
+	void CMediaStream::DisplayVideo(unsigned char* pBuffer, int w, int h)
 	{
-		if (m_iWidth != w || m_iHeight != h)
+		char szMsg[512];
+
+		EnterCriticalSection(&m_csInUse);
+
+		if (IsRTSPUrl(m_szFileName))
+		{
+			if (m_iWidth != w || m_iHeight != h || !m_pBuffer)
 		{
 			m_iWidth = w;
 			m_iHeight = h;

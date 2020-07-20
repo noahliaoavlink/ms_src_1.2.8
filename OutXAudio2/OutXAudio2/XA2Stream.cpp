@@ -107,6 +107,7 @@ XA2Stream::~XA2Stream()
 
 	Close();
 	Destroy();
+	ThreadBase::Stop();
 	CoUninitialize();
 //	DeleteCriticalSection(&m_CriticalSection);
 }
@@ -191,6 +192,8 @@ int XA2Stream::Init2()
 
 void XA2Stream::Destroy()
 {
+//	ThreadBase::Stop();
+
 	if (pSourceVoice)
 	{
 		pSourceVoice->DestroyVoice();
@@ -286,7 +289,7 @@ void XA2Stream::Close()
 {
 	m_bIsOpened = false;
 	Stop();
-	ThreadBase::Stop();
+//	ThreadBase::Stop();
 	Destroy();
 }
 
@@ -381,7 +384,9 @@ void XA2Stream::Play()
 
 	SetSourceVoiceVolume();
 
-	ThreadBase::Start();
+//	ThreadBase::Start();
+	if (!ThreadBase::IsAlive())
+		ThreadBase::Start();
 }
 
 void XA2Stream::Pause()
@@ -701,18 +706,20 @@ void XA2Stream::ThreadEvent()
 {
 	ThreadBase::Lock();
 
-	XAUDIO2_VOICE_STATE state;
-	if (pSourceVoice)
-		pSourceVoice->GetState(&state);
-	if (state.BuffersQueued < MAX_BUFFER_COUNT - 1)
-		SetEvent(voiceContext.hBufferEndEvent);
-	
-	if (IsAlive())
+	if (m_iStatus == PS_PLAY && m_bIsOpened)
 	{
-		WaitForSingleObject(voiceContext.hBufferEndEvent, INFINITE);
-		UpdateBuffer();
-	}
+		XAUDIO2_VOICE_STATE state;
+		if (pSourceVoice)
+			pSourceVoice->GetState(&state);
+		if (state.BuffersQueued < MAX_BUFFER_COUNT - 1)
+			SetEvent(voiceContext.hBufferEndEvent);
 
+		if (IsAlive())
+		{
+			WaitForSingleObject(voiceContext.hBufferEndEvent, INFINITE);
+			UpdateBuffer();
+		}
+	}
 	Sleep(1);
 	ThreadBase::Unlock();
 }

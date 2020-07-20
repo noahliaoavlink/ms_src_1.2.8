@@ -49,6 +49,7 @@ void AutoPBHelper::ThreadEvent()
 			CheckStatus();
 		}
 	}
+	Sleep(1);
 }
 
 void AutoPBHelper::CheckStatus()

@@ -47,6 +47,10 @@ class Server
 		bool m_bIsAlive;
 		CRITICAL_SECTION m_CriticalSection;
 
+		int m_iFrameCount;
+
+		DWORD m_dwLastHello;
+
 #ifdef _ENABLE_MSG_Q
 		HANDLE m_hSendMsgThread;
 		CRITICAL_SECTION m_MsgQCriticalSection;
@@ -75,11 +79,15 @@ class Server
 		void TC_Pause();
 		void TC_Continue();
 		void TC_UpdateTimeCode(long lTimeCode);
+		void TC_SwitchTo(long lIndex);
 
 		void ProcessRecvData();
 #ifdef _ENABLE_MSG_Q
 		void SendPacket();
 #endif
+
+		bool IsPassed();
+		void ResendHello();
 
 		void Test();
 };

@@ -158,6 +158,10 @@ BOOL CSettingsDlg::OnInitDialog()
 	}
 	pTL_FPS->SetCurSel(iSelTLFPS);
 
+	bool bRepeat = GetPrivateProfileInt("Timeline_Setting", "Repeat", 0, theApp.m_strCurPath + "Setting.ini");
+	CButton* pRepeatBtn = (CButton*)GetDlgItem(IDC_REPEAT);
+	pRepeatBtn->SetCheck(bRepeat);
+
 	int iMPFPS = GetPrivateProfileInt("Mapping_Setting", "FPS", 25, theApp.m_strCurPath + "Setting.ini");
 	int iSelMPFPS = 0;
 	CComboBox* pMP_FPS = (CComboBox*)GetDlgItem(IDC_MP_FPS);
@@ -407,6 +411,11 @@ void CSettingsDlg::OnBnClickedOk()
 	sprintf(szData, "%d", iTimeCodeType);
 	WritePrivateProfileStringA("Timeline_Setting", "TimeCodeType", szData, theApp.m_strCurPath + "Setting.ini");
 	*/
+
+	CButton* pRepeatBtn = (CButton*)GetDlgItem(IDC_REPEAT);
+	sprintf(szData, "%d", pRepeatBtn->GetCheck());
+	WritePrivateProfileStringA("Timeline_Setting", "Repeat", szData, theApp.m_strCurPath + "Setting.ini");
+
 	CButton* pSyncBtn = (CButton*)GetDlgItem(IDC_SYNC);
 	sprintf(szData, "%d", pSyncBtn->GetCheck());
 	WritePrivateProfileStringA("Mapping_Setting", "Sync", szData, theApp.m_strCurPath + "Setting.ini");
@@ -451,6 +460,13 @@ void CSettingsDlg::OnBnClickedOk()
 
 	auto tl_manager = ServiceProvider::Instance()->GetTimelineService()->GetTimelineManager();
 	tl_manager->GetDisplayManager()->ApplySetting();
+
+	auto service = ServiceProvider::Instance()->GetTimelineService();
+	if (service != nullptr)
+	{
+		auto engine = service->GetTimeCodeEngine();
+		engine->ApplySetting();
+	}
 
 #ifdef _ENABLE_VIDEO_WALL
 	//mask

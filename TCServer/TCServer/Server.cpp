@@ -1,6 +1,10 @@
 #include "stdafx.h"
 #include "Server.h"
 
+#include "Mmsystem.h"
+
+#pragma comment(lib, "Winmm.lib")
+
 DWORD WINAPI RecvThread(LPVOID lpParam);
 
 #ifdef _ENABLE_MSG_Q
@@ -25,10 +29,11 @@ Server::Server()
 	m_bDoSynPB = false;
 	m_ulCurFrameTime = 0;
 	m_ulLastFrameTime = 0;
+	m_iFrameCount = 0;
 
 #ifdef _ENABLE_MSG_Q
 	m_pMsgQueue = new SQQueue;
-	m_pMsgQueue->Alloc(sizeof(MsgItem), 200);
+	m_pMsgQueue->Alloc(sizeof(MsgItem), 400);
 
 	InitializeCriticalSection(&m_MsgQCriticalSection);
 #endif
@@ -156,6 +161,7 @@ void Server::ProcessRecvData()
 #ifdef _ENABLE_MSG_Q
 void Server::SendPacket()
 {
+	char szMsg[512];
 	EnterCriticalSection(&m_MsgQCriticalSection);
 	if (m_pMsgQueue->GetTotal() > 0)
 	{
@@ -170,30 +176,61 @@ void Server::SendPacket()
 					{
 						packet_maker.Make(pCurPacketItem->lCmd, pCurPacketItem->lParm);
 						int iRet = send(m_hSocket, (char*)packet_maker.GetBuffer(), packet_maker.GetBufLen(), 0);
+
+						if (CID_DO_SYN_PB == pCurPacketItem->lCmd)
+						{
+							sprintf(szMsg, "TCS Server::SendPacket:  CID_DO_SYN_PB [%d] iRet = %d\n", pCurPacketItem->lParm, iRet);
+							OutputDebugStringA(szMsg);
+						}
+						else
+						{
+							sprintf(szMsg, "TCS Server::SendPacket:  CID_LOGIN_RET [%d] iRet = %d\n", pCurPacketItem->lParm, iRet);
+							OutputDebugStringA(szMsg);
+						}
 					}
 					break;
 				case CID_UPDATE_TIME_CODE:
 					{
 						packet_maker.Make(pCurPacketItem->lCmd, pCurPacketItem->lParm);
 						int iRet = send(m_hSocket, (char*)packet_maker.GetBuffer(), packet_maker.GetBufLen(), 0);
+
+						sprintf(szMsg, "TCS Server::SendPacket:  CID_UPDATE_TIME_CODE [%d] iRet = %d\n", pCurPacketItem->lParm, iRet);
+						OutputDebugStringA(szMsg);
+					}
+					break;
+				case CID_SWITCH_TO:
+					{
+						packet_maker.Make(pCurPacketItem->lCmd, pCurPacketItem->lParm);
+						int iRet = send(m_hSocket, (char*)packet_maker.GetBuffer(), packet_maker.GetBufLen(), 0);
+
+						sprintf(szMsg, "#SwitchTo# TCS Server::SendPacket:  CID_SWITCH_TO [%d] iRet = %d\n", pCurPacketItem->lParm, iRet);
+						OutputDebugStringA(szMsg);
 					}
 					break;
 				default:
 					{
 						packet_maker.Make(pCurPacketItem->lCmd);
 						int iRet = send(m_hSocket, (char*)packet_maker.GetBuffer(), packet_maker.GetBufLen(), 0);
+
+						sprintf(szMsg, "TCS Server::SendPacket:  default , iRet = %d\n", iRet);
+						OutputDebugStringA(szMsg);
 					}
 					break;
 			}
 		}
 	}
-	Sleep(1);
+
+	if (m_iFrameCount % 16 == 0)
+		Sleep(1);
+
+	m_iFrameCount++;
 	LeaveCriticalSection(&m_MsgQCriticalSection);
 }
 #endif
 
 void Server::Hello()
 {
+	m_dwLastHello = timeGetTime();
 #ifdef _ENABLE_MSG_Q
 	MsgItem msg_item;
 
@@ -347,6 +384,9 @@ void Server::TC_UpdateTimeCode(long lTimeCode)
 
 			//m_pMsgQueue->Reset();
 
+			sprintf(szMsg, "TCS Server::TC_UpdateTimeCode: CID_DO_SYN_PB %d\n", lTimeCode);
+			OutputDebugStringA(szMsg);
+
 			m_pMsgQueue->Add((unsigned char*)&msg_item, sizeof(MsgItem));
 #else
 			packet_maker.Make(CID_DO_SYN_PB, lTimeCode);
@@ -373,6 +413,8 @@ void Server::TC_UpdateTimeCode(long lTimeCode)
 				msg_item.lParm = lTimeCode;
 
 				//m_pMsgQueue->Reset();
+				sprintf(szMsg, "TCS Server::TC_UpdateTimeCode: CID_DO_SYN_PB %d\n", lTimeCode);
+				OutputDebugStringA(szMsg);
 
 				m_pMsgQueue->Add((unsigned char*)&msg_item, sizeof(MsgItem));
 #else
@@ -397,11 +439,28 @@ void Server::TC_UpdateTimeCode(long lTimeCode)
 			send(m_hSocket, (char*)packet_maker.GetBuffer(), packet_maker.GetBufLen(), 0);
 #endif
 
-	//		sprintf(szMsg, "TCS Server::TC_UpdateTimeCode: CID_UPDATE_TIME_CODE %d\n", lTimeCode);
-	//		OutputDebugStringA(szMsg);
+			sprintf(szMsg, "TCS Server::TC_UpdateTimeCode: CID_UPDATE_TIME_CODE %d\n", lTimeCode);
+			OutputDebugStringA(szMsg);
 
 			m_ulLastFrameTime = lTimeCode;
 		}
+	}
+}
+
+void Server::TC_SwitchTo(long lIndex) 
+{
+	if (m_bIsPassed)
+	{
+#ifdef _ENABLE_MSG_Q
+		MsgItem msg_item;
+		msg_item.lCmd = CID_SWITCH_TO;
+		msg_item.lParm = lIndex;
+
+		m_pMsgQueue->Add((unsigned char*)&msg_item, sizeof(MsgItem));
+#else
+		packet_maker.Make(CID_UPDATE_TIME_CODE, lTimeCode, m_ulCurFrameTime);
+		send(m_hSocket, (char*)packet_maker.GetBuffer(), packet_maker.GetBufLen(), 0);
+#endif
 	}
 }
 
@@ -413,6 +472,21 @@ void Server::EnableDoSynPB(bool bEnable)
 void Server::UpdateCurFrameTime(unsigned long ulTime)
 {
 	m_ulCurFrameTime = ulTime;
+}
+
+bool Server::IsPassed()
+{
+	return m_bIsPassed;
+}
+
+void Server::ResendHello()
+{
+	DWORD dwCurTime = timeGetTime();
+
+	if (dwCurTime - m_dwLastHello >= 3000)
+	{
+		Hello();
+	}
 }
 
 void Server::Test()

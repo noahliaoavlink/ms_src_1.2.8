@@ -21,7 +21,7 @@ AVPacketQueue::~AVPacketQueue()
 		if (pCurFrame)
 		{
 			av_packet_unref(pCurFrame);
-			av_freep(pCurFrame);
+//			av_freep(pCurFrame);
 		}
 	}
 	delete m_pVideoFrameQueue;
@@ -51,7 +51,7 @@ void AVPacketQueue::Add(AVPacket pkt)
 	m_pVideoFrameQueue->Add(pNewPacket);
 
 	av_packet_unref(&pkt);
-	av_freep(&pkt);
+//	av_freep(&pkt);
 #else
 	m_VideoFrameQueue.push(pkt);
 #endif
@@ -110,7 +110,7 @@ void AVPacketQueue::Reset()
 		if (pCurFrame)
 		{
 			av_packet_unref(pCurFrame);
-			av_freep(pCurFrame);
+//			av_freep(pCurFrame);
 		}
 	}
 	m_pVideoFrameQueue->Reset();
@@ -152,6 +152,7 @@ AVPacketQueue2::AVPacketQueue2()
 	for (int i = 0; i < m_iMax; i++)
 	{
 		av_init_packet(&m_RBMItems[i].avpkt);
+		m_RBMItems[i].bInit = true;
 	}
 }
 
@@ -164,8 +165,24 @@ void AVPacketQueue2::Free()
 {
 	for (int i = 0; i < m_iMax; i++)
 	{
-		av_packet_unref(&m_RBMItems[i].avpkt);
-		av_freep(&m_RBMItems[i].avpkt);
+		try
+		{
+			if (m_RBMItems[i].iSize > 0)
+			{
+				av_packet_unref(&m_RBMItems[i].avpkt);
+				//av_free_packet(&m_RBMItems[i].avpkt);
+//				av_freep(&m_RBMItems[i].avpkt);
+			}
+			m_RBMItems[i].iSize = 0;
+		}
+		catch (...)
+		{
+			char szMsg[512];
+			sprintf(szMsg, "HEError - AVPacketQueue2::Free memcpy cause exception (i=%d)!!\n",i);
+			OutputDebugStringA(szMsg);
+
+			//return ;
+		}
 	}
 }
 
@@ -206,12 +223,28 @@ int AVPacketQueue2::Insert(int iIndex, AVPacket pkt)
 	try
 	{
 		//memcpy((unsigned char*)m_RBMItems[iIndex].pBuffer, pBuffer, iLen);
+
+#if 0
 		av_packet_unref(&m_RBMItems[iIndex].avpkt);
 		av_freep(&m_RBMItems[iIndex].avpkt);
 		av_init_packet(&m_RBMItems[iIndex].avpkt);
 		av_packet_ref(&m_RBMItems[iIndex].avpkt, &pkt);
 		av_packet_unref(&pkt);
-		av_freep(&pkt);
+		av_free_packet(&pkt);
+		//av_freep(&pkt);
+#else
+		//if (m_RBMItems[iIndex].iSize > 0)
+		{
+			av_packet_unref(&m_RBMItems[iIndex].avpkt);
+			//av_free_packet(&m_RBMItems[iIndex].avpkt);
+			//av_freep(&m_RBMItems[iIndex].avpkt);
+		}
+//		av_init_packet(&m_RBMItems[iIndex].avpkt);
+		av_packet_ref(&m_RBMItems[iIndex].avpkt, &pkt);
+		av_packet_unref(&pkt);
+		//av_free_packet(&pkt);
+		//av_freep(&pkt);
+#endif
 	}
 	catch (...)
 	{
@@ -285,6 +318,12 @@ int AVPacketQueue2::GetCount()
 
 void AVPacketQueue2::Reset()
 {
+	/*
+	av_packet_unref(&m_RBMItems[m_iWriteIndex].avpkt);
+	av_free_packet(&m_RBMItems[m_iWriteIndex].avpkt);
+	av_freep(&m_RBMItems[m_iWriteIndex].avpkt);
+	*/
+
 	Free();
 	m_iReadIndex = 0;
 	m_iWriteIndex = 0;

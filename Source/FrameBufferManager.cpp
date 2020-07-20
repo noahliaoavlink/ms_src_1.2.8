@@ -130,7 +130,8 @@ StreamFrame* FrameBufferManager::GetNext()
 void FrameBufferManager::Reset()
 {
 #if (_ENABLE_DUAL_BUFFER == 1)
-	m_pFrameQBuffer[m_iCurQBIndex]->Reset();
+	if(m_iCurQBIndex >= 0 && m_iCurQBIndex <= 2 && GetTotal() > 0 && !m_pFrameQBuffer[m_iCurQBIndex]->IsEmpty())
+		m_pFrameQBuffer[m_iCurQBIndex]->Reset();
 #else
 	m_pFrameQBuffer->Reset();
 #endif

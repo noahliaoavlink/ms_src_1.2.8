@@ -48,7 +48,7 @@ class OutDevice
 		virtual void Close() = 0;
 		virtual void Play() = 0;
 		virtual void Stop() = 0;
-		virtual void Stop2() = 0;
+		//virtual void Stop2() = 0;
 		virtual void Pause() = 0;
 		virtual void Seek(float fPos) = 0;
 		virtual void ResetFilter() = 0;

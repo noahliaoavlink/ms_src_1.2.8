@@ -65,6 +65,7 @@ public:
 	void* GetServerList();
 	int GetReceiveStatus();
 	int GetTotalOfClients();
+	void TC_SwitchTo(int iIndex);
 
 	//log file
 	void CheckLogStatus();

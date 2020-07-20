@@ -489,6 +489,8 @@ TimeCodeEngine::TimeCodeEngine()
 	m_iStatus = TCES_NORMAL;
 	m_iWaitCount = 0;
 
+	m_bRepeat = true;
+
 	m_timecodeThread->TimeCodeUpdate.connect(boost::bind(&TimeCodeEngine::UpdateTimeCode, this, _1));
 	m_uiThread->TimeCodeUpdate.connect(boost::bind(&TimeCodeEngine::UpdateUi, this, _1));
 
@@ -625,6 +627,9 @@ void TimeCodeEngine::UpdateTimeCode(TimeCode timecode)
 	//if (m_timecode.TotalMilliseconds() > 10000)
 	if (m_timecode.TotalMilliseconds() > ulTotalMS)
 	{
+		if (!m_bRepeat)
+			return ;
+
 //		this->TimeCodeUpdate(m_timecode);
 		this->ResetTimeCode();
 //		this->TimeCodeUpdate(m_timecode);
@@ -826,7 +831,7 @@ void TimeCodeEngine::SocketFun()
 	}
 }
 #endif
-
+/*
 void TimeCodeEngine::SetIPAdress(char* szIP)
 {
 	strcpy(m_szIPAdress,szIP);
@@ -841,10 +846,11 @@ void TimeCodeEngine::SetMaster(bool bEnable)
 {
 	m_bMaster = bEnable;
 }
-
+*/
 void TimeCodeEngine::ApplySetting()
 {
-	m_timecodeThread->ApplySetting();
+	//m_timecodeThread->ApplySetting();
+	m_bRepeat = GetPrivateProfileInt("Timeline_Setting", "Repeat", 0, theApp.m_strCurPath + "Setting.ini");
 }
 
 int TimeCodeEngine::CheckStatus()
@@ -852,11 +858,11 @@ int TimeCodeEngine::CheckStatus()
 	switch (m_iStatus)
 	{
 		case TCES_NORMAL:
-			m_iWaitCount = 2;
+			m_iWaitCount = 1;
 			m_iStatus = CHS_WAIT;// CHS_UPDATE;
 			break;
 		case TCES_RESET:
-			m_iWaitCount = 2;
+			m_iWaitCount = 1;
 			m_iStatus = CHS_WAIT;
 			break;
 		case CHS_WAIT:
@@ -877,6 +883,11 @@ void TimeCodeEngine::DoWait()
 	{
 		m_iStatus = CHS_UPDATE;
 	}
+}
+
+void TimeCodeEngine::EnableRepeat(bool bEnable)
+{
+	m_bRepeat = bEnable;
 }
 
 #pragma optimize( "", on )

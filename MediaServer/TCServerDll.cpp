@@ -37,6 +37,7 @@ bool TCServerDll::LoadLib()
 		_Net_TCS_UpdateCurFrameTime = (_Net_TCS_UpdateCurFrameTime_Proc)GetProcAddress(m_hInst, "_Net_TCS_UpdateCurFrameTime");
 
 		_Net_TCS_GetTotalOfClients = (_Net_TCS_GetTotalOfClients_Proc)GetProcAddress(m_hInst, "_Net_TCS_GetTotalOfClients");
+		_Net_TCS_TC_SwitchTo = (_Net_TCS_TC_SwitchTo_Proc)GetProcAddress(m_hInst, "_Net_TCS_TC_SwitchTo");
 
 		m_pTCSObj = _Net_TCS_Create();
 		return true;
@@ -128,4 +129,10 @@ int TCServerDll::GetTotalOfClients()
 	if (m_pTCSObj)
 		return _Net_TCS_GetTotalOfClients(m_pTCSObj);
 	return 0;
+}
+
+void TCServerDll::TC_SwitchTo(long lIndex)
+{
+	if (m_pTCSObj)
+		_Net_TCS_TC_SwitchTo(m_pTCSObj, lIndex);
 }

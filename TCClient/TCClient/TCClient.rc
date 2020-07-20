@@ -78,8 +78,8 @@ LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
 //
 
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION 1,0,1,26
- PRODUCTVERSION 1,0,1,26
+ FILEVERSION 1,0,1,29
+ PRODUCTVERSION 1,0,1,29
  FILEFLAGSMASK 0x3fL
 #ifdef _DEBUG
  FILEFLAGS 0x1L
@@ -96,12 +96,12 @@ BEGIN
         BEGIN
             VALUE "CompanyName", "TODO: <Company name>"
             VALUE "FileDescription", "TODO: <File description>"
-            VALUE "FileVersion", "1.0.1.26"
+            VALUE "FileVersion", "1.0.1.29"
             VALUE "InternalName", "TCClient.dll"
             VALUE "LegalCopyright", "TODO: (c) <Company name>.  All rights reserved."
             VALUE "OriginalFilename", "TCClient.dll"
             VALUE "ProductName", "TODO: <Product name>"
-            VALUE "ProductVersion", "1.0.1.26"
+            VALUE "ProductVersion", "1.0.1.29"
         END
     END
     BLOCK "VarFileInfo"

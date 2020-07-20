@@ -77,6 +77,7 @@ BEGIN_MESSAGE_MAP(CTimelineEditView, CView)
 	ON_MESSAGE(WM_TM_BACK_TL_TIEM, OnBackTLItem)
 	ON_MESSAGE(WM_TM_NEXT_TL_TIEM, OnNextTLItem)
 	ON_MESSAGE(WM_TM_PLAY2, OnTMPlay2)
+	ON_MESSAGE(WM_TM_SWITCH_TO_TL_TIEM, OnSwitchToTLItem)
 END_MESSAGE_MAP()
 
 // CTimelineEditView construction/destruction
@@ -516,6 +517,29 @@ LRESULT CTimelineEditView::OnTMPlay2(WPARAM wParam, LPARAM lParam)
 
 	m_bDoPlay = true;
 
+	return true;
+}
+
+LRESULT CTimelineEditView::OnSwitchToTLItem(WPARAM wParam, LPARAM lParam) 
+{
+	auto tl_manager = ServiceProvider::Instance()->GetTimelineService()->GetTimelineManager();
+
+	int iIndex = (int)wParam;
+
+	tl_manager->FreezeShape(true);
+
+	m_facade.RemoveTimeCodeQueue();
+	m_facade.SeekToBegin();
+	tl_manager->ClearAll();
+	tl_manager->DoPlayback_AllOutDevices(PBC_CLOSE);
+	tl_manager->ChangeTo(iIndex);
+
+//	m_facade.PreloadSource();
+//	m_facade.Start("");
+
+	m_bDoRedraw = true;
+
+	tl_manager->FreezeShape(false);
 	return true;
 }
 

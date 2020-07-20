@@ -41,6 +41,7 @@ typedef struct
 {
 	int iSize;
 	AVPacket avpkt;
+	bool bInit;
 }AVPacketItem;
 
 class AVPacketQueue2

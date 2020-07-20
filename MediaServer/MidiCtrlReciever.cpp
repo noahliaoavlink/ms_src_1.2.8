@@ -51,7 +51,7 @@ void MidiCtrlReciever::ParseCopyData(COPYDATASTRUCT* pCopyDataStruct)
 			break;
 		case MCC_PLAY:
 			manager->FreezeShape(true);
-			SendMessage(pEditViewWnd->GetSafeHwnd(), WM_TM_PLAY, 0, 0);
+//			SendMessage(pEditViewWnd->GetSafeHwnd(), WM_TM_PLAY, 0, 0);
 			Play();
 			manager->FreezeShape(false);
 			break;
@@ -63,6 +63,12 @@ void MidiCtrlReciever::ParseCopyData(COPYDATASTRUCT* pCopyDataStruct)
 				long* lTimeCode = (long*)pCopyDataStruct->lpData;
 				double dTime = *lTimeCode / 1000.0;
 				AddTimeCodeToQueue(dTime);
+			}
+			break;
+		case MCC_SWITCH_TO:
+			{
+				int* iItem = (int*)pCopyDataStruct->lpData;
+				SwitchTo(*iItem);
 			}
 			break;
 		case KPCC_RET_FAILED:
@@ -98,6 +104,7 @@ void MidiCtrlReciever::Play()
 {
 	Stop();
 
+#if 0
 	m_bIsAlive = true;
 	DWORD nThreadID;
 	m_hMCRecieverThread = CreateThread(0, 0, MCRecieverThread, (void *)this, 0, &nThreadID);
@@ -105,20 +112,59 @@ void MidiCtrlReciever::Play()
 	auto tl_manager = ServiceProvider::Instance()->GetTimelineService()->GetTimelineManager();
 	auto tc_adapter = tl_manager->GetTCAdapter();
 	tc_adapter->SetMode(TCM_MIDI_CTRL);
+#else
+	auto tl_manager = ServiceProvider::Instance()->GetTimelineService()->GetTimelineManager();
+	CWnd* pEditViewWnd = tl_manager->GetEditViewWnd();
+	::SendMessage(pEditViewWnd->GetSafeHwnd(), WM_TM_PLAY2, 0, 0);
+
+	auto tc_adapter = tl_manager->GetTCAdapter();
+	if (tc_adapter)
+	{
+		auto cur_timecode = tl_manager->GetTotalTimeOfCurrentItem();
+		tc_adapter->SetTotalOfTimeCode(cur_timecode.TotalMilliseconds());
+		tc_adapter->TC_Start();
+	}
+
+#endif
 }
 
 void MidiCtrlReciever::Stop()
 {
+#if 0
 	m_bIsAlive = false;
 	::WaitForSingleObject(m_hMCRecieverThread, 10000);
 
 	auto tl_manager = ServiceProvider::Instance()->GetTimelineService()->GetTimelineManager();
 	auto tc_adapter = tl_manager->GetTCAdapter();
 	tc_adapter->SetMode(TCM_NORMAL);
+#else
+	auto tl_manager = ServiceProvider::Instance()->GetTimelineService()->GetTimelineManager();
+	CWnd* pEditViewWnd = tl_manager->GetEditViewWnd();
+	::SendMessage(pEditViewWnd->GetSafeHwnd(), WM_TM_BEGIN, 0, 0);
+
+	auto tc_adapter = tl_manager->GetTCAdapter();
+	tc_adapter->TC_Stop();
+#endif
 }
 
 void MidiCtrlReciever::Pause()
 {
+}
+
+void MidiCtrlReciever::SwitchTo(int iItem)
+{
+	char szMsg[512];
+	sprintf(szMsg, "MidiCtrlReciever::SwitchTo: %d\n", iItem);
+	OutputDebugStringA(szMsg);
+
+	auto tl_manager = ServiceProvider::Instance()->GetTimelineService()->GetTimelineManager();
+	//tl_manager->ChangeTo(iItem);
+	CWnd* pEditViewWnd = tl_manager->GetEditViewWnd();
+
+	::SendMessage(pEditViewWnd->GetSafeHwnd(), WM_TM_SWITCH_TO_TL_TIEM, iItem, 0);
+
+	auto tc_adapter = tl_manager->GetTCAdapter();
+	tc_adapter->TC_SwitchTo(iItem);
 }
 
 bool MidiCtrlReciever::IsAlive()

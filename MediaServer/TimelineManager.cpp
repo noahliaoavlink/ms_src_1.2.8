@@ -1456,6 +1456,56 @@ void TimelineManager::ChangeTo(char* szName)
 	FreezeShape(false);
 }
 
+void TimelineManager::ChangeTo(int iIndex)
+{
+	char szMsg[512];
+	sprintf(szMsg, "#SwitchTo# TimelineManager::ChangeTo %d\n", iIndex);
+	OutputDebugStringA(szMsg);
+
+	auto item_list = GetItems();
+
+	if (item_list.size() > iIndex)
+	{
+		m_LastItemUuid = m_selectedItemUuid;
+
+//		FreezeShape(true);
+
+		auto item = item_list.at(iIndex);
+
+		auto visuals = this->GetItemVisuals();
+
+		for (auto o : visuals)
+			o->Deselect();
+
+		for (auto o : visuals)
+		{
+			if (strcmp(o->UUID().c_str(), item->GetInfo().UUID().c_str()) == 0)
+			{
+				o->Select();
+
+				//SendMessage(m_pEditViewWnd->GetSafeHwnd(), WM_TM_RESET_TIME_CODE, 0, 0);
+				//						ClearAll();
+				//DoPlayback_AllOutDevices(PBC_CLOSE);
+
+				m_selectedItemUuid = o->UUID();
+				this->StatusChanged("ItemSelectionChanged");
+				break;
+			}
+		}
+
+		if (m_selectedItemUuid != m_LastItemUuid)
+		{
+			//PostMessage(m_pEditViewWnd->GetSafeHwnd(), WM_TM_RESET_TIME_CODE, 0, 0);
+			//m_pDisplayManager->ClearAll();
+			m_pDisplayManager->ResetAllD3DSurfaces();
+			DoPlayback_AllOutDevices(PBC_CLOSE);
+
+			ClearAll();
+		}
+//		FreezeShape(false);
+	}
+}
+
 void TimelineManager::Back()
 {
 	auto item_list = GetItems();

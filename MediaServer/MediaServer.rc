@@ -392,20 +392,21 @@ BEGIN
     EDITTEXT        IDC_MAPPING_PROJECT_FILE,97,19,234,14,ES_AUTOHSCROLL
     PUSHBUTTON      "...",IDC_BROWSE,338,19,50,14
     PUSHBUTTON      "Reset",IDC_RESET,12,39,50,14
-    GROUPBOX        "Timeline",IDC_STATIC,2,97,420,53
+    GROUPBOX        "Timeline",IDC_STATIC,4,97,418,65
     CONTROL         "Preload project file:",IDC_ENABLE_TIMELINE_PF,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,114,79,10
     EDITTEXT        IDC_TIMELINE_PROJECT_FILE,98,111,234,14,ES_AUTOHSCROLL
     PUSHBUTTON      "...",IDC_BROWSE2,336,111,50,14
-    CONTROL         "Sync",IDC_SYNC,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,12,60,31,10
+    CONTROL         "Sync",IDC_SYNC,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,12,60,78,10
     LTEXT           "FPS:",IDC_STATIC,12,132,78,8
     LTEXT           "FPS:",IDC_STATIC,12,76,78,8
     COMBOBOX        IDC_TL_FPS,98,130,48,74,CBS_DROPDOWN | WS_VSCROLL | WS_TABSTOP
     COMBOBOX        IDC_MP_FPS,98,74,48,74,CBS_DROPDOWN | WS_VSCROLL | WS_TABSTOP
     LTEXT           "Language:",IDC_STATIC,284,237,35,8
     COMBOBOX        IDC_LANGUAGE,323,236,93,85,CBS_DROPDOWN | WS_VSCROLL | WS_TABSTOP
-    GROUPBOX        "Network",IDC_STATIC,2,148,422,56
-    CONTROL         "Run",IDC_RUN_NETWORK,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,163,80,10
-    CONTROL         "Master",IDC_MASTER,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,180,80,10
+    GROUPBOX        "Network",IDC_STATIC,4,163,418,56
+    CONTROL         "Run",IDC_RUN_NETWORK,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,178,80,10
+    CONTROL         "Master",IDC_MASTER,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,196,80,10
+    CONTROL         "Repeat",IDC_REPEAT,"Button",BS_AUTOCHECKBOX | NOT WS_VISIBLE | WS_TABSTOP,10,147,80,10
 END
 
 
@@ -415,8 +416,8 @@ END
 //
 
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION 1,2,8,31
- PRODUCTVERSION 1,2,8,31
+ FILEVERSION 1,2,8,41
+ PRODUCTVERSION 1,2,8,41
  FILEFLAGSMASK 0x3fL
 #ifdef _DEBUG
  FILEFLAGS 0x1L
@@ -433,12 +434,12 @@ BEGIN
         BEGIN
             VALUE "CompanyName", "BRUVIS"
             VALUE "FileDescription", "BRUVIS Production Software"
-            VALUE "FileVersion", "1.2.8.31"
+            VALUE "FileVersion", "1.2.8.41"
             VALUE "InternalName", "MediaServer.exe"
             VALUE "LegalCopyright", "Copyright(c) 2017 by BRUVIS.  All rights reserved."
             VALUE "OriginalFilename", "MediaServer.exe"
             VALUE "ProductName", "STARE"
-            VALUE "ProductVersion", "1.2.8.31"
+            VALUE "ProductVersion", "1.2.8.41"
         END
     END
     BLOCK "VarFileInfo"

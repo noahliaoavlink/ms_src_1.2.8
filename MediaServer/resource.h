@@ -189,6 +189,8 @@
 #define IDC_LANGUAGE                    1147
 #define IDC_RUN_NETWORK                 1148
 #define IDC_CHECK3                      1149
+#define IDC_CHECK2                      1150
+#define IDC_REPEAT                      1150
 
 // Next default values for new objects
 // 
@@ -196,7 +198,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        161
 #define _APS_NEXT_COMMAND_VALUE         32771
-#define _APS_NEXT_CONTROL_VALUE         1150
+#define _APS_NEXT_CONTROL_VALUE         1151
 #define _APS_NEXT_SYMED_VALUE           107
 #endif
 #endif

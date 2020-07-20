@@ -1,3 +1,161 @@
+=====  V1.2.8.40   =====
+Date: 2020/07/10
+Author: Noah
+
+多加入檢查網路的部份，當網路正常後，才進入啟用Master的功能
+
+=====  V1.2.8.39   =====
+Date: 2020/04/07
+Author: Noah
+
+修正啟用preload後，造成無法正常開啟軟體的問題
+
+=====  V1.2.8.38   =====
+Date: 2020/02/03
+Author: Noah
+
+修正播放列表在多次切換後會閃退的問題
+
+=====  V1.2.8.37   =====
+Date: 2020/01/07
+Author: Noah
+
+改善串連後播放的音質
+
+=====  V1.2.8.36   =====
+Date: 2020/01/07
+Author: Noah
+
+修正串連後，Client端無法播放超過2分15秒的問題
+
+=====  V1.2.8.35   =====
+Date: 2019/12/26
+Author: Noah
+
+修正無法載入帶有//字串的obj檔，例如 f 71//190 285//566 568//567 171//344
+
+=====  V1.2.8.34   =====
+Date: 2019/10/30
+Author: Noah
+
+修正單台，啟用播放排程時，未關閉"開啟後自動播放功能"
+
+=====  V1.2.8.33   =====
+Date: 2019/10/28
+Author: Noah
+
+啟用播放排程時，關閉"開啟後自動播放功能"
+
+=====  V1.2.8.32   =====
+Date: 2019/10/25
+Author: Noah
+
+1.固定時間播放 (播完一輪後停止)
+2.新增MSScheduler程式用來實作播放排程設定及關機排程
+3.啟用播放排程功能時關閉循環播放
+
+=====  V1.2.8.31   =====
+Date: 2019/10/04
+Author: Noah
+
+1.MediaServer 2台(Client/Server)自動串連功能
+2.開啟後自動播放
+
+=====  V1.2.8.29   =====
+Date: 2019/07/12
+Author: Noah
+
+1.修正Import在某些環境下秀縮圖當掉的問題
+2.修正變形時圈選的矩形未在編輯畫面上秀出
+
+=====  V1.2.8.28   =====
+Date: 2019/07/10
+Author: Noah
+
+1.trial version timeline開啟專案source的數量改為1個
+2.trial version限制載入source的數量 (開啟舊有的設定檔)
+3.trial version限制Panel的數量
+4.trial version限制物件的數量
+5.trial version不檢查key pro
+6.trial version熊頭動態浮水印
+7.trial version單一螢幕下，需秀出熊頭動態浮水印
+8.加入build出trial version的選項
+
+=====  V1.2.8.27   =====
+Date: 2019/06/28
+Author: Noah
+
+1.加入ShutdownSetting的程式，用來設定關機的執行時間
+2.MSLauncher加入關機排程功能
+
+=====  V1.2.8.26   =====
+Date: 2019/06/19
+Author: Noah
+
+
+修正進入特效後，直接再一次點選同樣地方，會造成視窗閃爍的問題
+
+
+=====  V1.2.8.25   =====
+Date: 2019/06/13
+Author: Noah
+
+1.修正語系亂碼問題
+2.修正Effect Tool Tip無法正常呈現
+3.修改安裝包軟體描述
+4.Tip英文單字的第一個字統一大寫
+
+=====  V1.2.8.24   =====
+Date: 2019/06/13
+Author: Noah
+
+1.拿掉effect敘述前面的序號
+2.加入多國語言,可透過Setting的Dialog改變語系
+3.改善同步穩定性
+4.在SettingDlg變更"同步"功能設定後，可以馬上套用
+5.修正載入沒有資訊的*.obj檔造成當掉的問題
+6.修正Shape某些MessageBox未顯示在最上方的問題
+
+=====  V1.2.8.20   =====
+Date: 2019/05/30
+Author: Noah
+
+1.修正CPU版本特效無法定常運作的問題
+2.加入顯示FPS的設定
+
+=====  V1.2.8.19   =====
+Date: 2019/05/29
+Author: Noah
+
+修正CPU版本timeline的預覽影像無法正常顯示的問題
+
+=====  V1.2.8.18   =====
+Date: 2019/05/29
+Author: Noah
+
+改善GPU版本特效的穩定性
+
+=====  V1.2.8.17   =====
+Date: 2019/05/24
+Author: Noah
+
+新增 VWallOffsetIndex , VWallIndexOrder的設定，方便測試同步使用
+
+=====  V1.2.8.16   =====
+Date: 2019/05/23
+Author: Noah
+
+1.修正GPU版本timeline，第2個source未更新的問題
+2.修正GPU版本shape在做特效不穩定的問題
+3.新增/刪除物件會多等待，取新資料的狀態，避免造成不穩定
+
+=====  V1.2.8.15   =====
+Date: 2019/05/22
+Author: Noah
+
+1.修正GPU版本timeline特效跨2個source不穩定的問題
+2.修正GPU版本timeline begin/play切換不穩定的問題
+
 =====  V1.2.8.14   =====
 Date: 2019/05/14
 Author: Noah

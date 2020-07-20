@@ -104,7 +104,8 @@ BOOL CLogoDlg::OnInitDialog()
 	CRect rectTemp;
 	rectTemp.left = 0;
 	rectTemp.top = 0;
-	
+
+#if 0
 	try
 	{
 		CInternetSession m_sess;// (AfxGetAppName(), 1, PRE_CONFIG_INTERNET_ACCESS);
@@ -151,7 +152,7 @@ BOOL CLogoDlg::OnInitDialog()
 	{
 		printf("Can't connect to server");
 	}
-
+#endif
 
 	for (int x = 0; x < 16; x++)
 	{
@@ -217,6 +218,7 @@ BOOL CLogoDlg::OnInitDialog()
 	ChangeDisplaySettings(dm, CDS_UPDATEREGISTRY);
 	delete dm;*/
 	
+	
 	if (m_bShowLogo)
 	{
 		SetWindowLong(this->m_hWnd, GWL_EXSTYLE, GetWindowLong(this->m_hWnd, GWL_EXSTYLE) ^ WS_EX_LAYERED);
@@ -238,7 +240,7 @@ BOOL CLogoDlg::OnInitDialog()
 		m_FramePic->SetDlgRegion(this);
 		m_FramePic->SetWindowRgn(NullRgn, true);
 	}
-
+	
 	SetTimer(0, 100, NULL);
 
 	m_pMediaServerThread = AfxBeginThread(MediaServerThread, this);

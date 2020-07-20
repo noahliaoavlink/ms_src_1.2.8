@@ -29,11 +29,14 @@ Schedule::Schedule()
 	m_iMinute = -1;
 	m_iSecond = -1;
 	m_dwLastTime = 0;
+
+	m_pPBSchedule = new PBSchedule;
 }
 
 Schedule::~Schedule()
 {
-
+	if (m_pPBSchedule)
+		delete m_pPBSchedule;
 }
 
 void Schedule::SetProcessHandle(HANDLE hProcess)
@@ -44,6 +47,7 @@ void Schedule::SetProcessHandle(HANDLE hProcess)
 void Schedule::Start()
 {
 	LoadConfig();
+	m_pPBSchedule->LoadConfig();
 	ThreadBase::Start();
 }
 
@@ -144,6 +148,7 @@ void Schedule::ThreadEvent()
 		bool bRet = CheckShutdownTime();
 		if (bRet)
 			DoShutdown();
+		m_pPBSchedule->CheckPlaylist();
 	}
 
 	Sleep(1);

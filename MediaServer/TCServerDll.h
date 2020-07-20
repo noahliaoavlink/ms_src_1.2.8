@@ -17,6 +17,7 @@ typedef unsigned long (*_Net_TCS_GetTotalOfTimeCode_Proc)(void* pTCSObj);
 typedef bool (*_Net_TCS_IsWorking_Proc)(void* pTCSObj);
 typedef void (*_Net_TCS_UpdateCurFrameTime_Proc)(void* pTCSObj, unsigned long ulTime);
 typedef int (*_Net_TCS_GetTotalOfClients_Proc)(void* pTCSObj);
+typedef void (*_Net_TCS_TC_SwitchTo_Proc)(void* pTCSObj, long lIndex);
 
 class TCServerDll
 {
@@ -42,6 +43,7 @@ public:
 	bool IsWorking();
 	void UpdateCurFrameTime(unsigned long ulTime);
 	int GetTotalOfClients();
+	void TC_SwitchTo(long lIndex);
 
 	_Net_TCS_Create_Proc _Net_TCS_Create;
 	_Net_TCS_Destroy_Proc _Net_TCS_Destroy;
@@ -57,6 +59,7 @@ public:
 	_Net_TCS_IsWorking_Proc _Net_TCS_IsWorking;
 	_Net_TCS_UpdateCurFrameTime_Proc _Net_TCS_UpdateCurFrameTime;
 	_Net_TCS_GetTotalOfClients_Proc _Net_TCS_GetTotalOfClients;
+	_Net_TCS_TC_SwitchTo_Proc _Net_TCS_TC_SwitchTo;
 	
 };
 

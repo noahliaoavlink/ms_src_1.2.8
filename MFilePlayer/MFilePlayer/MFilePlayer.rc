@@ -78,8 +78,8 @@ LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
 //
 
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION 1,0,3,80
- PRODUCTVERSION 1,0,3,80
+ FILEVERSION 1,0,3,85
+ PRODUCTVERSION 1,0,3,85
  FILEFLAGSMASK 0x3fL
 #ifdef _DEBUG
  FILEFLAGS 0x1L
@@ -96,12 +96,12 @@ BEGIN
         BEGIN
             VALUE "CompanyName", "TODO: <Company name>"
             VALUE "FileDescription", "TODO: <File description>"
-            VALUE "FileVersion", "1.0.3.80"
+            VALUE "FileVersion", "1.0.3.85"
             VALUE "InternalName", "MFilePlayer.dll"
             VALUE "LegalCopyright", "TODO: (c) <Company name>.  All rights reserved."
             VALUE "OriginalFilename", "MFilePlayer.dll"
             VALUE "ProductName", "TODO: <Product name>"
-            VALUE "ProductVersion", "1.0.3.80"
+            VALUE "ProductVersion", "1.0.3.85"
         END
     END
     BLOCK "VarFileInfo"

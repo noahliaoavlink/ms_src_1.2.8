@@ -37,6 +37,7 @@ void QBufferManagerEx::Free()
 		{
 			if(m_RBMItems[i].pBuffer)
 				VirtualFree(m_RBMItems[i].pBuffer,0, MEM_RELEASE);
+			m_RBMItems[i].pBuffer = 0;
 		}
 #else
 		for(int i = 0;i < m_iMax;i++)
@@ -96,6 +97,9 @@ void QBufferManagerEx::SetBufferSize(int iSize)
 {
 	m_iUnitSize = iSize + 128;
 	//m_iTotal = 0;
+
+	if(!IsEmpty())
+		Free();
 	
 	int iNewSize = (iSize + 128) * m_iMax;
 	if(m_iBufferSize != iNewSize)

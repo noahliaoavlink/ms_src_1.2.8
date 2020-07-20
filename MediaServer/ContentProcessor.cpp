@@ -932,8 +932,8 @@ void ContentProcessor::UpdateTimeCode(TimeCode timecode)
 	auto time_code_engine = ServiceProvider::Instance()->GetTimelineService()->GetTimeCodeEngine();
 	TimeCode total_time_code = time_code_engine->GetTotalTimecode();
 
-	if (timecode >= total_time_code && total_time_code > 0)
-	//if (timecode >= total_time_code + 20 && total_time_code > 0)
+	//if (timecode >= total_time_code && total_time_code > 0)
+	if (timecode >= total_time_code + 20 && total_time_code > 0)
 	{
 		StopVideoSource();
 		return;
@@ -1523,10 +1523,10 @@ void ContentProcessor::StopVideoSource()
 #endif
 	if (pOutDevice)
 	{
-		
+		/*
 		if (manager->GetTCAdapter()->GetMode() == TCM_CLIENT)
 			pOutDevice->Stop2();
-		else 
+		else */
 			pOutDevice->Stop();
 //		pOutDevice->Close();
 

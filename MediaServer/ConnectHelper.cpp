@@ -66,6 +66,7 @@ void ConnectHelper::ThreadEvent()
 			CheckStatus();
 		}
 	}
+	Sleep(1);
 }
 
 void ConnectHelper::CheckStatus()

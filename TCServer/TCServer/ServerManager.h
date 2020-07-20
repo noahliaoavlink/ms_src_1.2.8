@@ -80,6 +80,7 @@ class ServerManager: public WinMsgCallback2
 		bool IsWorking();
 		void RemoveAll();
 		int GetTotalOfClients();
+		void TC_SwitchTo(long lIndex);
 
 		void* WinMsg(HWND hWnd,int iMsg,void* pParameter1,void* pParameter2);
 };
